@@ -1,46 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 18:29:32 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/18 01:40:02 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/01/17 23:47:56 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/01/17 23:47:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <string.h>
 //#include <stdio.h>
+#include "libft.h"
 
-/*Allocates sufficient memory for a copy of the string s1,
-does the copy, and returns a pointer to it.*/
-char	*ft_strdup(const char *s1)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	len;
+	int		len;
+	int		i;
+	int		j;
 
-	len = ft_strlen(s1) + 1;
-	str = (char *)malloc(len);
+	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	str = (char *)malloc(len * sizeof(char));
 	if (!str)
 		return (NULL);
-	ft_strlcpy(str, s1, len);
+	i = 0;
+	j = 0;
+	while (s1[j])
+		str[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = '\0';
 	return (str);
 }
 
 /*int	main(void)
 {
-	char	src[] = "Hola_mundo!";
-	char	*ori;
-	char	*ft;
+	char	cadena1[] = "hola, ";
+	char	cadena2[] = "como estas?";
+	char	*resultado;
 
-	ori = strdup(src);
-	ft = ft_strdup(src);
-	printf("src = %s\n", src);
-	printf("ori = %s\n", ori);
-	printf("ft = %s\n", ft);
-	free(ori);
-	free(ft);
+	resultado = ft_strjoin(cadena1, cadena2);
+	printf("resultado = %s\n", resultado);
+	free(resultado);
 	return (0);
 }*/

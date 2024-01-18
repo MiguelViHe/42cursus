@@ -58,5 +58,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	substring = ft_substr(cadena, start, length);
 	printf("substring = %s\n", substring);
+	free(substring);
 	return (0);
 }*/
