@@ -24,7 +24,7 @@ static char	rot13(unsigned int index, char c)
 {
 	if (!(index % 2))
 	{
-	c = (c + 13) % 126;
+	c = (c + 13) % 127;
 	if (c < 32)
 		c += 32;
 	}
