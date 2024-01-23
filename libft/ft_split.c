@@ -85,6 +85,8 @@ static char	**fill_words(char const *s, char c, char **words, size_t num_words)
 	return (words);
 }
 
+/*Allocate (with malloc) and returns an array of strings obtained
+by splitting s with the character c, used as delimiter.*/
 char	**ft_split(char const *s, char c)
 {
 	char	**words;

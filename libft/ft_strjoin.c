@@ -13,6 +13,8 @@
 //#include <stdio.h>
 #include "libft.h"
 
+/*Allocate (with malloc) and returns a new string resulting from
+the concatenation of s1 and s2.*/
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;

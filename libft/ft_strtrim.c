@@ -53,6 +53,8 @@ static char	*ft_ptltrim(char const *s1, char const *set)
 	return (first);
 }
 
+/*Allocate (with malloc) and returns a copy of s1, without the characters
+specified in set at the beginning and the end of s1.*/
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*ptrtrim;
