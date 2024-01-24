@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:55:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/16 17:58:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/01/24 01:00:25 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 #include "libft.h"
 
-/*Copy the value character (unsigned char)
-into the first num bytes of the memory block pointed by b).*/
+/*Copy the value c (unsigned char)
+into the first len bytes of the memory block pointed by b.*/
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;

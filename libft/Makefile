@@ -4,7 +4,7 @@ CC = gcc
 
 AR = ar rcs
 
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS =	ft_isalpha.c \
 		ft_isdigit.c \

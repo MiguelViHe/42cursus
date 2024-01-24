@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:43:48 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/12 13:09:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/01/23 19:51:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_isalpha(int str)
 	int		result;
 
 	result = ft_isalpha(123456789);
-	printf("resultado = %d\n", result);
+	printf("ft_isalpha resultado = %d\n", result);
 	result = isalpha(123456789);
-	printf("resultadO = %d\n", result);
+	printf("isalpha resultado = %d\n", result);
 	return (0);
 }*/
