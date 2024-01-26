@@ -72,6 +72,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ptrtrim = ft_ptrtrim(s1, set);
 	len = ptrtrim - ptltrim + 1;
 	clean = (char *)malloc((len + 1) * sizeof(char));
+	if (!clean)
+		return (NULL);
 	ft_strlcpy(clean, ptltrim, len + 1);
 	return (clean);
 }

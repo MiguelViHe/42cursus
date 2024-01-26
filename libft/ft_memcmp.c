@@ -12,6 +12,7 @@
 
 //#include <stdio.h>
 #include "libft.h"
+//#include <string.h>
 
 /*The memcmp() function compares byte string s1 against byte string s2.
 Both strings are assumed to be n bytes long.
@@ -23,6 +24,8 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	const unsigned char	*ptr2;
 	size_t				i;
 
+	if (n == 0)
+		return (0);
 	ptr1 = s1;
 	ptr2 = s2;
 	i = 0;
@@ -35,12 +38,15 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 I add one extra to test the last one when we leave the while loop.*/
 /*int	main(void)
 {
-//Con array de char.
-	const char str[] = "Hola, mundo!";
-	const char str2[] = "Hola, mundo!";
+	//Con array de char.
+	const char str[] = "Hola Mundo!";
+	const char str2[] = "Hola Mundo!";
 
-	printf("original = %d\n", memcmp(str, str2, sizeof(str)));
-	printf("ft = %d\n", ft_memcmp(str, str2, sizeof(str)));
+	//printf("original = %d\n", memcmp(str, str2, sizeof(str)));
+	//printf("ft = %d\n", ft_memcmp(str, str2, sizeof(str)));
+	printf("original = %d\n", memcmp(str, str2, 0));
+	printf("ft = %d\n", ft_memcmp(str, str2, 0));
+}
 
 	//con array de ints
 	int array[] = {1, 2, 3, 4, 19, 6, 15, 18};

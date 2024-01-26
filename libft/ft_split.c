@@ -26,18 +26,21 @@ static char	**free_array(char **words, size_t word)
 
 static size_t	count_words(char const *s, char c)
 {
-	int		i;
-	size_t	counter;
+	int	i;
+	int	counter;
 
-	i = 1;
+	i = 0;
 	counter = 0;
-	if (s[0] != c)
-		counter++;
-	while (s[i])
+	while (s[i] != '\0')
 	{
-		if (s[i] != c && s[i - 1] == c)
+		if (s[i] == c)
+			i++;
+		else
+		{
 			counter++;
-		i++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
 	}
 	return (counter);
 }
@@ -94,14 +97,16 @@ char	**ft_split(char const *s, char c)
 
 	num_words = count_words(s, c);
 	words = (char **)ft_calloc((num_words + 1), sizeof(char *));
+	if (!words)
+		return (NULL);
 	words = fill_words(s, c, words, num_words);
 	return (words);
 }
 
 /*int	main(void)
 {
-	char	cadena[] = "mmmHolammundomferoz";
-	char	de = 'm';
+	char	*cadena = "      split       this for   me  !       ";
+	char	de = ' ';
 	char	**result;
 	int		i;
 

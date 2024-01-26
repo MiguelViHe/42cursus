@@ -12,6 +12,7 @@
 
 //#include <stdio.h>
 #include "libft.h"
+//#include <string.h>
 
 /*locates the first occurence of c (convered to an unsigned char) in string s.
 It works with byte string, in memory*/
@@ -22,7 +23,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	ptr = s;
 	usc = (unsigned char)c;
-	while (*ptr != usc && n != 0)
+	while (n > 0 && *ptr != usc)
 	{
 		ptr++;
 		n--;
@@ -36,7 +37,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 {
 	//Con array de char.
 	const char str[] = "Hola, mundo!";
-	char chr = 'm';
+	char chr = 'u';
 
 	printf("%s\n", (char *)memchr(str, chr, 7));
 	printf("%s\n", (char *)ft_memchr(str, chr, 7));

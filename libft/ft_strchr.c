@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <string.h>
 //#include <stdio.h>
 #include "libft.h"
 
@@ -17,9 +18,13 @@
 or NULL if it doesn't exist*/
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0' && *s != c)
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
-	if (*s != '\0')
+	}
+	if ((char)c == '\0')
 		return ((char *)s);
 	return (NULL);
 }
@@ -28,8 +33,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	const char	*cadena = "Hola, mundo";
 	char		caracter = 'm';
-	char		*resultado = strchr(cadena, caracter);
-	char		*resultadoft = ft_strchr(cadena, caracter);
+	char		*resultado = strchr(cadena, caracter + 256);
+	char		*resultadoft = ft_strchr(cadena, caracter + 256);
 
 	printf("or = %s\n", resultado);
 	printf("ft = %s\n", resultadoft);

@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <string.h> // para el strrchr original
 //#include <stdio.h>
 #include "libft.h"
 
@@ -22,19 +23,21 @@ char	*ft_strrchr(const char *s, int c)
 	aux = NULL;
 	while (*s != '\0')
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			aux = (char *)s;
 		s++;
 	}
+	if ((char)c == '\0')
+		return ((char *)s);
 	return (aux);
 }
 
 /*int	main(void)
 {
 	const char	*cadena = "Hola, mundooooo!";
-	char		caracter = '!';
-	char		*resultado = strrchr(cadena, caracter);
-	char		*resultadoft = ft_strrchr(cadena, caracter);
+	char		caracter = 'w';
+	char		*resultado = strrchr(cadena, caracter + 256);
+	char		*resultadoft = ft_strrchr(cadena, caracter + 256);
 
 	printf("or = %s\n", resultado);
 	printf("ft = %s\n", resultadoft);

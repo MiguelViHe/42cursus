@@ -18,7 +18,10 @@ string haystack, where not more than len characters are searched.
 If needle is an empty string, haystack is returned,
 if needle occurs nowhere in haystack, NULL is returned,
 otherwise a pointer to the first character of the first occurence of needle
-is returned.*/
+is returned.
+	//I checked that but its not necessary:
+	//if (ft_strlen(needle) > len)
+	//	return (NULL);*/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
@@ -26,8 +29,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	if (needle[0] == '\0')
 		return ((char *)haystack);
-	if (ft_strlen(needle) > len)
-		return (NULL);
 	i = 0;
 	while (haystack[i] != '\0' && i < len)
 	{
