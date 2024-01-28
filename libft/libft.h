@@ -3,21 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/25 14:20:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/01/28 12:18:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-//stddef para el size_t y el NULL
-# include <stddef.h>
-//stdlib para malloc
-# include <stdlib.h>
-//unistd para files (open, write, close...)
-# include <unistd.h>
+# include <stddef.h> //stddef para el size_t y el NULL
+# include <stdlib.h> //stdlib para malloc
+# include <unistd.h> //unistd para files (open, write, close...)
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
