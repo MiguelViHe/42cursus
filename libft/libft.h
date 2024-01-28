@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/28 12:18:49 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/01/28 21:48:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 # include <stddef.h> //stddef para el size_t y el NULL
 # include <stdlib.h> //stdlib para malloc
 # include <unistd.h> //unistd para files (open, write, close...)
+
+typedef struct s_list
+{
+void	*content;
+struct s_list	*next;
+} t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -50,5 +56,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+t_list	*ft_lstnew(void *content);
 
 #endif

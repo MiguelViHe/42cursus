@@ -580,6 +580,38 @@ void	test_ft_putnbr_fd(void)
 	printf("ft_putnbr_fd... archivo creado o modificado.\n");
 }
 
+//BONUS TEST
+
+void	test_ft_lstnew(void)
+{
+	char	*str = "Hola Mundo";
+	char	c = 'e';
+	int		i = 8;
+	t_list	*node1;
+	t_list	*node2;
+	t_list	*node3;
+
+	node1 = ft_lstnew(str);
+	node2 = ft_lstnew(&c);
+	node3 = ft_lstnew(&i);
+	printf("ft_lstnew:\n");
+	printf("contenido de node1 = %s\n", (char *)node1->content);
+	if (node1->next == NULL)
+		printf("next de node1 es NULL\n");
+	else
+		printf("next de node1 distinto de NULL\n");
+	printf("contenido de node2 = %c\n", *(char *)node2->content);
+	if (node2->next == NULL)
+		printf("next de node2 es NULL\n");
+	else
+		printf("next de node2 distinto de NULL\n");
+	printf("contenido de node3 = %d\n", *(int *)node3->content);
+	if (node3->next == NULL)
+		printf("next de node3 es NULL\n");
+	else
+		printf("next de node3 distinto de NULL\n");
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -651,6 +683,8 @@ int	main(void)
 	test_ft_putendl_fd();
 	printf("-----\n");
 	test_ft_putnbr_fd();
-	printf("----- final parte obligatoria---\n");
+	printf("\n----- final parte obligatoria---\n\n");
+	test_ft_lstnew();
+	printf("-----\n");
 	return (0);
 }
