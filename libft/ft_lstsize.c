@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 22:57:24 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/28 22:57:24 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/01/29 01:57:34 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/01/29 01:57:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
 #include "libft.h"
+//#include <stdio.h>
 
 /*static void	ft_print_list(t_list *lst)
 {
@@ -26,30 +26,37 @@
 	printf("NULL\n");
 }*/
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+int ft_lstsize(t_list *lst)
 {
-	new->next = *lst;
-	*lst = new;
+	int	count;
+	t_list	*aux;
+
+	aux = lst;
+	count = 0;
+	while (aux)
+	{
+		count++;
+		aux = aux->next;
+	}
+	return (count);
 }
 
 /*int	main(void)
 {
 	t_list	*node;
 	t_list	*node2;
-	t_list	*node_new;
-	t_list	**first;
+	t_list	*node3;
 	char	*str = "Hola";
 	char	*str2 = "Mundo";
 	char	*str3 = "Im the first one";
 
 	node = ft_lstnew(str);
 	node2 = ft_lstnew(str2);
-	node_new = ft_lstnew(str3);
+	node3 = ft_lstnew(str3);
 	node->next = node2;
-	first = &node;
-	printf("ft_lstadd_front:\n");
-	ft_print_list(*first);
-	ft_lstadd_front(first, node_new);
-	ft_print_list(*first);
+	node2->next = node3;
+	printf("ft_lstsize;\n");
+	ft_print_list(node);
+	printf("numero de nodos = %d",ft_lstsize(node));
 	return (0);
 }*/

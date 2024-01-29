@@ -612,17 +612,17 @@ void	test_ft_lstnew(void)
 		printf("next de node3 distinto de NULL\n");
 }
 
-static void	ft_print_list(t_list **lst)
+static void	ft_print_list(t_list *lst)
 {
 	t_list	*aux;
 
-	aux = *lst;
-	while (aux->next)
+	aux = lst;
+	while (aux)
 	{
 		printf("%s -> ", (char *)aux->content);
 		aux = aux->next;
 	}
-	printf("%s -> NULL\n", (char *)aux->content);
+	printf("NULL\n");
 }
 
 void	test_ft_lstadd_front(void)
@@ -641,9 +641,28 @@ void	test_ft_lstadd_front(void)
 	node->next = node2;
 	first = &node;
 	printf("ft_lstadd_front:\n");
-	ft_print_list(first);
+	ft_print_list(*first);
 	ft_lstadd_front(first, node_new);
-	ft_print_list(first);
+	ft_print_list(*first);
+}
+
+void	test_ft_lstsize(void)
+{
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	char	*str = "Hola";
+	char	*str2 = "Mundo";
+	char	*str3 = "Im the first one";
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+	node->next = node2;
+	node2->next = node3;
+	printf("ft_lstsize;\n");
+	ft_print_list(node);
+	printf("numero de nodos = %d\n",ft_lstsize(node));
 }
 
 int	main(void)
@@ -721,6 +740,8 @@ int	main(void)
 	test_ft_lstnew();
 	printf("-----\n");
 	test_ft_lstadd_front();
+	printf("-----\n");
+	test_ft_lstsize();
 	printf("-----\n");
 	return (0);
 }
