@@ -612,6 +612,40 @@ void	test_ft_lstnew(void)
 		printf("next de node3 distinto de NULL\n");
 }
 
+static void	ft_print_list(t_list **lst)
+{
+	t_list	*aux;
+
+	aux = *lst;
+	while (aux->next)
+	{
+		printf("%s -> ", (char *)aux->content);
+		aux = aux->next;
+	}
+	printf("%s -> NULL\n", (char *)aux->content);
+}
+
+void	test_ft_lstadd_front(void)
+{
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node_new;
+	t_list	**first;
+	char	*str = "Hola";
+	char	*str2 = "Mundo";
+	char	*str3 = "Im the first one";
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node_new = ft_lstnew(str3);
+	node->next = node2;
+	first = &node;
+	printf("ft_lstadd_front:\n");
+	ft_print_list(first);
+	ft_lstadd_front(first, node_new);
+	ft_print_list(first);
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -685,6 +719,8 @@ int	main(void)
 	test_ft_putnbr_fd();
 	printf("\n----- final parte obligatoria---\n\n");
 	test_ft_lstnew();
+	printf("-----\n");
+	test_ft_lstadd_front();
 	printf("-----\n");
 	return (0);
 }
