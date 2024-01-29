@@ -665,6 +665,32 @@ void	test_ft_lstsize(void)
 	printf("numero de nodos = %d\n",ft_lstsize(node));
 }
 
+void	test_ft_lstlast(void)
+{
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	//t_list	*test_null;
+	t_list	*ultimo;
+	char	*str = "Hola";
+	char	*str2 = "Mundo";
+	char	*str3 = "Im the last one";
+
+	//test_null = NULL;
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+	node->next = node2;
+	node2->next = node3;
+	printf("ft_lstlast:\n");
+	ft_print_list(node);
+	ultimo = ft_lstlast(node);
+	if (ultimo)
+		printf("ultimo nodo  = %s\n", (char *)ultimo->content);
+	else
+		printf("no existe ningun nodo.\n");
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -742,6 +768,8 @@ int	main(void)
 	test_ft_lstadd_front();
 	printf("-----\n");
 	test_ft_lstsize();
+	printf("-----\n");
+	test_ft_lstlast();
 	printf("-----\n");
 	return (0);
 }
