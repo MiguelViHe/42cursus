@@ -31,7 +31,7 @@ static void	del_content(void *content)
 	free(content);
 }*/
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*aux;
 
@@ -66,4 +66,3 @@ void ft_lstclear(t_list **lst, void (*del)(void*))
 	ft_print_list(*first);
 	return (0);
 }*/
-
