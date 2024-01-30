@@ -612,6 +612,7 @@ void	test_ft_lstnew(void)
 		printf("next de node3 distinto de NULL\n");
 }
 
+//Print the list
 static void	ft_print_list(t_list *lst)
 {
 	t_list	*aux;
@@ -736,6 +737,29 @@ void	test_ft_lstdelone(void)
 	printf("contenido de node = %s\n", (char *)node->content);
 }
 
+void	test_ft_lstclear(void)
+{
+	char	*str = ft_strdup("Hola");
+	char	*str2 = ft_strdup("Mundo");
+	char	*str3 = ft_strdup("maravilloso");
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	t_list	**first;
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+	node->next = node2;
+	node2->next = node3;
+	first = &node;
+	printf("ft_lstclear:\n");
+	ft_print_list(*first);
+	ft_lstclear(first, del_content);
+	printf("despues de borrar:\n");
+	ft_print_list(*first);
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -819,6 +843,8 @@ int	main(void)
 	test_ft_lstadd_back();
 	printf("-----\n");
 	test_ft_lstdelone();
+	printf("-----\n");
+	test_ft_lstclear();
 	printf("-----\n");
 	return (0);
 }
