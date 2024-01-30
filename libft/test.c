@@ -692,6 +692,51 @@ void	test_ft_lstlast(void)
 		printf("no existe ningun nodo.\n");
 }
 
+void	test_ft_lstadd_back(void)
+{
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node_new;
+	t_list	**first;
+	char	*str = "Hola";
+	char	*str2 = "Mundo";
+	char	*str3 = "Im the new one";
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node_new = ft_lstnew(str3);
+	node->next = node2;
+	first = &node;
+	printf("ft_lstadd_back:\n");
+	ft_print_list(*first);
+	ft_lstadd_back(first, node_new);
+	ft_print_list(*first);
+}
+
+//For test_ft_lstdelone
+static void	del_content(void *content)
+{
+	free(content);
+}
+
+void	test_ft_lstdelone(void)
+{
+	char	*str = ft_strdup("Hola");
+	t_list	*node;
+
+	node = ft_lstnew(str);
+
+	printf("ft_lstdelone:\n");
+	printf("contenido de node = %s\n", (char *)node->content);
+	if (node->next == NULL)
+		printf("next de node es NULL\n");
+	else
+		printf("next de node distinto de NULL\n");
+	ft_lstdelone(node, del_content);
+	printf("despues de borrar:\n");
+	printf("contenido de node = %s\n", (char *)node->content);
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -769,6 +814,10 @@ int	main(void)
 	test_ft_lstsize();
 	printf("-----\n");
 	test_ft_lstlast();
+	printf("-----\n");
+	test_ft_lstadd_back();
+	printf("-----\n");
+	test_ft_lstdelone();
 	printf("-----\n");
 
 	return (0);
