@@ -6,16 +6,15 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/31 23:43:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/01 00:36:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h> //stddef used for size_t and NULL
+//# include <stddef.h> //stddef used for size_t and NULL
 # include <stdlib.h> //stdlib for malloc
 # include <unistd.h> //unistd for files (open, write, close...)
-# include <fcntl.h> // Used for O_* for files control
 
 typedef struct s_list
 {

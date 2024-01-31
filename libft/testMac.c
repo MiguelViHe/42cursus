@@ -14,6 +14,7 @@
 #include <ctype.h> //isdigit, isalpha...
 #include <string.h> //strlen
 #include <limits.h> // para ver los limites en itoa
+#include <fcntl.h> // Used for O_* for files control
 #include "libft.h"
 
 void	test_ft_isalpha(void)
