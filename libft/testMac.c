@@ -798,6 +798,50 @@ void	test_ft_lstiter(void)
 	ft_print_list(*first);
 }
 
+/*For test_ft_lstmap. Transform the content of the list to uppercase.
+RETURN void * (a new one) created allocating memory*/
+static void	*ft_toupper_str(void *str)
+{
+	int		i;
+	char	*aux;
+
+	aux = (char *)str;
+	i = 0;
+	while (aux[i])
+	{
+		aux[i] = ft_toupper(aux[i]);
+		i++;
+	}
+	return (str);
+}
+
+void	test_ft_lstmap(void)
+{
+	char	*str = ft_strdup("Hola");
+	char	*str2 = ft_strdup("Mundo");
+	char	*str3 = ft_strdup("crue1l");
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	t_list	**first;
+	t_list	*result;
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+	node->next = node2;
+	node2->next = node3;
+	first = &node;
+	printf("ft_lstmap:\n");
+	ft_print_list(*first);
+	result = ft_lstmap(*first, ft_toupper_str, del_content);
+	printf("despues de map:\n");
+	ft_print_list(result);
+	printf("despues de clear:\n");
+	ft_lstclear(&result, del_content);
+	ft_print_list(result);
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -883,6 +927,8 @@ int	main(void)
 	test_ft_lstclear();
 	printf("-----\n");
 	test_ft_lstiter();
+	printf("-----\n");
+	test_ft_lstmap();
 	printf("-----\n");
 	return (0);
 }
