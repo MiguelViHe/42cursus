@@ -6,15 +6,16 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/30 11:12:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/01/31 13:16:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stddef.h> //stddef para el size_t y el NULL
-# include <stdlib.h> //stdlib para malloc
-# include <unistd.h> //unistd para files (open, write, close...)
+# include <stddef.h> //stddef used for size_t and NULL
+# include <stdlib.h> //stdlib for malloc
+# include <unistd.h> //unistd for files (open, write, close...)
+# include <fcntl.h> // Used for O_* for files control
 
 typedef struct s_list
 {
@@ -63,5 +64,6 @@ t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
+void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif

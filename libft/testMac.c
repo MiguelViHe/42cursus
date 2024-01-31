@@ -558,7 +558,7 @@ void	test_ft_putendl_fd(void)
 	int		fd;
 	char	str[] = "-Hola Mundo-";
 
-	fd = open("file.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
+	fd = open("ft_putendl_fd.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 		perror("Error opening the file");
 	ft_putendl_fd(str, fd);
@@ -572,7 +572,7 @@ void	test_ft_putnbr_fd(void)
 	int	fd;
 
 	number = -483648;
-	fd = open("file.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
+	fd = open("ft_putnbr_fd.txt", O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 		perror("Error opening the file");
 	ft_putnbr_fd(number, fd);
@@ -760,6 +760,44 @@ void	test_ft_lstclear(void)
 	ft_print_list(*first);
 }
 
+//For test_ft_lstiter. Transform the content of the list to uppercase.
+static void	ft_str_toupper(void *str)
+{
+	int		i;
+	char	*aux;
+
+	aux = (char *)str;
+	i = 0;
+	while (aux[i])
+	{
+		aux[i] = ft_toupper(aux[i]);
+		i++;
+	}
+}
+
+void	test_ft_lstiter(void)
+{
+	char	*str = ft_strdup("Hola");
+	char	*str2 = ft_strdup("Mundo");
+	char	*str3 = ft_strdup("maravilloso");
+	t_list	*node;
+	t_list	*node2;
+	t_list	*node3;
+	t_list	**first;
+
+	node = ft_lstnew(str);
+	node2 = ft_lstnew(str2);
+	node3 = ft_lstnew(str3);
+	node->next = node2;
+	node2->next = node3;
+	first = &node;
+	printf("ft_lstiter:\n");
+	ft_print_list(*first);
+	ft_lstiter(*first, ft_str_toupper);
+	printf("despues de iter:\n");
+	ft_print_list(*first);
+}
+
 int	main(void)
 {
 	test_ft_isalpha();
@@ -824,8 +862,6 @@ int	main(void)
 	printf("-----\n");
 	test_ft_putchar_fd();
 	printf("-----\n");
-	test_ft_putchar_fd();
-	printf("-----\n");
 	test_ft_putstr_fd();
 	printf("-----\n");
 	test_ft_putendl_fd();
@@ -845,6 +881,8 @@ int	main(void)
 	test_ft_lstdelone();
 	printf("-----\n");
 	test_ft_lstclear();
+	printf("-----\n");
+	test_ft_lstiter();
 	printf("-----\n");
 	return (0);
 }

@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 //#include <stdio.h>
-//#include <unistd.h> // Necesario para la función write
+#include "libft.h" // Necesario para la función write
 //#include <fcntl.h>  // Necesario para las constantes O_* con ficheros.
-#include "libft.h"
 
 /*writes the character c on the file descriptor fd.*/
 void	ft_putchar_fd(char c, int fd)
