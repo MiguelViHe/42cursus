@@ -17,7 +17,8 @@
 /*writes the character c on the file descriptor fd.*/
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	if (fd > 0)
+		write(fd, &c, 1);
 }
 
 /*int	main(void)

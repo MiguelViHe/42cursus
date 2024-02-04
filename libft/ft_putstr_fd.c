@@ -18,7 +18,8 @@
 /*writes the stringr s on the file descriptor fd.*/
 void	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (fd > 0 && s)
+		write(fd, s, ft_strlen(s));
 }
 
 /*void	ft_putstr_fd(char *s, int fd)

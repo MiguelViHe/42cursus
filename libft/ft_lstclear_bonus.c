@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 11:27:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/31 11:27:42 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/01/30 08:37:36 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/01/30 08:37:36 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,23 @@
 	printf("NULL\n");
 }
 
-static void	ft_str_toupper(void *str)
+static void	del_content(void *content)
 {
-	int		i;
-	char	*aux;
-
-	aux = (char *)str;
-	i = 0;
-	while (aux[i])
-	{
-		aux[i] = ft_toupper(aux[i]);
-		i++;
-	}
+	free(content);
 }*/
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	while (lst)
+	t_list	*aux;
+
+	if (lst && del)
 	{
-		f(lst->content);
-		lst = lst->next;
+		while (*lst)
+		{
+			aux = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = aux;
+		}
 	}
 }
 
@@ -65,10 +62,10 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	node->next = node2;
 	node2->next = node3;
 	first = &node;
-	printf("ft_lstiter:\n");
+	printf("ft_lstclear:\n");
 	ft_print_list(*first);
-	ft_lstiter(*first, ft_str_toupper);
-	printf("despues de iter:\n");
+	ft_lstclear(first, del_content);
+	printf("despues de borrar:\n");
 	ft_print_list(*first);
 	return (0);
 }*/

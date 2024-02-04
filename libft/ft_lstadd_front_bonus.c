@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 19:44:39 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/29 19:44:39 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/01/28 22:57:24 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/01/28 22:57:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,10 @@
 	printf("NULL\n");
 }*/
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*last;
-
-	last = ft_lstlast(*lst);
-	if (!last)
-		*lst = new;
-	else
-		last->next = new;
+	new->next = *lst;
+	*lst = new;
 }
 
 /*int	main(void)
@@ -45,16 +40,16 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	t_list	**first;
 	char	*str = "Hola";
 	char	*str2 = "Mundo";
-	char	*str3 = "Im the new one";
+	char	*str3 = "Im the first one";
 
 	node = ft_lstnew(str);
 	node2 = ft_lstnew(str2);
 	node_new = ft_lstnew(str3);
 	node->next = node2;
 	first = &node;
-	printf("ft_lstadd_back:\n");
+	printf("ft_lstadd_front:\n");
 	ft_print_list(*first);
-	ft_lstadd_back(first, node_new);
+	ft_lstadd_front(first, node_new);
 	ft_print_list(*first);
 	return (0);
 }*/

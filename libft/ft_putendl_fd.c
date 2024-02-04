@@ -17,8 +17,11 @@
 /*writes the stringr s on the file descriptor fd, followed by new line.*/
 void	ft_putendl_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
-	write(fd, "\n", 1);
+	if (fd > 0 && s)
+	{
+		write(fd, s, ft_strlen(s));
+		write(fd, "\n", 1);
+	}
 }
 
 /*void	ft_putendl_fd(char *s, int fd)

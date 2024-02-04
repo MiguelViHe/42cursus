@@ -10,11 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include <stdio.h> //printf
 #include <ctype.h> //isdigit, isalpha...
 #include <string.h> //strlen
 #include <limits.h> // para ver los limites en itoa
-#include <fcntl.h>  // Necesario para las constantes O_* con ficheros.
+#include <fcntl.h> // Used for O_* for files control
 #include "libft.h"
 
 void	test_ft_isalpha(void)
@@ -86,11 +88,11 @@ void	test_ft_strlen(void)
 {
 	char	*cadena = "Camion";
 
-	printf("ft_strlen - cadena = %s, length = %d\n", cadena, ft_strlen(cadena));//zu
-	printf("strlen - cadena = %s, lengthO = %d\n", cadena, strlen(cadena));//lu
+	printf("ft_strlen - cadena = %s, length = %zu\n", cadena, ft_strlen(cadena));//zu
+	printf("strlen - cadena = %s, lengthO = %lu\n", cadena, strlen(cadena));//lu
 	cadena = "";
-	printf("ft_strlen - cadena = %s, length = %d\n", cadena, ft_strlen(cadena));//zu
-	printf("strlen - cadena = %s, lengthO = %d\n", cadena, strlen(cadena));//lu
+	printf("ft_strlen - cadena = %s, length = %zu\n", cadena, ft_strlen(cadena));//zu
+	printf("strlen - cadena = %s, lengthO = %lu\n", cadena, strlen(cadena));//lu
 }
 
 void	test_ft_memset(void)
@@ -111,7 +113,7 @@ void	test_ft_bzero(void)
 	int		i;
 	int		num;
 
-	/*num = 3; VOLVER A ABRIR RN MAC
+	num = 3; //VOLVER A ABRIR RN MAC
 	i = 0;
 	printf("(%d) - bzero\n", num);
 	bzero(str, num);
@@ -119,7 +121,7 @@ void	test_ft_bzero(void)
 	{
 		printf("%d = %c\n", i, str[i]);
 		i++;
-	}*/
+	}
 	num = 5;
 	ft_bzero(str, num);
 	i = 0;
@@ -164,7 +166,7 @@ void	test_ft_memmove(void) {
 void	test_ft_strlcpy(void)
 {
 	char			destino[15];
-	//char			destino2[15]; VOLVER A ABRIR EN MAC
+	char			destino2[15]; //VOLVER A ABRIR EN MAC
 	unsigned int	longitud;
 	char			origen[] = "1234567890123456789";
 
@@ -172,24 +174,28 @@ void	test_ft_strlcpy(void)
 	printf ("ft_strlcpy origen = %s\n", origen);
 	printf ("ft_strlcpy destino: %s\n", destino);
 	printf ("ft_strlcpy longitud = %d\n", longitud);
-	/*longitud = strlcpy(destino2, origen, 15); VOLVER A ABRIR EN MAC
+	longitud = strlcpy(destino2, origen, 15); //VOLVER A ABRIR EN MAC
 	printf ("strlcpy origen = %s\n", origen);
 	printf ("strlcpy destino: %s\n", destino2);
-	printf ("strlcpy longitud = %d\n", longitud);*/
+	printf ("strlcpy longitud = %d\n", longitud);
 }
 
 void	test_ft_strlcat(void)
 {
 	char	desti[12] = "qwerty";
-	//char	desti2[12] = "qwerty"; ABRIR TODO EN MAC
+	char	desti2[12] = "qwerty";
 	char	src[] = "QWER";
 	size_t	length;
-	//size_t	original;
+	size_t	original;
 
-	length = ft_strlcat(desti, src, 12); //probar con0, 3 con 7 y con 12
-	//original = strlcat(desti2, src, 7);
-	printf("ft_strlcat longitud = %d, destino = %s\n", length, desti);
-	//printf("strlcat longitud = %d, destino = %s\n", original, desti2);
+	length = ft_strlcat(desti, src, 3); //probar con0, 3 con 7 y con 12
+	original = strlcat(desti2, src, 3);
+	printf("ft_strlcat longitud = %zu, destino = %s\n", length, desti);
+	printf("strlcat longitud = %zu, destino = %s\n", original, desti2);
+	original = strlcat(NULL, src, 0);
+	length = ft_strlcat(NULL, src, 0); //probar con0, 3 con 7 y con 12
+	printf("ft_strlcat longitud = %zu, destino = %s\n", length, desti);
+	printf("strlcat longitud = %zu, destino = %s\n", original, desti2);
 }
 
 void	test_ft_toupper(void)
@@ -227,8 +233,8 @@ void	test_ft_strchr(void)
 	char		*resultado = strchr(cadena, caracter + 256);
 	char		*resultadoft = ft_strchr(cadena, caracter + 256);
 
-	printf("search = %c, strchr = %s\n",caracter, resultado);
-	printf("search = %c, ft_strchr = %s\n",caracter, resultadoft);
+	printf("search = %c, strchr = %s\n", caracter, resultado);
+	printf("search = %c, ft_strchr = %s\n", caracter, resultadoft);
 }
 
 void	test_ft_strrchr(void)
@@ -238,8 +244,8 @@ void	test_ft_strrchr(void)
 	char		*resultado = strrchr(cadena, caracter + 256);
 	char		*resultadoft = ft_strrchr(cadena, caracter + 256);
 
-	printf("search = %c, strrchr = %s\n",caracter, resultado);
-	printf("search = %c, ft_strrchr = %s\n",caracter, resultadoft);
+	printf("search = %c, strrchr = %s\n", caracter, resultado);
+	printf("search = %c, ft_strrchr = %s\n", caracter, resultadoft);
 }
 
 void	test_ft_strncmp(void)
@@ -249,8 +255,8 @@ void	test_ft_strncmp(void)
 	char	s2[] = "test";
 
 	n = 4;
-	printf("n = %d, s1 = %s, s2 = %s: strncmp %d\n", n, s1, s2, strncmp(s1, s2, n));//zu
-	printf("n = %d, s1 = %s, s2 = %s: ft_strncmp %d\n", n, s1, s2, ft_strncmp(s1, s2, n));//zu
+	printf("n = %zu, s1 = %s, s2 = %s: strncmp %d\n", n, s1, s2, strncmp(s1, s2, n));//zu
+	printf("n = %zu, s1 = %s, s2 = %s: ft_strncmp %d\n", n, s1, s2, ft_strncmp(s1, s2, n));//zu
 }
 
 void	test_ft_memchr(void)
@@ -261,26 +267,26 @@ void	test_ft_memchr(void)
 	char chr = 'u';
 	size_t	n = 7;
 
-	printf("memchr - %s, %c, %d: %s\n", str, chr, n, (char *)memchr(str, chr, n));//zu
-	printf("ft_memchr - %s, %c, %d: %s\n", str, chr, n, (char *)ft_memchr(str, chr, n));//zu
+	printf("memchr - %s, %c, %zu: %s\n", str, chr, n, (char *)memchr(str, chr, n));//zu
+	printf("ft_memchr - %s, %c, %zu: %s\n", str, chr, n, (char *)ft_memchr(str, chr, n));//zu
 
 	//con array de ints
-	printf("memchr y ft_memchr con array de int:\n");
+	printf("\nmemchr y ft_memchr con array de int:\n");
 	int array[] = {1, 2, 3, 4, 19, 6, 7, 18};
 	int valor_buscado = 19;
 
 	size_t tamano = sizeof(array) / sizeof(array[0]);
-	printf("tamano = sizeof(array) / sizeof(array[0])-> %d = %d / %d\n", tamano, sizeof(array), sizeof(array[0]));
+	printf("tamano = sizeof(array) / sizeof(array[0])-> %zu = %lu / %lu\n", tamano, sizeof(array), sizeof(array[0]));
 	int *resultadoO = memchr(array, valor_buscado, tamano * sizeof(int));
 	int *resultadoft = ft_memchr(array, valor_buscado, tamano * sizeof(int));
 
 	if (resultadoO != NULL)
-		printf("memchr - valor %d  en la posicion %d.\n", valor_buscado, resultadoO - array);
+		printf("memchr - valor %d  en la posicion %ld.\n", valor_buscado, resultadoO - array);
 	else
 		printf("memchr - valor %d no fue encontrado.\n", valor_buscado);
 
 	if (resultadoft != NULL)
-		printf("ft_memchr - valor %d  en la posicion %d.\n", valor_buscado, resultadoft - array);
+		printf("ft_memchr - valor %d  en la posicion %ld.\n", valor_buscado, resultadoft - array);
 	else
 		printf("ft_memchr - valor %d no fue encontrado.\n", valor_buscado);
 }
@@ -295,16 +301,16 @@ void	test_ft_memcmp(void)
 
 	//printf("original = %d\n", memcmp(str, str2, sizeof(str)));
 	//printf("ft = %d\n", ft_memcmp(str, str2, sizeof(str)));
-	printf("memcmp - str = %s, str2 = %s n = %d: %d\n", str, str2, n, memcmp(str, str2, n));
-	printf("ft_memcmp - str = %s, str2 = %s n = %d: %d\n", str, str2, n, ft_memcmp(str, str2, n));
+	printf("memcmp - str = %s, str2 = %s n = %zu: %d\n", str, str2, n, memcmp(str, str2, n));
+	printf("ft_memcmp - str = %s, str2 = %s n = %zu: %d\n", str, str2, n, ft_memcmp(str, str2, n));
 
 	//con array de ints
-	printf("memcmp y ft_memcmp con array de int:\n");
+	printf("\nmemcmp y ft_memcmp con array de int:\n");
 	int array[] = {1, 2, 3, 4, 19, 6, 15, 18};
 	int array2[] = {1, 2, 3, 4, 22, 6, 7, 18};
 
 	size_t tamano = sizeof(array) / sizeof(array[0]);
-	printf("tamano = sizeof(array) / sizeof(array[0]) -> %d = %d / %d\n", tamano, sizeof(array), sizeof(array[0]));
+	printf("tamano = sizeof(array) / sizeof(array[0]) -> %zu = %lu / %lu\n", tamano, sizeof(array), sizeof(array[0]));
 	int resultadoO = memcmp(array, array2, tamano * sizeof(int));
 	int resultadoft = ft_memcmp(array, array2, tamano * sizeof(int));
 
@@ -329,12 +335,18 @@ void	test_ft_strnstr(void)
 	char	needle[] = "ron";
 	size_t	len = 5;
 	char	*result;
+	char	*original;
 
-	result = ft_strnstr(str, needle, len);
+	original = strnstr(NULL, needle, 0);
+	if (!original)
+		printf("strnstr - No se ha encontrado coincidencia\n");
+	else
+		printf("strnstr - str = %s, needle = %s, len = %zu: %s\n", str, needle, len, original);//zu
+	result = ft_strnstr(NULL, needle, 0);
 	if (!result)
 		printf("ft_strnstr - No se ha encontrado coincidencia\n");
 	else
-		printf("ft_strnstr - str = %s, needle = %s, len = %d: %s\n", str, needle, len, result);//zu
+		printf("ft_strnstr - str = %s, needle = %s, len = %zu: %s\n", str, needle, len, result);//zu
 }
 
 int	test_ft_atoi(void)
@@ -370,10 +382,10 @@ void test_ft_calloc(void)
 	}
 	while (i < num_elem)
 	{
-		printf("Elemento original int %d: %d\n", i, oi[i]);
-		printf("Elemento original char %d: %c\n", i, oc[i]);
-		printf("Elemento ft int %d: %d\n", i, fti[i]);
-		printf("Elemento ft char %d: %c\n", i, ftc[i]);
+		printf("Elemento original int %zu: %d\n", i, oi[i]);
+		printf("Elemento original char %zu: %c\n", i, oc[i]);
+		printf("Elemento ft int %zu: %d\n", i, fti[i]);
+		printf("Elemento ft char %zu: %c\n", i, ftc[i]);
 		i++;
 	}
 	free(oi);
@@ -410,7 +422,7 @@ void	test_ft_substr(void)
 	size_t			length = 3;
 
 	substring = ft_substr(cadena, start, length);
-	printf("str = %s, start = %d, length = %d : ft_substr = %s\n", cadena, start, length, substring);
+	printf("str = %s, start = %d, length = %zu : ft_substr = %s\n", cadena, start, length, substring);
 	free(substring);
 }
 
@@ -449,7 +461,7 @@ void	test_ft_split(void)
 	if (result)
 	{
 		printf("ft_split: cadena = %s,\ndelimitador = %c,\n", cadena, de);
-		while (result && result[i])
+		while (result[i])
 		{
 			printf("palabra %d = %s\n", i + 1, result[i]);
 			i++;
@@ -613,7 +625,7 @@ void	test_ft_lstnew(void)
 		printf("next de node3 distinto de NULL\n");
 }
 
-//Print a list of t_list;
+//Print the list
 static void	ft_print_list(t_list *lst)
 {
 	t_list	*aux;
@@ -714,7 +726,7 @@ void	test_ft_lstadd_back(void)
 	ft_print_list(*first);
 }
 
-//For test_ft_lstdelone, test_ft_lstclear and test_ft_lstmap. Free the content of the node.
+//For test_ft_lstdelone
 static void	del_content(void *content)
 {
 	free(content);
@@ -761,8 +773,7 @@ void	test_ft_lstclear(void)
 	ft_print_list(*first);
 }
 
-/*For test_ft_lstiter. Transform the content of the list to uppercase.
-NO return anything. Change over original*/
+//For test_ft_lstiter. Transform the content of the list to uppercase.
 static void	ft_str_toupper(void *str)
 {
 	int		i;
@@ -931,6 +942,6 @@ int	main(void)
 	test_ft_lstiter();
 	printf("-----\n");
 	test_ft_lstmap();
-	printf("-----\n");
+	printf("-----FIN-----\n");
 	return (0);
 }

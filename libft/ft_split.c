@@ -95,6 +95,8 @@ char	**ft_split(char const *s, char c)
 	char	**words;
 	size_t	num_words;
 
+	if (!s)
+		return (NULL);
 	num_words = count_words(s, c);
 	words = (char **)ft_calloc((num_words + 1), sizeof(char *));
 	if (!words)

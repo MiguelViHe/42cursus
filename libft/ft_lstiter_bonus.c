@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:08:29 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/31 14:08:29 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/01/31 11:27:42 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/01/31 11:27:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@
 	printf("NULL\n");
 }
 
-static void	del_content(void *content)
-{
-	free(content);
-}
-
-static void	*ft_toupper_str(void *str)
+static void	ft_str_toupper(void *str)
 {
 	int		i;
 	char	*aux;
@@ -43,46 +38,29 @@ static void	*ft_toupper_str(void *str)
 		aux[i] = ft_toupper(aux[i]);
 		i++;
 	}
-	return (str);
 }*/
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*new;
-	t_list	*prev;
-	t_list	*first;
-
-	first = NULL;
-	while (lst)
+	if (f)
 	{
-		new = ft_lstnew(f(lst->content));
-		if (!new)
+		while (lst)
 		{
-			ft_lstclear(&first, del);
-			return (NULL);
+			f(lst->content);
+			lst = lst->next;
 		}
-		if (first == NULL)
-			first = new;
-		else
-		{
-			prev->next = new;
-		}
-		prev = new;
-		lst = lst->next;
 	}
-	return (first);
 }
 
 /*int	main(void)
 {
 	char	*str = ft_strdup("Hola");
 	char	*str2 = ft_strdup("Mundo");
-	char	*str3 = ft_strdup("cruel");
+	char	*str3 = ft_strdup("maravilloso");
 	t_list	*node;
 	t_list	*node2;
 	t_list	*node3;
 	t_list	**first;
-	t_list	*result;
 
 	node = ft_lstnew(str);
 	node2 = ft_lstnew(str2);
@@ -90,13 +68,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	node->next = node2;
 	node2->next = node3;
 	first = &node;
-	printf("ft_lstmap:\n");
+	printf("ft_lstiter:\n");
 	ft_print_list(*first);
-	result = ft_lstmap(*first, ft_toupper_str, del_content);
-	printf("despues de map:\n");
-	ft_print_list(result);
-	printf("despues de clear:\n");
-	ft_lstclear(&result, del_content);
-	ft_print_list(result);
+	ft_lstiter(*first, ft_str_toupper);
+	printf("despues de iter:\n");
+	ft_print_list(*first);
 	return (0);
 }*/
