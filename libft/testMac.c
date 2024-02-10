@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   testMac.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 19:48:32 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/23 19:48:32 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/07 20:25:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -734,8 +734,8 @@ void	test_ft_lstdelone(void)
 	else
 		printf("next de node distinto de NULL\n");
 	ft_lstdelone(node, del_content);
-	printf("despues de borrar:\n");
-	printf("contenido de node = %s\n", (char *)node->content);
+	//printf("despues de borrar:\n");
+	//printf("contenido de node = %s\n", (char *)node->content);
 }
 
 void	test_ft_lstclear(void)
@@ -820,7 +820,7 @@ void	test_ft_lstmap(void)
 {
 	char	*str = ft_strdup("Hola");
 	char	*str2 = ft_strdup("Mundo");
-	char	*str3 = ft_strdup("crue1l");
+	char	*str3 = ft_strdup("crue1ml");
 	t_list	*node;
 	t_list	*node2;
 	t_list	*node3;
