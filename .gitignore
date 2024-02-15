@@ -2,4 +2,5 @@
 **/a.out
 **/*.gch
 **/*.a
+**/libft.*
 #**/test.c

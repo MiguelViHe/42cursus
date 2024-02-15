@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:46:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/10 00:12:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:14:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ int	ft_putchar(char c);
 int	ft_putstr(char *str);
 int	ft_putnbr(int nbr);
 int	ft_nbrlen(int nbr);
+int ft_putnbr_base(unsigned int nbr, char *base);
+int	ft_nbrlen_base(unsigned int nbr, size_t baselen);
 
 #endif
