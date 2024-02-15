@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:25:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/15 18:23:25 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:29:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,26 @@ int	ft_nbrlen_base(unsigned int nbr, size_t baselen)
 	return (counter);
 }
 
-int ft_putnbr_base(unsigned int nbr, char *base)
-{
-	size_t    baselen;
-	
-	if (!base)
-		return (0);
-	baselen = ft_strlen(base);//include "libft.h"
-	if (nbr == 0)
-		return (ft_putchar('0'));
+void ft_putnbr_base(unsigned int nbr, char *base, size_t baselen)
+{	
 	if (nbr >= baselen)
 	{
-		ft_putnbr_base(nbr / baselen, base);
-		ft_putnbr_base(nbr % baselen, base);
+		ft_putnbr_base(nbr / baselen, base, baselen);
+		ft_putnbr_base(nbr % baselen, base, baselen);
 	}
 	else
 		ft_putchar(base[nbr]);
+}
+
+int	ft_base(unsigned int nbr, char *base)
+{
+	size_t	baselen;
+
+	if (!base)
+		return (0);
+	if (nbr == 0)
+		return (ft_putchar('0'));
+	baselen = ft_strlen(base);//include "libft.h"
+	ft_putnbr_base(nbr, base, baselen);
 	return(ft_nbrlen_base(nbr, baselen));
 }

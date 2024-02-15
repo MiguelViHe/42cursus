@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:47:20 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/15 18:49:44 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:49:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	ft_putoption(char option, va_list args)
 	else if (option == 'p')
 		return (0);
 	else if (option == 'd' || option == 'i')
-		return (ft_putnbr(va_arg(args, int)));
+		return (ft_digit(va_arg(args, int)));
 	else if (option == 'u')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789"));
+		return (ft_base(va_arg(args, unsigned int), "0123456789"));
 	else if (option == 'x')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef"));
+		return (ft_base(va_arg(args, unsigned int), "0123456789abcdef"));
 	else if (option == 'X')
-		return (ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
+		return (ft_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
 	else if (option == '%')
 		return (ft_putchar(option));
 	return (0);
@@ -77,9 +77,8 @@ int	main(void)
 {
 	int	result;
 
-	result = ft_printf("Hola %x\n", -30);
-	//result = ft_printf("Hola %d, %i Mundo %% %s %u * %X * %x\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, -30);
-	//printf("Hola %d, %i Mundo %% %s %u * %X * %x\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, -30);
+	result = ft_printf("Hola %d, %i Mundo %% %s %u * %X * %x---- %d, %i\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, 28, 365, -23);
+	printf("Hola %d, %i Mundo %% %s %u * %X * %x---- %d, %i\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, 28, 365, -23);
 	ft_printf("Caracteres = %d", result);
 	return (0);
 }

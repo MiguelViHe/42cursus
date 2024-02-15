@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:01:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/10 01:12:24 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:41:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ int	ft_nbrlen(int nbr)
 	return (counter);
 }
 
-int	ft_putnbr(int nbr)
+void	ft_putnbr(int nbr)
 {
-	int	len;
-
-	len = ft_nbrlen(nbr);
 	if (nbr < 0)
 	{
 		if (nbr == -2147483648)
@@ -57,5 +54,10 @@ int	ft_putnbr(int nbr)
 		ft_putnbr(nbr / 10);
 		ft_putnbr(nbr % 10);
 	}
-	return (len);
+}
+
+int	ft_digit(int nbr)
+{
+	ft_putnbr(nbr);
+	return (ft_nbrlen(nbr));
 }
