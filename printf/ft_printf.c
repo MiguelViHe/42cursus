@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:47:20 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/15 20:49:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/19 20:54:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_putoption(char option, va_list args)
 	else if (option == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (option == 'p')
-		return (0);
+		return (ft_putptr(va_arg(args, unsigned long long)));
 	else if (option == 'd' || option == 'i')
 		return (ft_digit(va_arg(args, int)));
 	else if (option == 'u')
@@ -73,12 +73,23 @@ int	ft_printf(char const *str, ...)
 	return (counter);
 }
 
-int	main(void)
+/*int	main(void)
 {
-	int	result;
+	int		result;
+	char	*ptr = "pepe";
+	char	*ptr2 = "miguel";
 
-	result = ft_printf("Hola %d, %i Mundo %% %s %u * %X * %x---- %d, %i\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, 28, 365, -23);
-	printf("Hola %d, %i Mundo %% %s %u * %X * %x---- %d, %i\n", INT_MIN, INT_MAX, "Vinnie", 11, 15, 28, 365, -23);
-	ft_printf("Caracteres = %d", result);
+	result = ft_printf("(FT)int: %d, %i %% str: %s\n", INT_MIN, INT_MAX, "OK");
+	printf("(OR)int: %d, %i %% str: %s\n", INT_MIN, INT_MAX, "OK");
+	ft_printf("Caracteres = %d\n", result);
+	result = ft_printf("(FT)%u %X %x %% %d, %i\n", -11, -15, 23233, -365, -23);
+	printf("(OR)%u %X %x %% %d, %i\n", -11, -15, 23233, -365, -23);
+	ft_printf("Caracteres = %d\n", result);
+	result = ft_printf("(FT)direccion ptr es %p, contenido %s\n", &ptr, ptr);
+	printf("(OR)direccion ptr es %p, contenido %s\n", &ptr, ptr);
+	ft_printf("Caracteres = %d\n", result);
+	result = ft_printf("(FT)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
+	printf("(OR)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
+	ft_printf("Caracteres = %d\n", result);
 	return (0);
-}
+}*/
