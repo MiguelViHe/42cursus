@@ -6,12 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:25:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/19 20:58:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:50:20 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h" //COMPROBAR SI SE ADMITE PARA ft_strlen.Si no crear en utils
+#include "libft/libft.h"
 
 int	ft_nbrlen_base(unsigned int nbr, size_t baselen)
 {

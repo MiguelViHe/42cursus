@@ -6,12 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:55:31 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/19 21:00:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/25 13:44:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+#include "libft/libft.h" //enlazar ft_strlcpy.Si no crear en utils
 
 int	ft_ptrlen_hexa(unsigned long long nbr)
 {
