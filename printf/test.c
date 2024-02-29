@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:10:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/20 17:18:36 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/29 23:12:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,20 @@ int	main(void)
 	result = ft_printf("(FT)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
 	printf("(OR)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
 	ft_printf("Caracteres = %d\n", result);
+	ft_printf("ERRORES\n");
+	ft_printf("%s\n", (char *)NULL);
+	printf("%s\n", (char *)NULL);
+	printf("%p-p-%p-%p\n", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
+	ft_printf("%p-p-%p-%p\n", (void *)LONG_MAX + 423856, (void *)0, (void *)INT_MAX);
+	ft_printf("E1\n");
+	ft_printf("\001\002\007\v\010\f\r\n");
+	ft_printf("E2\n");
+	printf("\001\002\007\v\010\f\r\n");
+	printf("%s%s%s\n", "And ", "some", "joined");
+	ft_printf("%s%s%s\n", "And ", "some", "joined");
+	printf("%sx\n", "{} al$#@@@^&$$^#^@@^$*((&");
+	ft_printf("%sx\n", "{} al$#@@@^&$$^#^@@^$*((&");
+	printf("%p\n", (void *)-14523);
+	ft_printf("%p\n", (void *)-14523);
 	return (0);
 }

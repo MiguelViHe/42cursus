@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:46:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/25 13:45:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/02/29 17:57:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
-# include "libft/libft.h" //ADDED
+//# include "libft/libft.h" //ADDED
 
 int		ft_printf(char const *str, ...);
 int		ft_putchar(char c);
