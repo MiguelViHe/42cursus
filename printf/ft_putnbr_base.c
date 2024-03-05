@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 12:25:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/29 17:57:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:59:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,21 @@ int	ft_nbrlen_base(unsigned int nbr, size_t baselen)
 	return (counter);
 }
 
-void	ft_putnbr_base(unsigned int nbr, char *base, size_t baselen)
+int	ft_putnbr_base(unsigned int nbr, char *base, size_t baselen)
 {
 	if (nbr >= baselen)
 	{
-		ft_putnbr_base(nbr / baselen, base, baselen);
-		ft_putnbr_base(nbr % baselen, base, baselen);
+		if (ft_putnbr_base(nbr / baselen, base, baselen) < 0)
+			return (-1);
+		if (ft_putnbr_base(nbr % baselen, base, baselen) < 0)
+			return (-1);
 	}
 	else
-		ft_putchar(base[nbr]);
+	{
+		if (ft_putchar(base[nbr]) < 0)
+			return (-1);
+	}
+	return (1);
 }
 
 int	ft_base(unsigned int nbr, char *base)
@@ -46,6 +52,7 @@ int	ft_base(unsigned int nbr, char *base)
 	if (nbr == 0)
 		return (ft_putchar('0'));
 	baselen = ft_strlen(base);
-	ft_putnbr_base(nbr, base, baselen);
+	if (ft_putnbr_base(nbr, base, baselen) < 0)
+		return (-1);
 	return (ft_nbrlen_base(nbr, baselen));
 }

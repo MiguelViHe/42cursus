@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 17:55:31 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/29 17:57:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:11:28 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_ptrlen_hexa(unsigned long long nbr)
 	return (counter);
 }
 
-void	ft_putptr_hexa(unsigned long long nbr)
+int	ft_putptr_hexa(unsigned long long nbr)
 {
 	char	base[17];
 	size_t	baselen;
@@ -41,14 +41,28 @@ void	ft_putptr_hexa(unsigned long long nbr)
 		ft_putptr_hexa(nbr % baselen);
 	}
 	else
-		ft_putchar(base[nbr]);
+	{
+		if (ft_putchar(base[nbr]) < 0)
+			return (-1);
+	}
+	return (1);
 }
 
 int	ft_putptr(unsigned long long nbr)
 {
-	ft_putstr("0x");
+	int	control;
+
+	if (ft_putstr("0x") < 0)
+		return (-1);
 	if (nbr == 0)
-		return (ft_putchar('0') + 2);
-	ft_putptr_hexa(nbr);
+	{
+		control = ft_putchar('0');
+		if (control < 0)
+			return (-1);
+		else
+			return (control + 2);
+	}
+	if (ft_putptr_hexa(nbr) < 0)
+		return (-1);
 	return (ft_ptrlen_hexa(nbr));
 }

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:47:20 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/29 18:02:14 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:22:04 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_printf(char const *str, ...)
 	int			i;
 	int			counter;
 	va_list		args;
+	int			control;
 
 	i = 0;
 	counter = 0;
@@ -59,12 +60,12 @@ int	ft_printf(char const *str, ...)
 	while (str[i])
 	{
 		if (str[i] != '%')
-			counter += ft_putchar(str[i]);
+			control = ft_putchar(str[i]);
 		else
-		{
-			i++;
-			counter += ft_putoption(str[i], args);
-		}
+			control = ft_putoption(str[++i], args);
+		if (control < 0)
+			return (control);
+		counter += control;
 		i++;
 	}
 	va_end(args);

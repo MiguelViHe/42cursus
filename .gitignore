@@ -1,6 +1,6 @@
 **/.DS_Store
 **/a.out
 **/*.gch
+**/test.c
 **/*.a
-**/libft.*
-#**/test.c
+**/*.o

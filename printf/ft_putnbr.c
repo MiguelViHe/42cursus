@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:01:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/15 20:41:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:57:09 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,38 @@ int	ft_nbrlen(int nbr)
 	return (counter);
 }
 
-void	ft_putnbr(int nbr)
+int	ft_putnbr(int nbr)
 {
-	if (nbr < 0)
+	if (nbr == -2147483648)
 	{
-		if (nbr == -2147483648)
-		{
-			ft_putstr("-2");
-			nbr = 147483648;
-		}
-		else
-		{
-			ft_putchar('-');
-			nbr = -nbr;
-		}
+		if (ft_putstr("-2") < 0)
+			return (-1);
+		nbr = 147483648;
+	}
+	else if (nbr < 0)
+	{
+		if (ft_putchar('-') < 0)
+			return (-1);
+		nbr = -nbr;
 	}
 	if (nbr >= 0 && nbr <= 9)
-		ft_putchar(nbr + '0');
+	{
+		if (ft_putchar(nbr + '0') < 0)
+			return (-1);
+	}
 	else
 	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
+		if (ft_putnbr(nbr / 10) < 0)
+			return (-1);
+		if (ft_putnbr(nbr % 10) < 0)
+			return (-1);
 	}
+	return (1);
 }
 
 int	ft_digit(int nbr)
 {
-	ft_putnbr(nbr);
+	if (ft_putnbr(nbr) < 0)
+		return (-1);
 	return (ft_nbrlen(nbr));
 }

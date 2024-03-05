@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 17:10:21 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/02/29 23:12:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/04 17:06:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	main(void)
 	ft_printf("Caracteres = %d\n", result);
 	result = ft_printf("(FT)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
 	printf("(OR)direccion ptr2 es %p, contenido %s\n", &ptr2, ptr2);
+	ft_printf("Caracteres = %d\n", result);
+	result = ft_printf("(FT)negativo: %i, %i\n", -4, -6);
+	printf("(OR)negativo: %i, %i\n", -4, -6);
 	ft_printf("Caracteres = %d\n", result);
 	ft_printf("ERRORES\n");
 	ft_printf("%s\n", (char *)NULL);
