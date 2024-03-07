@@ -6,27 +6,62 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/04 13:25:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/07 19:05:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 
-int	is_eol(char	*str)
+char	*rest_line(char *line)
 {
-	int	i;
+	char	*new_line;
+	int		i;
+	int		j;
+	int		aux;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (line[i] == '\0' || line[i + 1] == '\0')
+		return (NULL);
+	i++;
+	aux = i;
+	j = 0;
+	while (line[i++])
+		j++;
+	new_line = malloc((j + 1) * sizeof(char));
+	j = 0;
+	while (line[aux])
+		new_line[j++] = line[aux++];
+	new_line[j] = '\0';
+	free(line);
+	return (new_line);
+}
+
+char	*clean_line(char *line)
+{
+	int		i;
+	char	*clean_line;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+		i++;
+	if (line[i] == '\n')
+		i += 2;
+	else
+		i += 1;
+	clean_line = malloc(i * sizeof(char));
+	i = 0;
+	while (line[i] && line[i] != '\n')
 	{
+		clean_line[i] = line[i];
 		i++;
 	}
-	if (str[i] == '\n')
-		return (1);
-	return (0);
+	if (line[i] == '\n')
+		clean_line[i++] = '\n';
+	clean_line[i] = '\0';
+	return (clean_line);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
@@ -35,11 +70,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	printf("s1 = %s\n", (char *)s1);
-	if (!s1 && s2) //5. YA NO VA A SER NULL. (TiENE CARACTERES ESPECIALES)
+	printf("s1+s2 = %s+%s\n", (char *)s1, s2);
+	if (!s1 && s2)
 	{
-		printf("Entro aqui\n");
-		s1 = malloc(sizeof(char)); //6. POR LO QUE NO ENTRA AQUI A RESERVAR MEMORIA
+		s1 = malloc(sizeof(char));
 		s1[0] = '\0';
 	}
 	if (!s1 && !s2)
@@ -50,57 +84,38 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	j = 0;
 	while (s1[j])
-		str[i++] = s1[j++]; //7. aSI QUE USA ESOS CARACTERES ESPECIALES COMO S1...
+		str[i++] = s1[j++];
 	j = 0;
 	while (s2[j])
 		str[i++] = s2[j++];
 	str[i] = '\0';
-	free (s1); //8. PERO EL PUNTERO NO APUNTA REALMENTE A NINGUN SITIO PORQUE NO HEMOS HECHO MALLOC. REALMENTE SI QUE ESTA APUNTANDO A DONDE APUNTABA RESULT, TRATANDO DE LIBERARLO DE NUEVO.
-	return (str); // 9. ANTES DE DEVOLVERLO HABRIA QUE DEJARLA INICIALIZADA CON EL RESTO.
+	free (s1);
+	return (str);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	static char	*line; //2. ESTE STATIC LINE, QUE YA NO VA A SER NULL - ABAJO
+	static char	*line;
 	char		*buffer;
 	int			readed;
+	char		*cleaned_line;
 
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > sysconf(_SC_OPEN_MAX))
+		return (NULL);
 	readed = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	while(!is_eol(line) && readed != 0)
+	while (!is_eol(line) && readed != 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
 		buffer[readed] = '\0';
-		line = ft_strjoin(line, buffer); //4. AL ENTRAR EN STRJOIN...
+		line = ft_strjoin(line, buffer);
 	}
 	free (buffer);
-	return (line); //3. AQUI LO DEVOLVIA DONDE SE TRANSFORMA EN RESULT ^^
+	cleaned_line = clean_line(line);
+	line = rest_line(line);
+	printf("Rest = %s\n", line);
+	return (cleaned_line);
 }
 
-int main(void)
-{
-	int		fd;
-	char	*result;
-	int		i;
-
-	i = 3;
-	fd = open("prueba.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error opening the file");
-		return (1);
-	}
-	while (i)
-	{
-		result = get_next_line(fd);
-		if (result == NULL)
-			break;
-		printf("Buffer leido es: %s\n", result);
-		free (result); //1. CUANDO HAGO ESTE FREE ESTOY LIBERANDO ^
-		i--;
-	}
-	close (fd);
-	return (0);
-}

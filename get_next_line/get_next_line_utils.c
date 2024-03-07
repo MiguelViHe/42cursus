@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:14:22 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/01 17:40:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/05 16:03:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,20 @@ size_t	ft_strlen(const char *s)
 	while (s[counter])
 		counter++;
 	return (counter);
+}
+
+int	is_eol(char	*str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		i++;
+	}
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }
