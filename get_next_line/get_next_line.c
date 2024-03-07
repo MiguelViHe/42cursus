@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/07 19:05:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/07 20:01:30 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ char	*get_next_line(int fd)
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	while (!is_eol(line) && readed != 0)
+	while (!is_eol(line) && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
 		buffer[readed] = '\0';
@@ -118,4 +118,3 @@ char	*get_next_line(int fd)
 	printf("Rest = %s\n", line);
 	return (cleaned_line);
 }
-
