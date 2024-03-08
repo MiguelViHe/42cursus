@@ -6,14 +6,14 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:14:13 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/07 20:06:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/08 11:50:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 9999
+#  define BUFFER_SIZE 10
 # endif
 # include <stdlib.h> //malloc
 # include <unistd.h> //files

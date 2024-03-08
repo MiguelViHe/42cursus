@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 18:52:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/07 20:03:59 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:30:12 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 		result = get_next_line(fd);
 		if (result == NULL)
 			break ;
-		printf("%s\n", result);
+		printf("line = %s", result);
 		free (result);
 		i--;
 	}

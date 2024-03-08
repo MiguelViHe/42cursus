@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/07 20:01:30 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:21:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ char	*rest_line(char *line)
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (line[i] == '\0' || line[i + 1] == '\0')
+	{
+		free (line);
 		return (NULL);
+	}
 	i++;
 	aux = i;
 	j = 0;
@@ -35,7 +38,7 @@ char	*rest_line(char *line)
 	while (line[aux])
 		new_line[j++] = line[aux++];
 	new_line[j] = '\0';
-	free(line);
+	free (line);
 	return (new_line);
 }
 
@@ -70,7 +73,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	printf("s1+s2 = %s+%s\n", (char *)s1, s2);
+	//printf("s1+s2 = %s+%s\n", s1, s2);
 	if (!s1 && s2)
 	{
 		s1 = malloc(sizeof(char));
@@ -78,6 +81,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s1 && !s2)
 		return (NULL);
+
 	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -109,12 +113,18 @@ char	*get_next_line(int fd)
 	while (!is_eol(line) && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
+		//printf("readed = %d\n", readed);
+		if (readed == -1)
+			return(free(buffer), free(line), NULL);
 		buffer[readed] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
 	free (buffer);
+	if (line && line[0] == '\0')
+		return (free(line), line = NULL, line);
 	cleaned_line = clean_line(line);
 	line = rest_line(line);
-	printf("Rest = %s\n", line);
+	//printf("Rest = %s\n", line);
 	return (cleaned_line);
 }
+
