@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/08 20:21:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/11 11:39:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ char	*clean_line(char *line)
 	char	*clean_line;
 
 	i = 0;
+	if (line && line[0] == '\0')
+		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
 	if (line[i] == '\n')
@@ -81,7 +83,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	if (!s1 && !s2)
 		return (NULL);
-
 	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -113,15 +114,12 @@ char	*get_next_line(int fd)
 	while (!is_eol(line) && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
-		//printf("readed = %d\n", readed);
 		if (readed == -1)
-			return(free(buffer), free(line), NULL);
+			return(free(buffer), free(line), line = NULL, line);
 		buffer[readed] = '\0';
 		line = ft_strjoin(line, buffer);
 	}
 	free (buffer);
-	if (line && line[0] == '\0')
-		return (free(line), line = NULL, line);
 	cleaned_line = clean_line(line);
 	line = rest_line(line);
 	//printf("Rest = %s\n", line);
