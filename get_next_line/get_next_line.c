@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/11 11:39:57 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/14 10:33:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ char	*rest_line(char *line)
 	while (line[i++])
 		j++;
 	new_line = malloc((j + 1) * sizeof(char));
+	if (!new_line)
+	{
+		free (line);
+		return (NULL);
+	}
 	j = 0;
 	while (line[aux])
 		new_line[j++] = line[aux++];
@@ -57,6 +62,8 @@ char	*clean_line(char *line)
 	else
 		i += 1;
 	clean_line = malloc(i * sizeof(char));
+	if (!clean_line)
+		return (NULL);
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
@@ -75,17 +82,21 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	//printf("s1+s2 = %s+%s\n", s1, s2);
 	if (!s1 && s2)
 	{
 		s1 = malloc(sizeof(char));
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
 	if (!s1 && !s2)
 		return (NULL);
 	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!str)
+	{
+		free (s1);
 		return (NULL);
+	}
 	i = 0;
 	j = 0;
 	while (s1[j])
@@ -103,7 +114,7 @@ char	*get_next_line(int fd)
 	static char	*line;
 	char		*buffer;
 	int			readed;
-	char		*cleaned_line;
+	char		*clned_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > sysconf(_SC_OPEN_MAX))
 		return (NULL);
@@ -115,14 +126,13 @@ char	*get_next_line(int fd)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed == -1)
-			return(free(buffer), free(line), line = NULL, line);
+			return (free(buffer), free(line), line = NULL, line);
 		buffer[readed] = '\0';
-		line = ft_strjoin(line, buffer);
+		if (readed != 0)
+			line = ft_strjoin(line, buffer);
+		if (line == NULL)
+			return (free(buffer), line);
 	}
 	free (buffer);
-	cleaned_line = clean_line(line);
-	line = rest_line(line);
-	//printf("Rest = %s\n", line);
-	return (cleaned_line);
+	return (clned_line = clean_line(line), line = rest_line(line), clned_line);
 }
-
