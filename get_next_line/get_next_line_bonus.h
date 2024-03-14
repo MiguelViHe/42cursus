@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 18:52:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/14 10:57:28 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/03/14 13:39:10 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/03/14 13:46:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
+# include <stdlib.h> //malloc
+# include <unistd.h> //files
+# include <fcntl.h>  //O_RDONLY
+# include <stddef.h> //size_t
 
-int	main(void)
-{
-	int		fd;
-	char	*result;
-	int		i;
+char	*get_next_line(int fd);
+size_t	ft_strlen(const char *s);
+int		is_eol(char	*str);
 
-	i = 12;
-	fd = open("prueba.txt", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error opening the file");
-		return (1);
-	}
-	while (i)
-	{
-		result = get_next_line(fd);
-		if (result == NULL)
-			break ;
-		printf("line = %s", result);
-		free (result);
-		i--;
-	}
-	close (fd);
-	return (0);
-}
-//system("leaks -q a.out");
+#endif

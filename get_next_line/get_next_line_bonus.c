@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/14 13:49:08 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/03/14 13:23:53 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/03/14 13:42:00 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 char	*rest_line(char *line)
@@ -82,7 +82,7 @@ char	*ft_put_together(char *str1, char *str2)
 		free (str1);
 		return (NULL);
 	}
-	//printf("str1+str2=%s+%s\n",str1, str2);
+	printf("str1+str2=%s+%s\n",str1, str2);
 	i = 0;
 	j = 0;
 	while (str1[j])
