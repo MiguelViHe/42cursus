@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/14 13:49:08 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:18:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char	*ft_put_together(char *str1, char *str2)
 		free (str1);
 		return (NULL);
 	}
-	//printf("str1+str2=%s+%s\n",str1, str2);
 	i = 0;
 	j = 0;
 	while (str1[j])

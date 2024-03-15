@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:23:53 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/14 13:42:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:22:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ char	*ft_put_together(char *str1, char *str2)
 		free (str1);
 		return (NULL);
 	}
-	printf("str1+str2=%s+%s\n",str1, str2);
 	i = 0;
 	j = 0;
 	while (str1[j])
@@ -111,28 +110,29 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*line[1048576];	
 	char		*buffer;
 	int			readed;
 	char		*clned_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > sysconf(_SC_OPEN_MAX))
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1048576)
 		return (NULL);
 	readed = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	while (!is_eol(line) && readed > 0)
+	while (!is_eol(line[fd]) && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
 		if (readed == -1)
-			return (free(buffer), free(line), line = NULL, line);
+			return (free(buffer), free(line[fd]), line[fd] = NULL, line[fd]);
 		buffer[readed] = '\0';
 		if (readed != 0)
-			line = ft_strjoin(line, buffer);
-		if (line == NULL)
-			return (free(buffer), line);
+			line[fd] = ft_strjoin(line[fd], buffer);
+		if (line[fd] == NULL)
+			return (free(buffer), line[fd]);
 	}
 	free (buffer);
-	return (clned_line = clean_line(line), line = rest_line(line), clned_line);
+	clned_line = clean_line(line[fd]);
+	return (line[fd] = rest_line(line[fd]), clned_line);
 }
