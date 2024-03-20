@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:13:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/15 20:18:10 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:13:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ char	*rest_line(char *line)
 		return (free(line), NULL);
 	i++;
 	aux = i;
-	j = 0;
-	while (line[i++])
-		j++;
+	j = ft_strlen(line + i);
 	new_line = malloc((j + 1) * sizeof(char));
 	if (!new_line)
 		return (free(line), NULL);
@@ -115,7 +113,7 @@ char	*get_next_line(int fd)
 	int			readed;
 	char		*clned_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > sysconf(_SC_OPEN_MAX))
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
 	readed = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));

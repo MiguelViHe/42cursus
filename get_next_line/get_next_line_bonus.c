@@ -6,12 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:23:53 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/15 20:22:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:29:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <stdio.h>
 
 char	*rest_line(char *line)
 {
@@ -27,9 +26,7 @@ char	*rest_line(char *line)
 		return (free(line), NULL);
 	i++;
 	aux = i;
-	j = 0;
-	while (line[i++])
-		j++;
+	j = ft_strlen(line + i);
 	new_line = malloc((j + 1) * sizeof(char));
 	if (!new_line)
 		return (free(line), NULL);
@@ -110,12 +107,12 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*get_next_line(int fd)
 {
-	static char	*line[1048576];	
+	static char	*line[OPEN_MAX];
 	char		*buffer;
 	int			readed;
 	char		*clned_line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1048576)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
 		return (NULL);
 	readed = 1;
 	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
