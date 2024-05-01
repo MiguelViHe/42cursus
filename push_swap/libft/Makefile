@@ -60,13 +60,13 @@ RM = rm -f
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-
 all: $(NAME)
 
-bonus: $(NAME) $(OBJS_BONUS)
-	$(AR) $(NAME) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) $(OBJS)
+	$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
+
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 re: fclean all
 
