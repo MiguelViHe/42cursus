@@ -6,26 +6,29 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/01 19:10:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:26:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h" 
 
-void	print_stack(t_list* first)
+void	print_stack(t_list **first)
 {
 	t_list	*aux;
 
-	aux = first;
-	while (aux)
+	if (first != NULL)
 	{
-		ft_printf("%d->", *(int *)aux->content);
-		aux = aux->next;
+		aux = *first;
+		while (aux)
+		{
+			ft_printf("%d -> ", *(int *)aux->content);
+			aux = aux->next;
+		}
 	}
 	ft_printf("NULL\n");
 }
 
-t_list	**fill_stack(char *argv[])
+t_list	**fill_stack(char *argv[]) //LIBERAR TODO CUANDO FALLA MALLOC
 {
 	int		i;
 	int		*number;
@@ -43,6 +46,8 @@ t_list	**fill_stack(char *argv[])
 		if (stacka == NULL)
 		{
 			first = ft_lstnew(number);
+			if (!first)
+				return (NULL);
 			stacka = &first;
 		}
 		else
@@ -55,10 +60,46 @@ t_list	**fill_stack(char *argv[])
 int	main(int argc, char *argv[])
 {
 	t_list	**stka;
+	t_list	**stkb;
 	
 	if (argc < 2)
 		return (-1);
 	stka = fill_stack(argv);
-	print_stack(*stka);
+	stkb = NULL;
+	print_stack(stka);
+	print_stack(stkb);
+	swap(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	rotate(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	rotate(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	swap(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	reverse(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	reverse(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	reverse(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	swap(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	rotate(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	reverse(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	push(stka, stkb);
+	print_stack(stka);
+	print_stack(stkb);
 	return (0);
 }

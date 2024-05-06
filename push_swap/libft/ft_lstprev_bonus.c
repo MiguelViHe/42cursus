@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstprev_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/06 18:16:27 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/05/03 12:54:33 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/05/03 14:02:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libft/libft.h" 
-# include "printf/ft_printf.h"
+#include "libft.h"
 
-void swap(t_list **stack);
-void rotate(t_list **stack);
-void reverse(t_list **stack);
-void push(t_list **stackx, t_list **stacky);
-void print_stack(t_list **first);
+t_list	*ft_lstprev(t_list *lst , t_list *find_prev)
+{
+	t_list *current;
+	
+	if (lst == NULL || find_prev == NULL)
+		return (NULL);
 
-#endif
+	current = lst;
+
+	while (current) {
+		if (current->next == find_prev)
+			return (current); //Puede ser NULL si el nodo buscado es el primero.
+		current = current->next;
+	}
+	return (NULL); // Si no se encuentra el nodo previo
+}

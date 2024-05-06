@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 10:57:49 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/04/30 10:45:52 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/05/03 11:37:33 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 RM = rm -f
 
-SRCS = push_swap.c
+SRCS =	push_swap.c \
+		single.c \
+		
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
