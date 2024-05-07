@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 10:31:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/07 17:30:32 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/07 20:09:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void push(t_list **stackx, t_list **stacky)
 {
 	t_list	*firstx;
 
-	//print_stack(stacky);
-	//print_stack(stackx);
 	if (stackx == NULL || ft_lstsize(*stackx) < 1)
 		return;
 	firstx = (*stackx)->next;
