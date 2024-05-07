@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 10:31:52 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/06 18:26:31 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/07 17:30:32 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,13 @@ void swap(t_list **stack)
 void push(t_list **stackx, t_list **stacky)
 {
 	t_list	*firstx;
-	t_list	*secondy;
 
+	//print_stack(stacky);
 	//print_stack(stackx);
 	if (stackx == NULL || ft_lstsize(*stackx) < 1)
 		return;
-	ft_printf("llego aqui2/n");
 	firstx = (*stackx)->next;
-	secondy = *stacky;
-	ft_printf("secondy = %s/n",secondy);
-	(*stackx)->next = secondy;
+	(*stackx)->next = *stacky;
 	*stacky = *stackx;
 	*stackx = firstx;
 }
