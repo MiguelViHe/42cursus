@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 10:57:49 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/05/08 12:29:43 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/05/08 19:56:44 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS =	push_swap.c \
 		push.c \
 		rotate.c \
 		reverse_rotate.c \
+		free_stack.c \
 		
 OBJS = $(SRCS:.c=.o)
 
