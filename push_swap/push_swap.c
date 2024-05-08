@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/07 20:09:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:21:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,20 @@ int	main(int argc, char *argv[])
 	*stkb = NULL;
 	print_stack(stka);
 	print_stack(stkb);
-	push(stka, stkb);
+	do_pb(stka, stkb);
 	print_stack(stka);
 	print_stack(stkb);
-	swap(stka);
+	do_sa(stka);
 	print_stack(stka);
 	print_stack(stkb);
-	rotate(stka);
+	do_ra(stka);
 	print_stack(stka);
 	print_stack(stkb);
-	push(stka, stkb);
+	do_pb(stka, stkb);
 	print_stack(stka);
 	print_stack(stkb);
-	swap(stka);
-	reverse(stkb);
+	do_sa(stka);
+	do_rrb(stkb);
 	print_stack(stka);
 	print_stack(stkb);
 	return (0);

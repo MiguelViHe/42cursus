@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/06 18:16:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/08 12:26:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 # include "libft/libft.h" 
 # include "printf/ft_printf.h"
 
-void swap(t_list **stack);
-void rotate(t_list **stack);
-void reverse(t_list **stack);
-void push(t_list **stackx, t_list **stacky);
+void	do_sa(t_list **stacka);
+void	do_sb(t_list **stackb);
+void	do_ss(t_list **stacka, t_list **stackb);
+void	do_pa(t_list **stacka, t_list **stackb);
+void	do_pb(t_list **stacka, t_list **stackb);
+void	do_ra(t_list **stacka);
+void	do_rb(t_list **stackb);
+void	do_rr(t_list **stacka, t_list **stackb);
+void	do_rra(t_list **stacka);
+void	do_rrb(t_list **stackb);
+void	do_rrr(t_list **stacka, t_list **stackb);
+t_list	*fill_stack(char *argv[]);
 void print_stack(t_list **first);
 
 #endif
