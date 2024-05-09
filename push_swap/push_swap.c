@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/08 20:19:10 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:23:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,16 @@ int	main(int argc, char *argv[])
 	do_rrb(stkb);
 	print_stack(stka);
 	print_stack(stkb);
+	ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
+	ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
 	free_stack(stka);
 	print_stack(stka);
 	print_stack(stkb);
 	free_stack(stkb);
 	print_stack(stka);
 	print_stack(stkb);
+	//ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
+	//ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
 	free(stka);
 	free(stkb);
 	return (0);
