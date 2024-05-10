@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/09 13:23:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/10 11:18:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_stack(t_list **first)
 		aux = *first;
 		while (aux)
 		{
-			ft_printf("%d -> ", *(int *)aux->content);
+			ft_printf("[%d,(%d)]-> ", *(int *)aux->content, aux->index);
 			aux = aux->next;
 		}
 	}
@@ -56,6 +56,7 @@ int	main(int argc, char *argv[])
 {
 	t_list	**stka;
 	t_list	**stkb;
+	t_list	*aux;
 
 	if (argc < 2)
 		return (-1);
@@ -63,6 +64,7 @@ int	main(int argc, char *argv[])
 	stkb = (t_list **)malloc(sizeof(t_list *));
 	*stka = fill_stack(argv);
 	*stkb = NULL;
+	aux = NULL;
 	print_stack(stka);
 	print_stack(stkb);
 	do_pb(stka, stkb);
@@ -83,6 +85,14 @@ int	main(int argc, char *argv[])
 	print_stack(stkb);
 	ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
 	ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
+	aux = find_min(stka);
+	ft_printf("minimo en a:  %d\n", *(int *)aux->content);
+	aux = find_min(stkb);
+	ft_printf("minimo en b:  %d\n", *(int *)aux->content);
+	fill_index(stka);
+	fill_index(stkb);
+	print_stack(stka);
+	print_stack(stkb);
 	free_stack(stka);
 	print_stack(stka);
 	print_stack(stkb);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:58:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/01/28 17:58:43 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:14:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(void *content)
 	if (!elem)
 		return (NULL);
 	elem->content = content;
+	elem->index = -1;
 	elem->next = NULL;
 	return (elem);
 }
