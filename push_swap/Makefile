@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 10:57:49 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/05/13 12:08:39 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/05/13 18:36:41 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS =	push_swap.c \
 		errors.c \
 		index_stack.c \
 		order_basics.c \
-		
+		check_sorting.c \
 		
 OBJS = $(SRCS:.c=.o)
 

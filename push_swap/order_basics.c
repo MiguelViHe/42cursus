@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 13:35:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/13 12:17:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:14:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	two_args(t_list **stack)
 {
 	if (!*stack)
 		return;
-	if (is_order(stack))
+	if (is_sorted(stack))
 		return;
 	else
 		do_sa(stack);
@@ -26,7 +26,7 @@ void	three_args(t_list **stack)
 {
 	if (!*stack)
 		return;
-	while (!is_order(stack))
+	while (!is_sorted(stack))
 	{
 		if (((*stack)->index < (*stack)->next->index && 
 			(*stack)->index < (*stack)->next->next->index) ||

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/09 18:11:07 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:36:45 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ typedef struct s_list
 {
 	void			*content;
 	int				index;
+	int				position;
 	struct s_list	*next;
+	struct s_list	*prev;
 }	t_list;
 
 int		ft_isalpha(int c);

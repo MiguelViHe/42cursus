@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/13 13:24:45 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/13 19:42:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ void	print_stack(t_list **first)
 		{
 			ft_printf("[%d,(%d)]-> ", *(int *)aux->content, aux->index);
 			aux = aux->next;
+		}
+	}
+	ft_printf("NULL\n");
+}
+
+void	print_inverse_stack(t_list **first)
+{
+	t_list	*aux;
+
+	if (first != NULL)
+	{
+		aux = ft_lstlast(*first);
+		while (aux)
+		{
+			ft_printf("[%d,(%d)]-> ", *(int *)aux->content, aux->index);
+			aux = aux->prev;
 		}
 	}
 	ft_printf("NULL\n");
@@ -121,6 +137,7 @@ int	main(int argc, char *argv[])
 	fill_index(stka);
 	print_stack(stka);
 	print_stack(stkb);
+	print_inverse_stack(stka);
 	size = ft_lstsize(*stka);
 	if (size == 2)
 		two_args(stka);
