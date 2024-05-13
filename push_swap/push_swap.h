@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/09 19:41:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:09:39 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ void	free_stack(t_list **stack);
 int     is_order(t_list **stack);
 t_list  *find_min(t_list **stack);
 void	fill_index(t_list **stack);
+void	two_args(t_list **stack);
+void	three_args(t_list **stack);
 
 #endif

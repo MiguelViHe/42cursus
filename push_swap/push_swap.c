@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/10 11:18:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/13 13:24:45 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ t_list	*fill_stack(char *argv[])
 	return (stack);
 }
 
-int	main(int argc, char *argv[])
+/*int	main(int argc, char *argv[])
 {
 	t_list	**stka;
 	t_list	**stkb;
-	t_list	*aux;
+	//t_list	*aux;
 
 	if (argc < 2)
 		return (-1);
@@ -64,7 +64,7 @@ int	main(int argc, char *argv[])
 	stkb = (t_list **)malloc(sizeof(t_list *));
 	*stka = fill_stack(argv);
 	*stkb = NULL;
-	aux = NULL;
+	//aux = NULL;
 	print_stack(stka);
 	print_stack(stkb);
 	do_pb(stka, stkb);
@@ -83,12 +83,12 @@ int	main(int argc, char *argv[])
 	do_rrb(stkb);
 	print_stack(stka);
 	print_stack(stkb);
-	ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
-	ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
-	aux = find_min(stka);
-	ft_printf("minimo en a:  %d\n", *(int *)aux->content);
-	aux = find_min(stkb);
-	ft_printf("minimo en b:  %d\n", *(int *)aux->content);
+	//ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
+	//ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
+	//aux = find_min(stka);
+	//ft_printf("minimo en a:  %d\n", *(int *)aux->content);
+	//aux = find_min(stkb);
+	//ft_printf("minimo en b:  %d\n", *(int *)aux->content);
 	fill_index(stka);
 	fill_index(stkb);
 	print_stack(stka);
@@ -101,6 +101,35 @@ int	main(int argc, char *argv[])
 	print_stack(stkb);
 	//ft_printf("Esta ordenado A?:  %d\n",is_order(stka));
 	//ft_printf("Esta ordenado B?:  %d\n",is_order(stkb));
+	free(stka);
+	free(stkb);
+	return (0);
+}*/
+
+int	main(int argc, char *argv[])
+{
+	t_list	**stka;
+	t_list	**stkb;
+	int		size;
+
+	if (argc < 2)
+		return (-1);
+	stka = (t_list **)malloc(sizeof(t_list *));
+	stkb = (t_list **)malloc(sizeof(t_list *));
+	*stka = fill_stack(argv);
+	*stkb = NULL;
+	fill_index(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	size = ft_lstsize(*stka);
+	if (size == 2)
+		two_args(stka);
+	else if (size == 3)
+		three_args(stka);
+	print_stack(stka);
+	print_stack(stkb);
+	free_stack(stka);
+	free_stack(stkb);
 	free(stka);
 	free(stkb);
 	return (0);
