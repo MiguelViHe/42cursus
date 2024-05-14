@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/13 19:42:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:55:16 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_stack(t_list **first)
 		aux = *first;
 		while (aux)
 		{
-			ft_printf("[%d,(%d)]-> ", *(int *)aux->content, aux->index);
+			ft_printf("[%d,i(%d), p(%d)]-> ", *(int *)aux->content, aux->index, aux->position);
 			aux = aux->next;
 		}
 	}
@@ -37,7 +37,7 @@ void	print_inverse_stack(t_list **first)
 		aux = ft_lstlast(*first);
 		while (aux)
 		{
-			ft_printf("[%d,(%d)]-> ", *(int *)aux->content, aux->index);
+			ft_printf("[%d,i(%d), p(%d)]-> ", *(int *)aux->content, aux->index, aux->position);
 			aux = aux->prev;
 		}
 	}
@@ -135,16 +135,27 @@ int	main(int argc, char *argv[])
 	*stka = fill_stack(argv);
 	*stkb = NULL;
 	fill_index(stka);
+	fill_position(stka);
 	print_stack(stka);
 	print_stack(stkb);
+	ft_printf("\n");
 	print_inverse_stack(stka);
+	print_inverse_stack(stkb);
+	ft_printf("\n");
 	size = ft_lstsize(*stka);
 	if (size == 2)
 		two_args(stka);
 	else if (size == 3)
 		three_args(stka);
+	do_pb(stka, stkb);
+	do_pb(stka, stkb);
+	ft_printf("\n");
 	print_stack(stka);
 	print_stack(stkb);
+	ft_printf("\n");
+	print_inverse_stack(stka);
+	print_inverse_stack(stkb);
+	//print_stack(stkb);
 	free_stack(stka);
 	free_stack(stkb);
 	free(stka);

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 18:56:30 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/10 11:17:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:55:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,26 @@ void	fill_index(t_list **stack)
 		min->index = i++;
 		min = find_min(stack);
 	}
+}
+
+void	fill_position(t_list **stack)
+{
+	t_list	*current;
+	int		i;
+
+	if(!*stack)
+		return;
+	i = 0;
+	current = *stack;
+	while (current)
+	{
+		current->position = i++;
+		current = current->next;
+	}
+}
+
+void	update_stacks_positions(t_list **stacka, t_list **stackb)
+{
+	fill_position(stacka);
+	fill_position(stackb);
 }

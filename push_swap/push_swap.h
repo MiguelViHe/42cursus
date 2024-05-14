@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/13 18:13:48 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:54:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	free_stack(t_list **stack);
 int     is_sorted(t_list **stack);
 t_list  *find_min(t_list **stack);
 void	fill_index(t_list **stack);
+void	fill_position(t_list **stack);
+void	update_stacks_positions(t_list **stacka, t_list **stackb);
 void	two_args(t_list **stack);
 void	three_args(t_list **stack);
 
