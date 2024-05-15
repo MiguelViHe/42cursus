@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/14 13:55:16 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:30:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,8 +147,9 @@ int	main(int argc, char *argv[])
 		two_args(stka);
 	else if (size == 3)
 		three_args(stka);
-	do_pb(stka, stkb);
-	do_pb(stka, stkb);
+	//do_pb(stka, stkb);
+	//do_pb(stka, stkb);
+	do_rra(stka);
 	ft_printf("\n");
 	print_stack(stka);
 	print_stack(stkb);

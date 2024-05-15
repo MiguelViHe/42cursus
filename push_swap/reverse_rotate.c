@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:58:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/08 12:24:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:26:04 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static void reverse(t_list **stack)
 	last = ft_lstlast(*stack);
 	prev = ft_lstprev(*stack, last);
 	last->next = *stack;
-	*stack = last;
 	prev->next = NULL;
+	last->prev = NULL;
+	(*stack)->prev = last;
+	*stack = last;
 }
 
 /*	Brings the bottom element of the stack a to the top.
@@ -32,6 +34,7 @@ static void reverse(t_list **stack)
 void	do_rra(t_list **stacka)
 {
 	reverse(stacka);
+	fill_position(stacka);
 	ft_printf("rra\n");
 }
 
@@ -41,6 +44,7 @@ void	do_rra(t_list **stacka)
 void	do_rrb(t_list **stackb)
 {
 	reverse(stackb);
+	fill_position(stackb);
 	ft_printf("rrb\n");
 }
 
@@ -51,5 +55,6 @@ void	do_rrr(t_list **stacka, t_list **stackb)
 {
 	reverse(stacka);
 	reverse(stackb);
+	update_stacks_positions(stacka, stackb);
 	ft_printf("rrr\n");
 }
