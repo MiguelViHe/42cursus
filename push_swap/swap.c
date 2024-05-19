@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:57:09 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/14 12:32:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/19 22:41:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	swap(t_list **stack)
 		return;
 	first = (*stack)->next;
 	(*stack)->next = first->next;
-	first->next->prev = *stack;
+	if (first->next)
+		first->next->prev = *stack;
 	first->next = *stack;
 	(*stack)->prev = first;
 	first->prev = NULL;

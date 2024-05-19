@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:16:34 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/19 19:25:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/19 20:03:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ t_list	*generate_stack(int argc, char *argv[])
 {
 	t_list	*stack;
 	
+	stack = NULL;
 	if (argc < 2)
-		ft_printf("imprimir error");
+		ft_printf("Error\n");
 	else if (argc == 2)
-		ft_printf("separar con split");
+		ft_printf("split\n");
 	else
 		stack = fill_stack(argv);
 	return (stack);
