@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/19 22:22:45 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:10:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	do_rra(t_list **stacka);
 void	do_rrb(t_list **stackb);
 void	do_rrr(t_list **stacka, t_list **stackb);
 t_list	*generate_stack(int argc, char *argv[]);
-t_list	*fill_stack(char *argv[]);
+t_list	*fill_stack(char *argv[], int start);
 void    print_stack(t_list **first);
 void	free_stack(t_list **stack);
 int     is_sorted(t_list **stack);

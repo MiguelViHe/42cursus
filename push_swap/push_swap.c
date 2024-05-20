@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/19 22:42:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:11:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,18 @@ int	main(int argc, char *argv[])
 
 	stka = (t_list **)malloc(sizeof(t_list *));
 	*stka = generate_stack(argc, argv);
-	if (!stka)
-	{
-		free(stka);
+	if (!stka || is_duplicated(*stka))
 		ft_printf("Error\n");
-	}
-	if (!is_sorted(stka))
+	else if (!is_sorted(stka))
 	{
 		fill_index(stka);
 		fill_position(stka);
-		ft_printf("esta duplicado?: %d\n", is_duplicated(*stka));
+		//ft_printf("esta duplicado?: %d\n", is_duplicated(*stka));
 		//funcion ordenar
 		print_stack(stka);
 		do_sa(stka);
 		print_stack(stka);
+		free_stack(stka);
 	}
-	free_stack(stka);
 	free(stka);
 }

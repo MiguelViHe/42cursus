@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:23:38 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/19 22:48:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/20 13:24:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 int	is_duplicated(t_list *stack)
 {
 	t_list	*current;
+	t_list	*aux;
 
 	if (!stack)
 		return (-1);
 	current = stack;
-	while (stack)
+	while (current)
 	{
-		current = stack->next;
-		while (current)
+		aux = current->next;
+		while (aux)
 		{
-			if (*(int *)stack->content == *(int *)current->content)
-				return (1);
-			current = current->next;
+			if (*(int *)current->content == *(int *)aux->content)
+				return (free_stack(&stack), 1);
+			aux = aux->next;
 		}
-		stack = stack->next;
+		current = current->next;
 	}
 	return (0);
 }
