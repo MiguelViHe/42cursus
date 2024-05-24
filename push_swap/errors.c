@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:23:38 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/20 13:24:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:28:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,22 @@ int	is_duplicated(t_list *stack)
 		current = current->next;
 	}
 	return (0);
+}
+
+int	is_arg_integer(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] == '+' || arg[i] == '-')
+		i++;
+	if (!arg[i])
+		return (0);
+	while (arg[i])
+	{
+		if (!ft_isdigit(arg[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

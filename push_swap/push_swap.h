@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/20 19:38:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:04:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,17 @@ void	do_rrb(t_list **stackb);
 void	do_rrr(t_list **stacka, t_list **stackb);
 t_list	*generate_stack(int argc, char *argv[]);
 t_list	*fill_stack(char *argv[], int start);
-void    print_stack(t_list **first);
+void	print_stack(t_list **first);
 void	free_stack(t_list **stack);
 void	free_array(char **words);
-int     is_sorted(t_list **stack);
-t_list  *find_min(t_list **stack);
+int		is_sorted(t_list **stack);
+t_list	*find_min(t_list **stack);
 void	fill_index(t_list **stack);
 void	fill_position(t_list **stack);
 void	update_stacks_positions(t_list **stacka, t_list **stackb);
 void	two_args(t_list **stack);
 void	three_args(t_list **stack);
-int     is_duplicated(t_list *stack);
+int		is_duplicated(t_list *stack);
+int		is_arg_integer(char *arg);
 
 #endif

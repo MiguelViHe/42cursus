@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:16:34 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/20 20:06:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/24 23:03:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_list	*fill_stack(char *argv[], int start)
 	i = start;
 	while (argv[i])
 	{
+		if (!is_arg_integer(argv[i]))
+			return (free_stack(&stack), NULL);
 		number = (int *)malloc(sizeof(int));
 		if (!number)
 			return (free_stack(&stack), NULL);
