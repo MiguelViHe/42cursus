@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:31:39 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/20 19:38:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:04:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,23 @@ static int	ft_isspace(int c)
 
 /*Return an int number converted fron de string str given.Accepts spaces
 and check sign. It stops converting when find a non-digit value.*/
-int	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
-	long long int	number;
-	int	sign;
-	int	i;
+	long	number;
+	int		sign;
+	int		i;
 
 	number = 0;
 	sign = 1;
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	if (str[i] == '-')
+	while (str[i] == '+' || str[i] == '-')
 	{
-		sign = -sign;
+		if (str[i] == '-')
+			sign = -sign;
 		i++;
 	}
-	else if (str[i] == '+')
-		i++;
 	while (ft_isdigit(str[i]))
 	{
 		number = number * 10 + (str[i] - '0');

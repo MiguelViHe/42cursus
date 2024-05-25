@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:16:34 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/24 23:03:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:39:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_list	*fill_stack(char *argv[], int start)
 {
 	int		i;
-	int		*number;
+	long	*number;
 	t_list	*stack;
 	t_list	*new;
 
@@ -25,10 +25,12 @@ t_list	*fill_stack(char *argv[], int start)
 	{
 		if (!is_arg_integer(argv[i]))
 			return (free_stack(&stack), NULL);
-		number = (int *)malloc(sizeof(int));
+		number = (long *)malloc(sizeof(long));
 		if (!number)
 			return (free_stack(&stack), NULL);
-		*number = ft_atoi(argv[i]);
+		*number = ft_atol(argv[i]);
+		if (!is_limits_integer(*number))
+			return (free(number), free_stack(&stack), NULL);
 		new = ft_lstnew(number);
 		if (!new)
 			return (free(number), free_stack(&stack), NULL);

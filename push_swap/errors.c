@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 12:23:38 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/24 23:28:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:33:20 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,12 @@ int	is_arg_integer(char *arg)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	is_limits_integer(long number)
+{
+	if (number > 2147483647 || number < -2147483648)
+		return (0);
 	return (1);
 }
