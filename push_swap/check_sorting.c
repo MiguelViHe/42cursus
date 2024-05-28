@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 18:26:47 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/15 12:44:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/27 12:56:09 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	is_sorted(t_list **stack)
 {
 	t_list	*current;
 
-	if(!(*stack))
+	if (!(*stack))
 		return (-1);
 	current = *stack;
-	while(current->next)
-	{	
-		if(*(int *)current->content < *(int *)current->next->content)
+	while (current->next)
+	{
+		if (*(int *)current->content < *(int *)current->next->content)
 			current = current->next;
 		else
 			return (0);

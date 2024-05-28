@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 13:16:34 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/25 13:39:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/27 12:54:47 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_list	*generate_stack(int argc, char *argv[])
 {
 	t_list	*stack;
 	char	**result;
-	
+
 	stack = NULL;
 	if (argc < 2)
 		return (stack);

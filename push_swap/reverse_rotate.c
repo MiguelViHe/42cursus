@@ -6,19 +6,19 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:58:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/15 11:26:04 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/28 10:24:20 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h" 
 
-static void reverse(t_list **stack)
+static void	reverse(t_list **stack)
 {
 	t_list	*prev;
 	t_list	*last;
 
 	if (stack == NULL || ft_lstsize(*stack) < 2)
-		return;
+		return ;
 	last = ft_lstlast(*stack);
 	prev = ft_lstprev(*stack, last);
 	last->next = *stack;

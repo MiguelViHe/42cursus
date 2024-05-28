@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/20 12:11:59 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/28 10:50:13 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	print_stack(t_list **first)
 		aux = *first;
 		while (aux)
 		{
-			ft_printf("[%d,i(%d), p(%d)]-> ", *(int *)aux->content, aux->index, aux->position);
+			ft_printf("[%d,i(%d)", *(int *)aux->content, aux->index);
+			ft_printf(", p(%d)]-> ", aux->position);
 			aux = aux->next;
 		}
 	}
@@ -37,7 +38,8 @@ void	print_inverse_stack(t_list **first)
 		aux = ft_lstlast(*first);
 		while (aux)
 		{
-			ft_printf("[%d,i(%d), p(%d)]-> ", *(int *)aux->content, aux->index, aux->position);
+			ft_printf("[%d,i(%d)", *(int *)aux->content, aux->index);
+			ft_printf(", p(%d)]-> ", aux->position);
 			aux = aux->prev;
 		}
 	}

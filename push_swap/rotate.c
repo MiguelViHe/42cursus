@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:43:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/15 11:25:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/28 10:27:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	rotate(t_list **stack)
 	t_list	*last;
 
 	if (stack == NULL || ft_lstsize(*stack) < 2)
-		return;
+		return ;
 	first = (*stack)->next;
 	last = ft_lstlast(*stack);
 	last->next = *stack;
