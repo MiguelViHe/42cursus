@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/28 10:50:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/28 11:55:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,15 +97,6 @@ int	main(int argc, char *argv[])
 	if (!stka || is_duplicated(*stka))
 		ft_printf("Error\n");
 	else if (!is_sorted(stka))
-	{
-		fill_index(stka);
-		fill_position(stka);
-		//ft_printf("esta duplicado?: %d\n", is_duplicated(*stka));
-		//funcion ordenar
-		print_stack(stka);
-		do_sa(stka);
-		print_stack(stka);
-		free_stack(stka);
-	}
+		sort_stack(stka);
 	free(stka);
 }
