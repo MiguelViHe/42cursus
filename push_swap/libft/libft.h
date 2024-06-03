@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/25 13:05:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:03:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_list
 	void			*content;
 	int				index;
 	int				position;
+	int				cost;
 	struct s_list	*next;
 	struct s_list	*prev;
 }	t_list;

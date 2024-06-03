@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 09:44:14 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:56:35 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	sort_stack(t_list **stacka)
 	
 	fill_index(stacka);
 	fill_position(stacka);
+	calculate_cost(stacka);
 	size = ft_lstsize(*stacka);
 	if (size == 2)
 		two_args(stacka);
