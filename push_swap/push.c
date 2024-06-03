@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:26:08 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/28 10:45:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/30 20:08:06 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 /*	Pushes the top element of stackx to the top of stacky*/
 
-static void	push(t_list **stackx, t_list **stacky)
+static int	push(t_list **stackx, t_list **stacky)
 {
 	t_list	*firstx;
 
 	if (stackx == NULL || ft_lstsize(*stackx) < 1)
-		return ;
+		return (0);
 	firstx = (*stackx)->next;
 	(*stackx)->next = *stacky;
 	*stacky = *stackx;
@@ -28,6 +28,7 @@ static void	push(t_list **stackx, t_list **stacky)
 		(*stacky)->next->prev = *stacky;
 	if (*stackx)
 		(*stackx)->prev = NULL;
+	return (1);
 }
 
 /*	Pushes the top element of stack b to the top of stack a.
@@ -35,9 +36,11 @@ static void	push(t_list **stackx, t_list **stacky)
 
 void	do_pa(t_list **stacka, t_list **stackb)
 {
-	push(stackb, stacka);
-	update_stacks_positions(stacka, stackb);
-	ft_printf("pa\n");
+	if (push(stackb, stacka))
+	{
+		update_stacks_positions(stacka, stackb);
+		ft_printf("pa\n");
+	}
 }
 
 /*	Pushes the top element of stack a to the top of stack b.
@@ -45,7 +48,9 @@ void	do_pa(t_list **stacka, t_list **stackb)
 
 void	do_pb(t_list **stacka, t_list **stackb)
 {
-	push(stacka, stackb);
-	update_stacks_positions(stacka, stackb);
-	ft_printf("pb\n");
+	if (push(stacka, stackb))
+	{
+		update_stacks_positions(stacka, stackb);
+		ft_printf("pb\n");
+	}
 }

@@ -6,19 +6,19 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:58:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/28 10:24:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/05/30 19:40:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h" 
 
-static void	reverse(t_list **stack)
+static int	reverse(t_list **stack)
 {
 	t_list	*prev;
 	t_list	*last;
 
 	if (stack == NULL || ft_lstsize(*stack) < 2)
-		return ;
+		return (0);
 	last = ft_lstlast(*stack);
 	prev = ft_lstprev(*stack, last);
 	last->next = *stack;
@@ -26,6 +26,7 @@ static void	reverse(t_list **stack)
 	last->prev = NULL;
 	(*stack)->prev = last;
 	*stack = last;
+	return (1);
 }
 
 /*	Brings the bottom element of the stack a to the top.
@@ -33,9 +34,11 @@ static void	reverse(t_list **stack)
 
 void	do_rra(t_list **stacka)
 {
-	reverse(stacka);
-	fill_position(stacka);
-	ft_printf("rra\n");
+	if (reverse(stacka))
+	{
+		fill_position(stacka);
+		ft_printf("rra\n");
+	}
 }
 
 /*	Brings the bottom element of the stack b to the top.
@@ -43,9 +46,11 @@ void	do_rra(t_list **stacka)
 
 void	do_rrb(t_list **stackb)
 {
-	reverse(stackb);
-	fill_position(stackb);
-	ft_printf("rrb\n");
+	if (reverse(stackb))
+	{
+		fill_position(stackb);
+		ft_printf("rrb\n");
+	}
 }
 
 /*	Brings the bottom elements of the stack a and the stack b to the top.
@@ -53,8 +58,14 @@ void	do_rrb(t_list **stackb)
 
 void	do_rrr(t_list **stacka, t_list **stackb)
 {
-	reverse(stacka);
-	reverse(stackb);
-	update_stacks_positions(stacka, stackb);
-	ft_printf("rrr\n");
+	if (stacka != NULL && ft_lstsize(*stacka) >= 2
+			&& stackb != NULL && ft_lstsize(*stackb) >= 2)
+	{
+		reverse(stacka);
+		reverse(stackb);
+		update_stacks_positions(stacka, stackb);
+		ft_printf("rrr\n");
+	}
+	
+	
 }
