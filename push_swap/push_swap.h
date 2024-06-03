@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 18:26:17 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 00:26:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	print_stack(t_list **first);
 void	free_stack(t_list **stack);
 void	free_array(char **words);
 int		is_sorted(t_list **stack);
-t_list	*find_min(t_list **stack);
 void	fill_index(t_list **stack);
 void	fill_position(t_list **stack);
 void	update_stacks_positions(t_list **stacka, t_list **stackb);
@@ -42,6 +41,8 @@ int		is_duplicated(t_list *stack);
 int		is_arg_integer(char *arg);
 int		is_limits_integer(long number);
 void	sort_stack(t_list **stacka);
-int     calculate_cost(t_list **stacka, t_list **stackb);
+int		calculate_cost(t_list **stacka, t_list **stackb);
+int		lst_min(t_list **stack);
+int		lst_max(t_list **stack);
 
 #endif
