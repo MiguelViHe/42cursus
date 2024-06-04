@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:58:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 13:31:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 18:25:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(void *content)
 	elem->content = content;
 	elem->index = -1;
 	elem->position = -1;
-	elem->cost = -1;
+	elem->cost = 0;
 	elem->next = NULL;
 	elem->prev = NULL;
 	return (elem);

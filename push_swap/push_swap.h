@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/04 13:55:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 19:17:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ int		is_duplicated(t_list *stack);
 int		is_arg_integer(char *arg);
 int		is_limits_integer(long number);
 void	sort_stack(t_list **stacka);
-int		calculate_cost(t_list **stacka, t_list **stackb);
+void	calculate_cost(t_list **stacka, t_list **stackb);
 t_list	*lst_min(t_list **stack);
 t_list	*lst_max(t_list **stack);
+int     ft_abs(int number);
 
 #endif
