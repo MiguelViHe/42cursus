@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 18:25:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:22:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	sort_stack(t_list **stacka)
 		ft_printf("Más largo\n");
 		print_stack(stacka);
 		print_stack(&stackb);
+		do_pb(stacka, &stackb);
 		do_pb(stacka, &stackb);
 		do_pb(stacka, &stackb);
 		do_pb(stacka, &stackb);

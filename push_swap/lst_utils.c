@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 00:11:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/04 00:26:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:00:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,42 @@
 
 //Find and return de index of the smallest element.
 
-int	lst_min(t_list **stack)
+t_list	*lst_min(t_list **stack)
 {
 	t_list	*aux;
-	int		min;
+	t_list	*min;
 
 	if (!*stack)
-		return (-1);
+		return (NULL);
 	aux = *stack;
-	min = aux->index;
+	min = aux;
 	aux = aux->next;
 	while (aux)
 	{
-		if (aux->index < min)
-			min = aux->index;
+		if (aux->index < min->index)
+			min = aux;
 		aux = aux->next;
 	}
+	return (min);
 }
 
 //Find and return de index of the biggest element.
 
-int	lst_max(t_list **stack)
+t_list	*lst_max(t_list **stack)
 {
 	t_list	*aux;
-	int		max;
+	t_list	*max;
 
 	if (!*stack)
-		return (-1);
+		return (NULL);
 	aux = *stack;
-	max = aux->index;
+	max = aux;
 	aux = aux->next;
 	while (aux)
 	{
-		if (aux->index > max)
-			max = aux->index;
+		if (aux->index > max->index)
+			max = aux;
 		aux = aux->next;
 	}
+	return (max);
 }

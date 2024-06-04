@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 13:34:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/04 14:25:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	print_stack(t_list **first)
 		aux = *first;
 		while (aux)
 		{
-			ft_printf("[%d,i(%d)", *(int *)aux->content, aux->index);
-			ft_printf(", p(%d)", aux->position);
-			ft_printf(", c(%d)]-> ", aux->cost);
+			ft_printf("[%d ,i%d", *(int *)aux->content, aux->index);
+			ft_printf(", p%d", aux->position);
+			ft_printf(", c%d]-> ", aux->cost);
 			aux = aux->next;
 		}
 	}
@@ -39,9 +39,9 @@ void	print_inverse_stack(t_list **first)
 		aux = ft_lstlast(*first);
 		while (aux)
 		{
-			ft_printf("[%d,i(%d)", *(int *)aux->content, aux->index);
-			ft_printf(", p(%d)", aux->position);
-			ft_printf(", c(%d)]-> ", aux->cost);
+			ft_printf("[%d ,i%d", *(int *)aux->content, aux->index);
+			ft_printf(", p%d", aux->position);
+			ft_printf(", c%d]-> ", aux->cost);
 			aux = aux->prev;
 		}
 	}
