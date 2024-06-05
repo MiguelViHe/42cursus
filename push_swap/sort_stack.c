@@ -6,21 +6,16 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/04 19:38:45 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:51:07 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	sort_long_stack(t_list **stacka)
-{
-	
-}*/
-
 void	sort_stack(t_list **stacka)
 {
 	int	size;
-	t_list	*stackb;
+	//t_list	*stackb;
 	
 	fill_index(stacka);
 	fill_position(stacka);
@@ -31,25 +26,25 @@ void	sort_stack(t_list **stacka)
 		three_args(stacka);
 	else
 	{
-		stackb = NULL;
+		sort_long_stack(stacka);
+		/*stackb = NULL;
 		//ft_printf("Más largo\n");
 		//print_stack(stacka);
 		//print_stack(&stackb);
 		do_pb(stacka, &stackb);
 		do_pb(stacka, &stackb);
-		do_pb(stacka, &stackb);
 		print_stack(stacka);
 		print_stack(&stackb);
 		calculate_cost(stacka, &stackb);
-		/*do_rr(stacka, &stackb);
+		//do_rr(stacka, &stackb);
+		//print_stack(stacka);
+		//print_stack(&stackb);
+		//do_rrr(stacka, &stackb);
+		//print_stack(stacka);
+		//print_stack(&stackb);
+		//do_ss(stacka, &stackb);
 		print_stack(stacka);
-		print_stack(&stackb);
-		do_rrr(stacka, &stackb);
-		print_stack(stacka);
-		print_stack(&stackb);
-		do_ss(stacka, &stackb);*/
-		print_stack(stacka);
-		print_stack(&stackb);
+		print_stack(&stackb);*/
 	}
 	free_stack(stacka);
 }

@@ -6,13 +6,31 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:26:25 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/04 19:45:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:46:06 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int cost_to_top(t_list **stack, int pos)
+t_list	*choose_min_cost(t_list **stack)
+{
+	t_list	*aux;
+	t_list	*min_cost;
+
+	if (!*stack)
+		return (NULL);
+	aux = (*stack)->next;
+	min_cost = *stack;
+	while (aux)
+	{
+		if (aux->cost < min_cost->cost)
+			min_cost = aux;
+		aux = aux->next;
+	}
+	return min_cost;
+}
+
+int cost_to_top(t_list **stack, int pos)
 {
 	int		len;
 
@@ -23,7 +41,7 @@ static int cost_to_top(t_list **stack, int pos)
 			return ((len - pos) * -1);
 }
 
-static int	cost_to_pos(t_list	**stack, int ndx)
+int	cost_to_pos(t_list	**stack, int ndx)
 {
 	t_list	*aux;
 	t_list	*max;
