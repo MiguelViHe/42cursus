@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 10:57:49 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/06/05 18:43:15 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/06/06 17:33:46 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRCS =	push_swap.c \
 		numbers.c \
 		sort_long.c \
 		move_to_b.c \
+		opposite_movs.c \
+		same_mov.c \
 		
 OBJS = $(SRCS:.c=.o)
 
