@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:26:25 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/05 18:46:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:34:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	calculate_cost(t_list **stacka, t_list **stackb)
 	{
 		costa = cost_to_top(stacka, aux->position);
 		costb = cost_to_pos(stackb, aux->index);
-		ft_printf("index = %d: costa = %d, costb = %d\n", aux->index, costa, costb);
+		//ft_printf("index = %d: costa = %d, costb = %d\n", aux->index, costa, costb);
 		aux->cost = combinated_cost(costa, costb) + 1;
 		aux = aux->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/05 16:51:07 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:35:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,6 @@ void	sort_stack(t_list **stacka)
 	else if (size == 3)
 		three_args(stacka);
 	else
-	{
 		sort_long_stack(stacka);
-		/*stackb = NULL;
-		//ft_printf("Más largo\n");
-		//print_stack(stacka);
-		//print_stack(&stackb);
-		do_pb(stacka, &stackb);
-		do_pb(stacka, &stackb);
-		print_stack(stacka);
-		print_stack(&stackb);
-		calculate_cost(stacka, &stackb);
-		//do_rr(stacka, &stackb);
-		//print_stack(stacka);
-		//print_stack(&stackb);
-		//do_rrr(stacka, &stackb);
-		//print_stack(stacka);
-		//print_stack(&stackb);
-		//do_ss(stacka, &stackb);
-		print_stack(stacka);
-		print_stack(&stackb);*/
-	}
 	free_stack(stacka);
 }

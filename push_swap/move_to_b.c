@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:24:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/06 17:49:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:55:09 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	move_to_b(t_list **stacka, t_list **stackb, t_list *elem)
 		opposite_movs(stacka, stackb, costa, costb);
 	else //si es mayor que 0 es decis ambos negativos o ambos positivos.
 		same_mov(stacka, stackb, costa, costb);
+	elem->cost = 0;
 	do_pb(stacka, stackb);
 }

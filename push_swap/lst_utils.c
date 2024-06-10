@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 00:11:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/04 14:00:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:28:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//Find and return de index of the smallest element.
+//Find and return the smallest element.
 
 t_list	*lst_min(t_list **stack)
 {
@@ -33,7 +33,7 @@ t_list	*lst_min(t_list **stack)
 	return (min);
 }
 
-//Find and return de index of the biggest element.
+//Find and return the biggest element.
 
 t_list	*lst_max(t_list **stack)
 {
