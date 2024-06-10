@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:57:09 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/30 19:37:33 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:23:13 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void	do_sb(t_list **stackb)
 
 void	do_ss(t_list **stacka, t_list **stackb)
 {
-	
 	if (stacka != NULL && ft_lstsize(*stacka) >= 2
-			&& stackb != NULL && ft_lstsize(*stackb) >= 2)
+		&& stackb != NULL && ft_lstsize(*stackb) >= 2)
 	{
 		swap(stacka);
 		swap(stackb);

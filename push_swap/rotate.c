@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:43:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/30 19:39:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:24:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,11 @@ void	do_rb(t_list **stackb)
 void	do_rr(t_list **stacka, t_list **stackb)
 {
 	if (stacka != NULL && ft_lstsize(*stacka) >= 2
-			&& stackb != NULL && ft_lstsize(*stackb) >= 2)
+		&& stackb != NULL && ft_lstsize(*stackb) >= 2)
 	{
 		rotate(stacka);
 		rotate(stackb);
 		update_stacks_positions(stacka, stackb);
 		ft_printf("rr\n");
 	}
-	
-	
 }

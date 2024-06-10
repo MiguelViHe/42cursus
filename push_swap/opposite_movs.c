@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/06 17:34:43 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/10 20:19:33 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	opposite_ra_rrb(t_list **stacka, t_list **stackb, int costa, int costb)
+static void	oppo_ra_rrb(t_list **stacka, t_list **stackb, int costa, int costb)
 {
 	int	abs_a;
 	int	abs_b;
@@ -34,7 +34,7 @@ static void	opposite_ra_rrb(t_list **stacka, t_list **stackb, int costa, int cos
 	}
 }
 
-static void	opposite_rra_rb(t_list **stacka, t_list **stackb, int costa, int costb)
+static void	oppo_rra_rb(t_list **stacka, t_list **stackb, int costa, int costb)
 {
 	int	abs_a;
 	int	abs_b;
@@ -59,7 +59,7 @@ static void	opposite_rra_rb(t_list **stacka, t_list **stackb, int costa, int cos
 void	opposite_movs(t_list **stacka, t_list **stackb, int costa, int costb)
 {
 	if (costa > costb)
-		opposite_ra_rrb(stacka, stackb, costa, costb);
+		oppo_ra_rrb(stacka, stackb, costa, costb);
 	else if (costa < costb)
-		opposite_rra_rb(stacka, stackb, costa, costb);
+		oppo_rra_rb(stacka, stackb, costa, costb);
 }
