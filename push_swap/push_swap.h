@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:08:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:44:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_list	*choose_min_cost(t_list **stack);
 t_list	*lst_min(t_list **stack);
 t_list	*lst_max(t_list **stack);
 int		ft_abs(int number);
+int		ft_biggest(int num1, int num2);
 void	sort_long_stack(t_list **stacka);
 void	top(t_list	**s, t_list *e, void (*f)(t_list **), void (*u)(t_list **));
 void	move_to_b(t_list **stacka, t_list **stackb, t_list *elem);
