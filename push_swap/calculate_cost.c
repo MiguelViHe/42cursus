@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculate_cost.c                                   :+:      :+:    :+:   */
+/*   calculate_cost_copy.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 18:26:25 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:37:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/11 17:55:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,22 @@ t_list	*choose_min_cost(t_list **stack)
 		aux = aux->next;
 	}
 	return (min_cost);
+}
+
+int	best_cost(int costop, int costpos, int size_a, int size_b)
+{
+	int	cost;
+	int	bad_a;
+	int	bad_b;
+
+	cost = ft_abs(costop) + ft_abs(costpos);
+	bad_a = size_a - ft_abs(costop);
+	bad_b = size_b - ft_abs(costpos);
+	if (cost > ft_biggest(ft_abs(costop), bad_b))
+		cost = ft_biggest(ft_abs(costop), bad_b);
+	if (cost > ft_biggest(ft_abs(costpos), bad_a))
+		cost = ft_biggest(ft_abs(costpos), bad_a);
+	return (cost);
 }
 
 /*Calculates the cost of moving the element in the position "pos" to the 
@@ -75,7 +91,7 @@ int	cost_to_pos(t_list	**stack, int ndx)
 	return (costpos);
 }
 
-static int	combinated_cost(int costop, int costpos)
+static int	combinated_cost(int costop, int costpos, int size_a, int size_b)
 {
 	int	abs_costop;
 	int	abs_costpos;
@@ -83,7 +99,7 @@ static int	combinated_cost(int costop, int costpos)
 	abs_costop = ft_abs(costop);
 	abs_costpos = ft_abs(costpos);
 	if (costop * costpos <= 0)
-		return (abs_costop + abs_costpos);
+		return (best_cost(costop, costpos, size_a, size_b));
 	else
 	{
 		if (abs_costop >= abs_costpos)
@@ -100,13 +116,17 @@ void	calculate_cost(t_list **stacka, t_list **stackb)
 	t_list	*aux;
 	int		costa;
 	int		costb;
+	int		size_a;
+	int		size_b;
 
 	aux = *stacka;
+	size_a = ft_lstsize(*stacka);
+	size_b = ft_lstsize(*stackb);
 	while (aux)
 	{
 		costa = cost_to_top(stacka, aux->position);
 		costb = cost_to_pos(stackb, aux->index);
-		aux->cost = combinated_cost(costa, costb) + 1;
+		aux->cost = combinated_cost(costa, costb, size_a, size_b) + 1;
 		aux = aux->next;
 	}
 }

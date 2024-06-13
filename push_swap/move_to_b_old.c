@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   move_to_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/12 13:24:28 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/06/05 18:24:45 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/06/12 11:54:31 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_stack(t_list **stacka)
+void	move_to_b(t_list **stacka, t_list **stackb, t_list *elem)
 {
-	int	size;
+	int	costa;
+	int	costb;
 
-	fill_index(stacka);
-	fill_position(stacka);
-	size = ft_lstsize(*stacka);
-	if (size == 2)
-		two_args(stacka);
-	else if (size == 3)
-		three_args(stacka);
+	costa = cost_to_top(stacka, elem->position);
+	costb = cost_to_pos(stackb, elem->index);
+	if (costa * costb < 0)
+		opposite_movs(stacka, stackb, costa, costb);
 	else
-		sort_long_stack(stacka);
-	//ft_printf("FINAL:\n");
-	//print_stack(stacka);
-	free_stack(stacka);
+		same_mov(stacka, stackb, costa, costb);
+	elem->cost = 0;
+	do_pb(stacka, stackb);
 }
