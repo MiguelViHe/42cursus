@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/29 10:57:49 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/06/13 12:54:36 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/06/13 13:27:50 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS =	push_swap.c \
 		reverse_rotate.c \
 		free.c \
 		errors.c \
+		print_error.c \
 		index_stack.c \
 		position_stack.c \
 		sort_basics.c \
