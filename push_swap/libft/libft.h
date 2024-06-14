@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/03 14:03:49 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:59:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define LIBFT_H
 # include <stdlib.h> //stdlib for malloc
 # include <unistd.h> //unistd for files (open, write, close...)
+# include <fcntl.h>  //O_RDONLY
+# include <stddef.h> //size_t
+# include <limits.h> //OPEN_MAX
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 typedef struct s_list
 {
@@ -70,5 +77,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_list	*ft_lstprev(t_list *lst, t_list *find_prev);
+char	*get_next_line(int fd);
+int		is_eol(char	*str);
 
 #endif

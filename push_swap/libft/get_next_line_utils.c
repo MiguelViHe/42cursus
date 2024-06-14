@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/14 18:15:00 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/02/26 18:14:22 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/06/14 17:37:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+/*#include <stddef.h> //size_t
 
-void	sort_stack(t_list **stacka)
+size_t	ft_strlen(const char *s)
 {
-	int	size;
+	size_t	counter;
 
-	fill_index(stacka);
-	fill_position(stacka);
-	size = ft_lstsize(*stacka);
-	if (size == 2)
-		two_args(stacka);
-	else if (size == 3)
-		three_args(stacka);
-	else
-		sort_long_stack(stacka);
-	//ft_printf("FINAL:\n");
-	//print_stack(stacka);
+	counter = 0;
+	while (s[counter])
+		counter++;
+	return (counter);
+}*/
+
+int	is_eol(char	*str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		i++;
+	}
+	if (str[i] == '\n')
+		return (1);
+	return (0);
 }

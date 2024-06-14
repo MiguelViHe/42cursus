@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:03:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/13 13:30:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/14 18:14:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,17 @@ void	print_inverse_stack(t_list **first)
 
 int	main(int argc, char *argv[])
 {
-	t_list	**stka;
+	t_list	*stka;
 
 	if (argc > 1)
 	{
-		stka = (t_list **)malloc(sizeof(t_list *));
-		*stka = generate_stack(argc, argv);
-		if (!stka || is_duplicated(*stka))
+		stka = generate_stack(argc, argv);
+		if (!stka || is_duplicated(stka))
 			ft_print_error();
-		else if (!is_sorted(stka))
-			sort_stack(stka);
-		free(stka);
+		else if (!is_sorted(&stka))
+		{
+			sort_stack(&stka);
+			free_stack(&stka);
+		}
 	}
 }

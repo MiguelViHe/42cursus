@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_stack.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/14 18:15:00 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/06/14 12:22:13 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/06/14 12:55:28 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	sort_stack(t_list **stacka)
+int	main(int argc, char *argv[])
 {
-	int	size;
+	t_list	*stka;
 
-	fill_index(stacka);
-	fill_position(stacka);
-	size = ft_lstsize(*stacka);
-	if (size == 2)
-		two_args(stacka);
-	else if (size == 3)
-		three_args(stacka);
-	else
-		sort_long_stack(stacka);
-	//ft_printf("FINAL:\n");
-	//print_stack(stacka);
+	if (argc > 1)
+	{
+		stka = generate_stack(argc, argv);
+		if (!stka || is_duplicated(stka))
+			ft_print_error();
+	}
 }
