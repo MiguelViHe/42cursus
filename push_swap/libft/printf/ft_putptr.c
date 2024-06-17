@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/15 12:25:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/04 17:59:56 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/02/16 17:55:31 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/06/17 12:35:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-//#include "libft/libft.h"
+//#include "ft_printf.h"
+#include "../libft.h" //enlazar ft_strlcpy.Si no crear en utils
 
-int	ft_nbrlen_base(unsigned int nbr, size_t baselen)
+int	ft_ptrlen_hexa(unsigned long long nbr)
 {
+	size_t			baselen;
 	unsigned int	counter;
 
-	counter = 0;
+	baselen = 16;
+	counter = 2;
 	while (nbr)
 	{
 		counter++;
@@ -26,14 +28,17 @@ int	ft_nbrlen_base(unsigned int nbr, size_t baselen)
 	return (counter);
 }
 
-int	ft_putnbr_base(unsigned int nbr, char *base, size_t baselen)
+int	ft_putptr_hexa(unsigned long long nbr)
 {
+	char	base[17];
+	size_t	baselen;
+
+	baselen = 16;
+	ft_strlcpy(base, "0123456789abcdef", 17);
 	if (nbr >= baselen)
 	{
-		if (ft_putnbr_base(nbr / baselen, base, baselen) < 0)
-			return (-1);
-		if (ft_putnbr_base(nbr % baselen, base, baselen) < 0)
-			return (-1);
+		ft_putptr_hexa(nbr / baselen);
+		ft_putptr_hexa(nbr % baselen);
 	}
 	else
 	{
@@ -43,16 +48,21 @@ int	ft_putnbr_base(unsigned int nbr, char *base, size_t baselen)
 	return (1);
 }
 
-int	ft_base(unsigned int nbr, char *base)
+int	ft_putptr(unsigned long long nbr)
 {
-	size_t	baselen;
+	int	control;
 
-	if (!base)
-		return (0);
-	if (nbr == 0)
-		return (ft_putchar('0'));
-	baselen = ft_strlen(base);
-	if (ft_putnbr_base(nbr, base, baselen) < 0)
+	if (ft_putstr("0x") < 0)
 		return (-1);
-	return (ft_nbrlen_base(nbr, baselen));
+	if (nbr == 0)
+	{
+		control = ft_putchar('0');
+		if (control < 0)
+			return (-1);
+		else
+			return (control + 2);
+	}
+	if (ft_putptr_hexa(nbr) < 0)
+		return (-1);
+	return (ft_ptrlen_hexa(nbr));
 }

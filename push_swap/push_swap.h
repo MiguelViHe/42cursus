@@ -6,14 +6,14 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:17:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/13 13:27:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:49:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h" 
-# include "printf/ft_printf.h"
+//# include "printf/ft_printf.h"
 
 void	do_sa(t_list **stacka);
 void	do_sb(t_list **stackb);

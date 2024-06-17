@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:13 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/17 11:00:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:16:53 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static void	check_rr(t_list **stka, t_list **stkb, char *line)
 
 static int	check_instruction(t_list **stka, t_list **stkb, char *line)
 {
+		print_stack(stka);
+		print_stack(stkb);
+		ft_printf("line. = %s\n", line);
 		if (line[0] == 'r' && line[1] == 'a' && line[2] == '\n')
 			do_ra(stka);
 		else if (line[0] == 'r' && line[1] == 'b' && line[2] == '\n')
@@ -62,12 +65,16 @@ static void	check_stack(t_list **stka, t_list **stkb, char *line)
 		if (okey)
 			line = get_next_line(0);
 	}
-	if (*stkb)
-		ft_printf("KO\n");
-	else if (!is_sorted(stka))
-		ft_printf("KO\n");
-	else
-		ft_printf("OK\n");
+	if (okey)
+	{
+		if (*stkb)
+			ft_printf("KO\n");
+		else if (!is_sorted(stka))
+			ft_printf("KO\n");
+		else
+			ft_printf("OK\n");
+	}
+	//ATENCION!!
 	free(line);
 }
 
@@ -79,6 +86,7 @@ int	main(int argc, char *argv[])
 
 	if (argc > 1)
 	{
+		stkb = NULL;
 		stka = generate_stack(argc, argv);
 		if (!stka || is_duplicated(stka))
 			ft_print_error();

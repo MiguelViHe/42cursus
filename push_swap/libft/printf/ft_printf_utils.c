@@ -6,13 +6,14 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:39:24 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/04 17:49:45 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:35:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+//#include "ft_printf.h"
+#include "../libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+/*size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	counter;
 	size_t	i;
@@ -39,7 +40,7 @@ size_t	ft_strlen(const char *s)
 	while (s[counter] != '\0')
 		counter++;
 	return (counter);
-}
+}*/
 
 int	ft_putchar(char c)
 {

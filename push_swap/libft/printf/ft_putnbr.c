@@ -6,11 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 23:01:42 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/03/04 17:57:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:34:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+//#include "ft_printf.h"
+#include "../libft.h"
 
 int	ft_nbrlen(int nbr)
 {

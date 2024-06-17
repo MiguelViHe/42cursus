@@ -44,6 +44,12 @@ SRCS =	ft_isalpha.c \
 		get_next_line.c \
 		get_next_line_utils.c \
 
+SRCS_PRINTF =	printf/ft_printf.c \
+				printf/ft_putnbr.c \
+				printf/ft_putnbr_base.c \
+				printf/ft_putptr.c \
+				printf/ft_printf_utils.c \
+
 SRCS_BONUS =	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \
 				ft_lstsize_bonus.c \
@@ -57,6 +63,8 @@ SRCS_BONUS =	ft_lstnew_bonus.c \
 
 OBJS = $(SRCS:.c=.o)
 
+OBJS_PRINTF = $(SRCS_PRINTF:.c=.o)
+
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 RM = rm -f
@@ -66,16 +74,16 @@ RM = rm -f
 
 all: $(NAME)
 
-bonus: $(OBJS_BONUS) $(OBJS)
-	$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus: $(OBJS_BONUS) $(OBJS) $(OBJS_PRINTF)
+	$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF) $(OBJS_BONUS)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(OBJS_PRINTF)
+	$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF)
 
 re: fclean all
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(OBJS_PRINTF)
 
 fclean: clean
 		$(RM) $(NAME)

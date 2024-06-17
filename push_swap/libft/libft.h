@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/14 16:59:08 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:33:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>  //O_RDONLY
 # include <stddef.h> //size_t
 # include <limits.h> //OPEN_MAX
+# include "printf/ft_printf.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
