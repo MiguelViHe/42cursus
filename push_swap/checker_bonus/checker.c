@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:22:13 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/17 17:16:53 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 18:05:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ static void	check_rr(t_list **stka, t_list **stkb, char *line)
 		do_rrr(stka, stkb);
 }
 
-static int	check_instruction(t_list **stka, t_list **stkb, char *line)
+static void	check_instruction(t_list **stka, t_list **stkb, char *line)
 {
-		print_stack(stka);
-		print_stack(stkb);
-		ft_printf("line. = %s\n", line);
 		if (line[0] == 'r' && line[1] == 'a' && line[2] == '\n')
 			do_ra(stka);
 		else if (line[0] == 'r' && line[1] == 'b' && line[2] == '\n')
@@ -47,34 +44,25 @@ static int	check_instruction(t_list **stka, t_list **stkb, char *line)
 			do_ss(stka, stkb);
 		else
 		{
+			free (line);
 			ft_print_error();
-			return (0);
 		}
-		return (1);
 }
 
 static void	check_stack(t_list **stka, t_list **stkb, char *line)
 {
-	int	okey;
-	
-	okey = 1;
-	while (line && okey)
+	while (line)
 	{
-		okey = check_instruction(stka, stkb, line);
+		check_instruction(stka, stkb, line);
 		free(line);
-		if (okey)
-			line = get_next_line(0);
+		line = get_next_line(0);
 	}
-	if (okey)
-	{
-		if (*stkb)
-			ft_printf("KO\n");
-		else if (!is_sorted(stka))
-			ft_printf("KO\n");
-		else
-			ft_printf("OK\n");
-	}
-	//ATENCION!!
+	if (*stkb)
+		ft_printf("KO\n");
+	else if (!is_sorted(stka))
+		ft_printf("KO\n");
+	else
+		ft_printf("OK\n");
 	free(line);
 }
 

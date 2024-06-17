@@ -6,11 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 13:25:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/17 17:29:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:49:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 
 void	ft_print_error(void)
 {
