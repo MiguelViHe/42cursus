@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 11:01:02 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/14 18:15:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:45:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,4 @@ void	sort_stack(t_list **stacka)
 		three_args(stacka);
 	else
 		sort_long_stack(stacka);
-	//ft_printf("FINAL:\n");
-	//print_stack(stacka);
 }

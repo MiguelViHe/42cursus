@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 10:57:09 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:23:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:59:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,34 @@ static int	swap(t_list **stack)
 /*	Swaps the top 2 elements of the stack a. 
 	Print "sa" to the standard output. */
 
-void	do_sa(t_list **stacka)
+void	do_sa(t_list **stacka, int print)
 {
 	if (swap(stacka))
-		ft_printf("sa\n");
+		if (print)
+			ft_printf("sa\n");
 }
 
 /*	Swaps the top 2 elements of the stack b. 
 	Print "sb" to the standard output. */
 
-void	do_sb(t_list **stackb)
+void	do_sb(t_list **stackb, int print)
 {
 	if (swap(stackb))
-		ft_printf("sb\n");
+		if (print)
+			ft_printf("sb\n");
 }
 
 /*	Swaps the top 2 elements of the stack A and the stack B. 
 	Print "ss" to the standard output. */
 
-void	do_ss(t_list **stacka, t_list **stackb)
+void	do_ss(t_list **stacka, t_list **stackb, int print)
 {
 	if (stacka != NULL && ft_lstsize(*stacka) >= 2
 		&& stackb != NULL && ft_lstsize(*stackb) >= 2)
 	{
 		swap(stacka);
 		swap(stackb);
-		ft_printf("ss\n");
+		if (print)
+			ft_printf("ss\n");
 	}
 }

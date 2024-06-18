@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:26:08 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/05/30 20:08:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:57:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,25 @@ static int	push(t_list **stackx, t_list **stacky)
 /*	Pushes the top element of stack b to the top of stack a.
 	Prints "pa" to the standard output. */
 
-void	do_pa(t_list **stacka, t_list **stackb)
+void	do_pa(t_list **stacka, t_list **stackb, int print)
 {
 	if (push(stackb, stacka))
 	{
 		update_stacks_positions(stacka, stackb);
-		ft_printf("pa\n");
+		if (print)
+			ft_printf("pa\n");
 	}
 }
 
 /*	Pushes the top element of stack a to the top of stack b.
 	Prints "pb" to the standard output. */
 
-void	do_pb(t_list **stacka, t_list **stackb)
+void	do_pb(t_list **stacka, t_list **stackb, int print)
 {
 	if (push(stacka, stackb))
 	{
 		update_stacks_positions(stacka, stackb);
-		ft_printf("pb\n");
+		if (print)
+			ft_printf("pb\n");
 	}
 }

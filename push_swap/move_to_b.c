@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_to_b_copy.c                                   :+:      :+:    :+:   */
+/*   move_to_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:24:45 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/12 13:13:32 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:15:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	choose_side(t_list **stacka, t_list **stackb, int costop, int costpos)
 	}
 	if (cost > ft_biggest(ft_abs(costpos), bad_a))
 	{
-		cost = ft_biggest(ft_abs(costpos), bad_a);
 		if (costpos > 0)
 			side = 2;
 		else
@@ -44,28 +43,28 @@ int	choose_side(t_list **stacka, t_list **stackb, int costop, int costpos)
 
 void	move_to_b(t_list **stka, t_list **stkb, t_list *elem)
 {
-	int	costa;
-	int	costb;
-	int side;
+	int	csta;
+	int	cstb;
+	int	side;
 
-	costa = cost_to_top(stka, elem->position);
-	costb = cost_to_pos(stkb, elem->index);
-	if (costa * costb < 0)
+	csta = cost_to_top(stka, elem->position);
+	cstb = cost_to_pos(stkb, elem->index);
+	if (csta * cstb < 0)
 	{
-		side = choose_side(stka, stkb, costa, costb);
+		side = choose_side(stka, stkb, csta, cstb);
 		if (side == 1)
-			same_mov(stka, stkb, costa, ft_lstsize(*stkb) - ft_abs(costb));
+			same_mov(stka, stkb, csta, ft_lstsize(*stkb) - ft_abs(cstb));
 		else if (side == -1)
-			same_mov(stka, stkb, costa, (ft_lstsize(*stkb) - ft_abs(costb)) * -1);
+			same_mov(stka, stkb, csta, (ft_lstsize(*stkb) - ft_abs(cstb)) * -1);
 		else if (side == 2)
-			same_mov(stka, stkb, ft_lstsize(*stka) - ft_abs(costa), costb);
+			same_mov(stka, stkb, ft_lstsize(*stka) - ft_abs(csta), cstb);
 		else if (side == -2)
-			same_mov(stka, stkb, (ft_lstsize(*stka) - ft_abs(costa)) * -1, costb);
+			same_mov(stka, stkb, (ft_lstsize(*stka) - ft_abs(csta)) * -1, cstb);
 		else if (side == 0)
-			opposite_movs(stka, stkb, costa, costb);
+			opposite_movs(stka, stkb, csta, cstb);
 	}
 	else
-		same_mov(stka, stkb, costa, costb);
+		same_mov(stka, stkb, csta, cstb);
 	elem->cost = 0;
-	do_pb(stka, stkb);
+	do_pb(stka, stkb, 1);
 }

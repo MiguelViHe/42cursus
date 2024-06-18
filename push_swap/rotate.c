@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:43:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:24:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:58:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,33 @@ static int	rotate(t_list **stack)
 /*	Sends the top element of the stack a to the bottom.
 	Print "ra" to the standard output.  */
 
-void	do_ra(t_list **stacka)
+void	do_ra(t_list **stacka, int print)
 {
 	if (rotate(stacka))
 	{
 		fill_position(stacka);
-		ft_printf("ra\n");
+		if (print)
+			ft_printf("ra\n");
 	}
 }
 
 /*	Sends the top element of the stack b to the bottom.
 	Print "rb" to the standard output.  */
 
-void	do_rb(t_list **stackb)
+void	do_rb(t_list **stackb, int print)
 {
 	if (rotate(stackb))
 	{
 		fill_position(stackb);
-		ft_printf("rb\n");
+		if (print)
+			ft_printf("rb\n");
 	}
 }
 
 /*	Sends the top elements of the stack a and the stack b to the bottom.
 	of their stacks. Print "rr" to the standard output.  */
 
-void	do_rr(t_list **stacka, t_list **stackb)
+void	do_rr(t_list **stacka, t_list **stackb, int print)
 {
 	if (stacka != NULL && ft_lstsize(*stacka) >= 2
 		&& stackb != NULL && ft_lstsize(*stackb) >= 2)
@@ -66,6 +68,7 @@ void	do_rr(t_list **stacka, t_list **stackb)
 		rotate(stacka);
 		rotate(stackb);
 		update_stacks_positions(stacka, stackb);
-		ft_printf("rr\n");
+		if (print)
+			ft_printf("rr\n");
 	}
 }

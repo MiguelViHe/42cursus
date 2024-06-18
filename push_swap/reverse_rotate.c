@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:58:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:29:54 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:57:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,33 @@ static int	reverse(t_list **stack)
 /*	Brings the bottom element of the stack a to the top.
 	Print "rra" to the standard output.  */
 
-void	do_rra(t_list **stacka)
+void	do_rra(t_list **stacka, int print)
 {
 	if (reverse(stacka))
 	{
 		fill_position(stacka);
-		ft_printf("rra\n");
+		if (print)
+			ft_printf("rra\n");
 	}
 }
 
 /*	Brings the bottom element of the stack b to the top.
 	Print "rrb" to the standard output.  */
 
-void	do_rrb(t_list **stackb)
+void	do_rrb(t_list **stackb, int print)
 {
 	if (reverse(stackb))
 	{
 		fill_position(stackb);
-		ft_printf("rrb\n");
+		if (print)
+			ft_printf("rrb\n");
 	}
 }
 
 /*	Brings the bottom elements of the stack a and the stack b to the top.
 	of their stacks. Print "rrr" to the standard output.  */
 
-void	do_rrr(t_list **stacka, t_list **stackb)
+void	do_rrr(t_list **stacka, t_list **stackb, int print)
 {
 	if (stacka != NULL && ft_lstsize(*stacka) >= 2
 		&& stackb != NULL && ft_lstsize(*stackb) >= 2)
@@ -64,6 +66,7 @@ void	do_rrr(t_list **stacka, t_list **stackb)
 		reverse(stacka);
 		reverse(stackb);
 		update_stacks_positions(stacka, stackb);
-		ft_printf("rrr\n");
+		if (print)
+			ft_printf("rrr\n");
 	}
 }

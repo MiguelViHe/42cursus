@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:04:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/10 20:19:33 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/06/18 13:12:17 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static void	oppo_ra_rrb(t_list **stacka, t_list **stackb, int costa, int costb)
 	{
 		if (abs_a > 0)
 		{
-			do_ra(stacka);
+			do_ra(stacka, 1);
 			abs_a--;
 		}
 		if (abs_b > 0)
 		{
-			do_rrb(stackb);
+			do_rrb(stackb, 1);
 			abs_b--;
 		}
 	}
@@ -45,12 +45,12 @@ static void	oppo_rra_rb(t_list **stacka, t_list **stackb, int costa, int costb)
 	{
 		if (abs_a > 0)
 		{
-			do_rra(stacka);
+			do_rra(stacka, 1);
 			abs_a--;
 		}
 		if (abs_b > 0)
 		{
-			do_rb(stackb);
+			do_rb(stackb, 1);
 			abs_b--;
 		}
 	}
