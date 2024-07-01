@@ -12,6 +12,9 @@
 
 #include "push_swap.h" 
 
+/*It builds every node of the list and add them at the end of the list.
+It cheks all the posible errors and free all if something is wrong. Return
+the built list*/
 t_list	*fill_stack(char *argv[], int start)
 {
 	int		i;
@@ -28,7 +31,7 @@ t_list	*fill_stack(char *argv[], int start)
 		number = (long *)malloc(sizeof(long));
 		if (!number)
 			return (free_stack(&stack), NULL);
-		*number = ft_atol(argv[i]);
+		*number = str_to_int(argv[i]);
 		if (!is_limits_integer(*number))
 			return (free(number), free_stack(&stack), NULL);
 		new = ft_lstnew(number);
@@ -40,6 +43,9 @@ t_list	*fill_stack(char *argv[], int start)
 	return (stack);
 }
 
+/*Build the stack with the list given as parameter. It takes into acount
+ if the list is between quotes (it uses split) or not, and then it uses
+ fill_stack. It returns the built stack*/
 t_list	*generate_stack(int argc, char *argv[])
 {
 	t_list	*stack;

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*Check if there is duplicated numbers in the stack.*/
 int	is_duplicated(t_list *stack)
 {
 	t_list	*current;
@@ -34,6 +34,8 @@ int	is_duplicated(t_list *stack)
 	return (0);
 }
 
+/*Check if the argument before transform to integer is 
+just numbers or it has another not valid characters.*/
 int	is_arg_integer(char *arg)
 {
 	int	i;
@@ -52,6 +54,7 @@ int	is_arg_integer(char *arg)
 	return (1);
 }
 
+/*Check if the number is in the limit of the integers*/
 int	is_limits_integer(long number)
 {
 	if (number > 2147483647 || number < -2147483648)

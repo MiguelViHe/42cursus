@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*Return the node with the min index that still has not index number */
 static t_list	*find_min(t_list **stack)
 {
 	t_list	*min;
@@ -31,6 +32,9 @@ static t_list	*find_min(t_list **stack)
 	return (min);
 }
 
+/*Fill the index of every node of the stack.
+Index is the final position of the node when it is sorted.
+It doesn't change during all the execution.*/
 void	fill_index(t_list **stack)
 {
 	t_list	*min;

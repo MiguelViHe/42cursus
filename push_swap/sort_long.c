@@ -12,6 +12,9 @@
 
 #include "push_swap.h"
 
+/*Move a node to the top of the stack
+It recieve as arguments the element to move and two funtions.
+The functions are for diference if is the stack A or B*/
 void	top(t_list	**s, t_list *e, void (*f)(t_list **, int),
 			void (*u)(t_list **, int))
 {
@@ -33,6 +36,8 @@ void	top(t_list	**s, t_list *e, void (*f)(t_list **, int),
 	}
 }
 
+/*Once B is inversed sorted, it psuh every node in B to A controlling
+that it is pushed to the correct position*/
 static void	sort_stack_a(t_list **stacka, t_list **stackb)
 {
 	t_list	*last;
@@ -58,7 +63,7 @@ static void	sort_stack_a(t_list **stacka, t_list **stackb)
 	}
 }
 
-/*Return the element with smallest cost in stack a*/
+/*Return the element with smallest cost in stack*/
 t_list	*choose_min_cost(t_list **stack)
 {
 	t_list	*aux;
@@ -77,6 +82,10 @@ t_list	*choose_min_cost(t_list **stack)
 	return (min_cost);
 }
 
+/*Sort B in reversed order till just three nodes left in A
+It calculates the cost in movements to take every node from A to its
+position in B.
+Then choose the node with min cost and move it to B stack*/
 static void	sort_stack_b(t_list **stacka, t_list **stackb)
 {
 	t_list	*elem;
@@ -92,6 +101,12 @@ static void	sort_stack_b(t_list **stacka, t_list **stackb)
 	}
 }
 
+/*Sort the stack when it has more then three nodes.
+First push two elements to B, 
+then continue pushing elements to B till it is reversed sorted and just
+three left in A.
+Then push everything to A. Because of B is reversed sorted just have to
+push to A one by one keeping the order in a till B is empty*/
 void	sort_long_stack(t_list **stacka)
 {
 	t_list	*stackb;

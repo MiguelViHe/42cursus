@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+/*Fill the position of every node of the stack.
+Position is the current position in the stack. It change with every movement*/
 void	fill_position(t_list **stack)
 {
 	t_list	*current;
@@ -28,6 +30,7 @@ void	fill_position(t_list **stack)
 	}
 }
 
+/*Update the position of both stacks. Used in push movements*/
 void	update_stacks_positions(t_list **stacka, t_list **stackb)
 {
 	fill_position(stacka);

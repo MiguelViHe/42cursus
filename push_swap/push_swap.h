@@ -45,11 +45,12 @@ void	sort_stack(t_list **stacka);
 void	calculate_cost(t_list **stacka, t_list **stackb);
 int		cost_to_top(t_list **stack, int pos);
 int		cost_to_pos(t_list	**stack, int ndx);
-t_list	*choose_min_cost(t_list **stack);
 t_list	*lst_min(t_list **stack);
 t_list	*lst_max(t_list **stack);
 int		ft_abs(int number);
 int		ft_biggest(int num1, int num2);
+long	str_to_int(const char *str);
+t_list	*choose_min_cost(t_list **stack);
 void	sort_long_stack(t_list **stacka);
 void	top(t_list	**s, t_list *e, void (*f)(t_list **, int),
 			void (*u)(t_list **, int));

@@ -14,14 +14,6 @@
 //#include <stdlib.h>
 #include "libft.h"
 
-//Return 1 when c is one of the values defined in isspace.
-static int	ft_isspace(int c)
-{
-	if ((c >= 9 && c <= 13) || c == 32)
-		return (1);
-	return (0);
-}
-
 /*Return an int number converted fron de string str given.Accepts spaces
 and check sign. It stops converting when find a non-digit value.*/
 long	ft_atol(const char *str)

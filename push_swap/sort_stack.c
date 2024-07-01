@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+/*Initialize the index and the position of every node of the list and
+check the length of the stack to sort two, three or longer stacks*/
 void	sort_stack(t_list **stacka)
 {
 	int	size;

@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*Sort stack when there are just two nodes*/
 void	two_args(t_list **stack)
 {
 	if (!*stack)
@@ -22,6 +23,7 @@ void	two_args(t_list **stack)
 		do_sa(stack, 1);
 }
 
+/*Sort stack when there are just three nodes*/
 void	three_args(t_list **stack)
 {
 	if (!*stack)
