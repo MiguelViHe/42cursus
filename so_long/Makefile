@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/07/02 19:15:20 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/07/04 17:50:55 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra #-g3 -fsanitize=address
 
-MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lbsd -lm -lz
 
 RM = rm -f
 
 SRCS =	so_long.c \
+		map_errors.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -31,7 +32,7 @@ MINILIBX_DIR = mlx_linux
 MINILIBX = $(MINILIBX_DIR)/libmlx_Linux.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
