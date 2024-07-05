@@ -7,6 +7,8 @@ AR = ar rcs
 CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS =	ft_printf.c \
+		ft_fdprintf.c \
+		ft_putoption.c \
 		ft_putnbr.c \
 		ft_putnbr_base.c \
 		ft_putptr.c \

@@ -48,6 +48,8 @@ SRCS_GNL =	gnl/get_next_line.c \
 			gnl/get_next_line_utils.c \
 
 SRCS_PRINTF =	printf/ft_printf.c \
+				printf/ft_fdprintf.c \
+				printf/ft_putoption.c \
 				printf/ft_putnbr.c \
 				printf/ft_putnbr_base.c \
 				printf/ft_putptr.c \

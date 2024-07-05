@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 20:47:20 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/17 12:35:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:47:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@
 %% para imprimir el símbolo del porcentaje.
 */
 
-int	ft_putoption(char option, va_list args)
-{
-	if (option == 'c')
-		return (ft_putchar(va_arg(args, int)));
-	else if (option == 's')
-		return (ft_putstr(va_arg(args, char *)));
-	else if (option == 'p')
-		return (ft_putptr(va_arg(args, unsigned long long)));
-	else if (option == 'd' || option == 'i')
-		return (ft_digit(va_arg(args, int)));
-	else if (option == 'u')
-		return (ft_base(va_arg(args, unsigned int), "0123456789"));
-	else if (option == 'x')
-		return (ft_base(va_arg(args, unsigned int), "0123456789abcdef"));
-	else if (option == 'X')
-		return (ft_base(va_arg(args, unsigned int), "0123456789ABCDEF"));
-	else if (option == '%')
-		return (ft_putchar(option));
-	return (0);
-}
-
 int	ft_printf(char const *str, ...)
 {
 	int			i;
@@ -61,9 +40,9 @@ int	ft_printf(char const *str, ...)
 	while (str[i])
 	{
 		if (str[i] != '%')
-			control = ft_putchar(str[i]);
+			control = ft_putchar(1, str[i]);
 		else
-			control = ft_putoption(str[++i], args);
+			control = ft_putoption(1, str[++i], args);
 		if (control < 0)
 			return (control);
 		counter += control;

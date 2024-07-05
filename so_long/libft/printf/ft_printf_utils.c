@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:39:24 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/06/17 12:35:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:36:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,27 @@ size_t	ft_strlen(const char *s)
 	return (counter);
 }*/
 
-int	ft_putchar(char c)
+int	ft_putchar(int fd, char c)
 {
-	if (write(1, &c, 1) < 0)
+	if (write(fd, &c, 1) < 0)
 		return (-1);
 	return (1);
 }
 
-int	ft_putstr(char *str)
+int	ft_putstr(int fd, char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
 	{
-		if (write(1, "(null)", 6) < 0)
+		if (write(fd, "(null)", 6) < 0)
 			return (-1);
 		return (6);
 	}
 	while (str[i])
 	{
-		if (write(1, &str[i], 1) < 0)
+		if (write(fd, &str[i], 1) < 0)
 			return (-1);
 		i++;
 	}
