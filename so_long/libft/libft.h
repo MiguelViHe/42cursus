@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 14:55:58 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/02 17:31:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/05 17:14:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h> //stdlib for malloc
+# include <stdlib.h> //stdlib for malloc, EXIT_FAILURE
 # include <unistd.h> //unistd for files (open, write, close...)
 # include <fcntl.h>  //O_RDONLY
 # include <stddef.h> //size_t

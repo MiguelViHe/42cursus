@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/07/04 17:50:55 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/07/08 19:44:43 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ RM = rm -f
 
 SRCS =	so_long.c \
 		map_errors.c \
+		check_map.c \
 
 OBJS = $(SRCS:.c=.o)
 

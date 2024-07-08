@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/04 17:48:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/08 12:14:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,10 @@ typedef struct s_data
 }	t_data;
 
 //map_errors.c
+void	wrong_map_exit(char *buffer, char *message, int free);
 void	check_arg_ber(char *name);
+
+//parse.c
+void	read_map(char *map_name);
 
 #endif
