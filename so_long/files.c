@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   files.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/09 11:56:04 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/07/09 10:53:15 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/07/09 11:54:47 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"	
+#include "libft/libft.h"
 
-int	main(int argc, char *argv[])
+int	secure_open(char *map_name)
 {
-	if (argc != 2)
+	int	fd;
+
+	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
 	{
-		ft_fdprintf(2, "Num args Error\n Try: %s name_map.ber\n", argv[0]);
-		return (-1);
+		ft_fdprintf(2, "Error opening file.\n");
+		exit(EXIT_FAILURE);
 	}
-	check_arg_ber(argv[1]);
-	read_map(argv[1]);
-	ft_printf("OKEY\n");
-	return (0);
+	return (fd);
+}
+
+void	secure_close(int fd)
+{
+	if (close(fd) == -1)
+	{
+		ft_fdprintf(2, "Error closing file.\n");
+		exit(EXIT_FAILURE);
+	}
 }

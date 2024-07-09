@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:51:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/08 19:43:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/09 11:55:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	check_arg_ber(char *name)
 	{
 		ft_fdprintf(2, "Error\nWrong map extension.\n");
 		exit(EXIT_FAILURE);
-	}	
+	}
 }

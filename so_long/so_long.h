@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/08 12:14:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/09 12:03:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 //strerror
 # include <string.h>
 
-typedef struct	s_map_elems
+typedef struct s_map_elems
 {
 	int	empty;
 	int	wall;
@@ -37,7 +37,7 @@ typedef struct	s_map_elems
 	int	player;
 }				t_map_elems;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int				width;
 	int				height;
@@ -66,5 +66,9 @@ void	check_arg_ber(char *name);
 
 //parse.c
 void	read_map(char *map_name);
+
+//files.c
+int		secure_open(char *map_name);
+void	secure_close(int fd);
 
 #endif
