@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/09 11:53:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/10 16:35:20 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*check_map_rectangular(int fd, char *buffer, size_t len_first_line)
 	size_t	current_len;
 
 	current_len = get_len_of_line(buffer);
+	if (buffer[0] == '\n')
+		wrong_map_exit(buffer, "Error\nEmpty lines are not allowed.", 1);
 	if (current_len != len_first_line)
 		wrong_map_exit(buffer, "Error\nMap is not rectangular.", 1);
 	free(buffer);
@@ -41,12 +43,13 @@ int	check_shape_map(char *map_name)
 	char	*buffer;
 	size_t	len_first_line;
 
-	buffer = NULL;
 	lines = 0;
 	fd = secure_open(map_name);
 	buffer = get_next_line(fd);
 	if (buffer == NULL)
 		wrong_map_exit(buffer, "Error\nReading line from map or empty map.", 0);
+	if (buffer[0] == '\n')
+		wrong_map_exit(buffer, "Error\nEmpty lines are not allowed.", 1);
 	len_first_line = get_len_of_line(buffer);
 	if (len_first_line < 3)
 		wrong_map_exit(buffer, "Error\nLines at least 3 colums.", 1);
@@ -68,5 +71,5 @@ void	read_map(char *map_name)
 
 	map_lines = check_shape_map(map_name);
 	ft_printf("map_lines = %d\n", map_lines);
-	//check_map_elems(map_name, map_lines, t_map_elems)
+	check_map_elems(map_name, map_lines);
 }

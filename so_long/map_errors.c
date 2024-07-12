@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:51:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/09 11:55:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/10 13:10:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	check_arg_ber(char *name)
 
 	len_total = ft_strlen(name);
 	len_name = len_total - 4;
-	if (!(len_total > 4 && ft_strncmp(name + len_name, ".ber", 4) == 0))
+	if (!(len_total > 4 && ft_strncmp(name + len_name, ".ber", 4) == 0
+			&& name[len_total - 5] != '/'))
 	{
 		ft_fdprintf(2, "Error\nWrong map extension.\n");
 		exit(EXIT_FAILURE);
