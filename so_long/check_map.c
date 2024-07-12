@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/10 16:35:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:07:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,11 @@ int	check_shape_map(char *map_name)
 	return (lines);
 }
 
-//void	read_map(char *map_name, t_map_elems map_elems)
-void	read_map(char *map_name)
+void	read_map(char *map_name, t_map_elems *map_elems)
 {
 	int		map_lines;
 
 	map_lines = check_shape_map(map_name);
 	ft_printf("map_lines = %d\n", map_lines);
-	check_map_elems(map_name, map_lines);
+	check_map_elems(map_name, map_lines, map_elems);
 }
