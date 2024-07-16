@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/15 10:47:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/16 17:28:36 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,18 @@ void	wrong_map_exit(char *buffer, char *message, int free);
 void	check_arg_ber(char *name);
 
 //check_map.c
-void	read_map(char *map_name, t_map_elems *map_elems, t_map *map);
+void	read_map(char *map_name, t_map *map);
 int		get_len_of_line(char *buffer);
 
 //check_map_elems.c
-void	check_map_elems(char *map_name, int map_lines, t_map_elems *map_elems);
+void	check_map_elems(char *map_name, t_map *map);
 
 //files.c
 int		secure_open(char *map_name);
 void	secure_close(int fd);
+
+//generate_map.c
+void 	generate_map(char *map_name, t_map *map);
+void	free_map_array(t_map *map);
 
 #endif

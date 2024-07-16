@@ -6,11 +6,35 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/15 10:51:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:33:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"	
+
+void	print_map_array(t_map map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (map.map)
+	{
+		while (map.map[i])
+		{
+			j = 0;
+			while (map.map[i][j] && map.map[i][j] != '\n')
+			{
+				ft_printf("[%c]", map.map[i][j]);
+				j++;
+			}
+			ft_printf("\n");
+			i++;
+		}
+	}
+	else
+		ft_printf("%s\n", map.map);
+}
 
 void	print_map_elems(t_map_elems *map_elems)
 {
@@ -35,7 +59,10 @@ int	main(int argc, char *argv[])
 		return (-1);
 	}
 	check_arg_ber(argv[1]);
-	read_map(argv[1], map.elems, &map);
+	read_map(argv[1], &map);
 	print_map_elems(map.elems);
+	generate_map(argv[1], &map);
+	print_map_array(map);
+	free_map_array(&map);
 	return (0);
 }

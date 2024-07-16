@@ -6,16 +6,15 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:26:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/12 12:52:53 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/16 18:32:13 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "so_long.h"
 
 int	ok_num_of_elems(t_map_elems *m_elems)
 {
-	if (m_elems->player == 1 && m_elems->collectible == 1 && m_elems->exit == 1)
+	if (m_elems->player == 1 && m_elems->collectible >= 1 && m_elems->exit == 1)
 		return (1);
 	else
 		return (0);
@@ -72,7 +71,7 @@ static void	check_up_down(char *buffer, t_map_elems *map_elems)
 	}
 }
 
-void	check_map_elems(char *map_name, int map_lines, t_map_elems *map_elems)
+void	check_map_elems(char *map_name, t_map *map)
 {	
 	int 		fd;
 	char		*buffer;
@@ -85,15 +84,15 @@ void	check_map_elems(char *map_name, int map_lines, t_map_elems *map_elems)
 	current_line = 1;
 	while(buffer)
 	{
-		if (current_line == 1 || current_line == map_lines)
-			check_up_down(buffer, map_elems);
+		if (current_line == 1 || current_line == map->height)
+			check_up_down(buffer, map->elems);
 		else
-			check_middle(buffer, map_elems);
+			check_middle(buffer, map->elems);
 		current_line++;
 		free (buffer);
 		buffer = get_next_line(fd);
 	}
 	secure_close(fd);
-	if (!ok_num_of_elems(map_elems))
-		wrong_map_exit(buffer, "Error\nBad elements in map.", 0);
+	if (!ok_num_of_elems(map->elems))
+		wrong_map_exit(buffer, "Error\nwith necessary elements in map.", 0);
 }
