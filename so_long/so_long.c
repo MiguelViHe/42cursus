@@ -6,11 +6,35 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 10:48:10 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:11:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"	
+#include "so_long.h"
+
+void	print_copy_map_array(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (map)
+	{
+		while (map[i])
+		{
+			j = 0;
+			while (map[i][j])
+			{
+				ft_printf("[%c]", map[i][j]);
+				j++;
+			}
+			ft_printf("\n");
+			i++;
+		}
+	}
+	else
+		ft_printf("%s\n", map);
+}
 
 void	print_map_array(t_map map)
 {
@@ -49,6 +73,7 @@ int	main(int argc, char *argv[])
 {
 	t_map_elems	map_elems;
 	t_map		map;
+	char		**copy_array;
 
 	ft_memset(&map_elems, 0, sizeof(t_map_elems));
 	ft_memset(&map, 0, sizeof(t_map));
@@ -70,6 +95,9 @@ int	main(int argc, char *argv[])
 	ft_printf("map width = %d\n", map.width);
 	ft_printf("[start_r, start_c] = [%d, %d]\n", map.start_r, map.start_c);
 	ft_printf("[exit_r, exit_c] = [%d, %d]\n", map.exit_r, map.exit_c);
+	copy_array = copy_map_array(&map);
+	ft_printf("COPY_ARRAY\n");
+	print_copy_map_array(copy_array);
 	free_map_array(&map);
 	return (0);
 }

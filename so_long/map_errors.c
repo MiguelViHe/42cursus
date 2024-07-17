@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:51:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 10:50:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:08:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,17 @@ void	wrong_generate_map_exit(char *message, int fd)
 	ft_fdprintf(2, "%s\n", message);
 	secure_close(fd);
 	exit(EXIT_FAILURE);
+}
+
+/*Write the error message in the stderr, free all in map_copy and exit*/
+void	wrong_copy_map_exit(char **copy_array, int pos)
+{
+	int	j;
+	
+	j = 0;
+	while (j < pos)
+		free(copy_array[j++]);
+	free(copy_array);
+	ft_fdprintf(2, "Failed to allocate memory for copy_array\n");
+	exit (EXIT_FAILURE);
 }
