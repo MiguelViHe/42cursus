@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/16 17:28:36 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:50:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ typedef struct s_map
 {
 	int				width;
 	int				height;
-	int				start_x;
-	int				start_y;
-	int				exit_x;
-	int				exit_y;
+	int				start_r;
+	int				start_c;
+	int				exit_r;
+	int				exit_c;
 	unsigned int	moves;
 	char			**map;
 	t_map_elems		*elems;
@@ -63,6 +63,7 @@ typedef struct s_data
 //map_errors.c
 void	wrong_map_exit(char *buffer, char *message, int free);
 void	check_arg_ber(char *name);
+void	wrong_generate_map_exit(char *message, int fd);
 
 //check_map.c
 void	read_map(char *map_name, t_map *map);

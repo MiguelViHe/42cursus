@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:51:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/10 13:10:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:50:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,12 @@ void	check_arg_ber(char *name)
 		ft_fdprintf(2, "Error\nWrong map extension.\n");
 		exit(EXIT_FAILURE);
 	}
+}
+
+/*Write the error message in the stderr, close de fd and exit*/
+void	wrong_generate_map_exit(char *message, int fd)
+{
+	ft_fdprintf(2, "%s\n", message);
+	secure_close(fd);
+	exit(EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:02:18 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/16 17:43:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:43:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,5 @@ int	check_shape_map(char *map_name, t_map *map)
 void	read_map(char *map_name, t_map *map)
 {	
 	map->height = check_shape_map(map_name, map);
-	ft_printf("map height = %d\n", map->height);
-	ft_printf("map width = %d\n", map->width);
 	check_map_elems(map_name, map);
 }

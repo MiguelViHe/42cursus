@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/16 18:33:14 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/17 10:48:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,16 @@ int	main(int argc, char *argv[])
 	}
 	check_arg_ber(argv[1]);
 	read_map(argv[1], &map);
+	ft_printf("MAP_ELEMS\n");
 	print_map_elems(map.elems);
 	generate_map(argv[1], &map);
+	ft_printf("MAP_ARRAY\n");
 	print_map_array(map);
+	ft_printf("POSITIONS\n");
+	ft_printf("map height = %d\n", map.height);
+	ft_printf("map width = %d\n", map.width);
+	ft_printf("[start_r, start_c] = [%d, %d]\n", map.start_r, map.start_c);
+	ft_printf("[exit_r, exit_c] = [%d, %d]\n", map.exit_r, map.exit_c);
 	free_map_array(&map);
 	return (0);
 }
