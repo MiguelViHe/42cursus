@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 20:07:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:56:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_map
 	int				exit_c;
 	unsigned int	moves;
 	char			**map;
-	t_map_elems		*elems;
+	t_map_elems		elems;
 }				t_map;
 
 typedef struct s_data
@@ -81,7 +81,7 @@ void	secure_close(int fd);
 void 	generate_map(char *map_name, t_map *map);
 void	free_map_array(t_map *map);
 
-//copy_map_array.c
-char	**copy_map_array(t_map *map);
+//copy_map.c
+t_map	copy_map(t_map map);
 
 #endif

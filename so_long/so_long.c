@@ -6,11 +6,23 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 20:11:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:00:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	print_pos_map(t_map map)
+{
+	ft_printf("Positions map:\n");
+	ft_printf("width = %i\n", map.width);
+	ft_printf("height = %i\n", map.height);
+	ft_printf("start_r = %i\n", map.start_r);
+	ft_printf("start_c = %i\n", map.start_c);
+	ft_printf("exit_r = %i\n", map.exit_r);
+	ft_printf("exit_c = %i\n", map.exit_c);
+	ft_printf("moves = %i\n", map.moves);
+}
 
 void	print_copy_map_array(char **map)
 {
@@ -60,24 +72,29 @@ void	print_map_array(t_map map)
 		ft_printf("%s\n", map.map);
 }
 
-void	print_map_elems(t_map_elems *map_elems)
+void	print_map_elems(t_map_elems map_elems)
 {
-	ft_printf("Wall = %i\n", map_elems->wall);
-	ft_printf("Empty = %i\n", map_elems->empty);
-	ft_printf("Player = %i\n", map_elems->player);
-	ft_printf("collectible = %i\n", map_elems->collectible);
-	ft_printf("exit = %i\n", map_elems->exit);
+	ft_printf("Map elems:\n");
+	ft_printf("Wall = %i\n", map_elems.wall);
+	ft_printf("Empty = %i\n", map_elems.empty);
+	ft_printf("Player = %i\n", map_elems.player);
+	ft_printf("collectible = %i\n", map_elems.collectible);
+	ft_printf("exit = %i\n", map_elems.exit);
+}
+
+void	print_complete_map(t_map map)
+{
+	print_pos_map(map);
+	print_map_elems(map.elems);
+	print_map_array(map);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_map_elems	map_elems;
 	t_map		map;
-	char		**copy_array;
+	t_map		c_map;
 
-	ft_memset(&map_elems, 0, sizeof(t_map_elems));
 	ft_memset(&map, 0, sizeof(t_map));
-	map.elems = &map_elems;
 	if (argc != 2)
 	{
 		ft_fdprintf(2, "Num args Error\n Try: %s name_map.ber\n", argv[0]);
@@ -85,19 +102,11 @@ int	main(int argc, char *argv[])
 	}
 	check_arg_ber(argv[1]);
 	read_map(argv[1], &map);
-	ft_printf("MAP_ELEMS\n");
-	print_map_elems(map.elems);
 	generate_map(argv[1], &map);
-	ft_printf("MAP_ARRAY\n");
-	print_map_array(map);
-	ft_printf("POSITIONS\n");
-	ft_printf("map height = %d\n", map.height);
-	ft_printf("map width = %d\n", map.width);
-	ft_printf("[start_r, start_c] = [%d, %d]\n", map.start_r, map.start_c);
-	ft_printf("[exit_r, exit_c] = [%d, %d]\n", map.exit_r, map.exit_c);
-	copy_array = copy_map_array(&map);
-	ft_printf("COPY_ARRAY\n");
-	print_copy_map_array(copy_array);
+	print_complete_map(map);
+	c_map = copy_map(map);
+	print_complete_map(c_map);
 	free_map_array(&map);
+	free_map_array(&c_map);
 	return (0);
 }

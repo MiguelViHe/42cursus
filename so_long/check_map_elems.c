@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:26:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/16 18:32:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/18 11:01:49 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ void	check_map_elems(char *map_name, t_map *map)
 	while(buffer)
 	{
 		if (current_line == 1 || current_line == map->height)
-			check_up_down(buffer, map->elems);
+			check_up_down(buffer, &map->elems);
 		else
-			check_middle(buffer, map->elems);
+			check_middle(buffer, &map->elems);
 		current_line++;
 		free (buffer);
 		buffer = get_next_line(fd);
 	}
 	secure_close(fd);
-	if (!ok_num_of_elems(map->elems))
+	if (!ok_num_of_elems(&map->elems))
 		wrong_map_exit(buffer, "Error\nwith necessary elements in map.", 0);
 }
