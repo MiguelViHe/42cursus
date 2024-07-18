@@ -1,17 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_map_array.c                                   :+:      :+:    :+:   */
+/*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:19:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 20:12:57 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/18 10:46:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+	/*t_map_elems	*copy_map_elems()
+	{
+		t_map_elems	*copy_map_elems;
+	}*/
+	
 	char	**copy_map_array(t_map *map)
 	{
 		char	**copy_array;
@@ -34,3 +39,12 @@
 		}
 		return (copy_array);
 	}
+
+	/*t_map	copy_map(t_map map)
+	{
+		t_map		copy_map;
+
+		ft_memset(&map_elems, 0, sizeof(t_map_elems));
+		ft_memset(&map, 0, sizeof(t_map));
+		map.elems = &map_elems;
+	}*/
