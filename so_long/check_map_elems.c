@@ -6,15 +6,15 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:26:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/18 11:01:49 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:37:36 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ok_num_of_elems(t_map_elems *m_elems)
+int	ok_num_of_elems(t_map_elems *m_elem)
 {
-	if (m_elems->player == 1 && m_elems->collectible >= 1 && m_elems->exit == 1)
+	if (m_elem->player == 1 && m_elem->collectible >= 1 && m_elem->exit == 1)
 		return (1);
 	else
 		return (0);
@@ -47,7 +47,7 @@ static void	check_middle(char *buffer, t_map_elems *map_elems)
 		if (i == 0 || i == (get_len_of_line(buffer) - 1))
 		{
 			if (buffer[i] != '1')
-				wrong_map_exit(buffer, "Error\nIncorrect boundary elements.", 1);
+				wrong_map_exit(buffer, "Error\nInvalid boundary elements.", 1);
 			map_elems->wall++;
 		}
 		else
@@ -66,14 +66,14 @@ static void	check_up_down(char *buffer, t_map_elems *map_elems)
 	{
 		if (buffer[i] != '1')
 			wrong_map_exit(buffer, "Error\nIncorrect boundary elements.", 1);
-		map_elems->wall++;	
+		map_elems->wall++;
 		i++;
 	}
 }
 
 void	check_map_elems(char *map_name, t_map *map)
-{	
-	int 		fd;
+{
+	int			fd;
 	char		*buffer;
 	int			current_line;
 
@@ -82,7 +82,7 @@ void	check_map_elems(char *map_name, t_map *map)
 	if (buffer == NULL)
 		wrong_map_exit(buffer, "Error\nReading line from map.", 0);
 	current_line = 1;
-	while(buffer)
+	while (buffer)
 	{
 		if (current_line == 1 || current_line == map->height)
 			check_up_down(buffer, &map->elems);

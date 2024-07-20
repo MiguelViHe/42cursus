@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/07/18 10:46:14 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/07/20 12:27:31 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,8 @@ SRCS =	so_long.c \
 		files.c \
 		generate_map.c \
 		copy_map.c \
+		check_path.c \
+		printing.c \
 
 OBJS = $(SRCS:.c=.o)
 

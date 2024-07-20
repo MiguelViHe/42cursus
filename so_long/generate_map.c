@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 10:34:03 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 10:51:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:49:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_map_array(t_map *map)
 {
 	int	i;
-	
+
 	i = 0;
 	while (map->map[i])
 	{
@@ -23,7 +23,7 @@ void	free_map_array(t_map *map)
 		i++;
 	}
 	free(map->map);
-		map->map = NULL;
+	map->map = NULL;
 }
 
 void	initialize_start_exit(t_map *map)
@@ -35,7 +35,8 @@ void	initialize_start_exit(t_map *map)
 	while (map->map[i] && !(map->start_r && map->exit_r))
 	{
 		j = 0;
-		while (map->map[i][j] && map->map[i][j] != '\n' && !(map->start_r && map->exit_r))
+		while (map->map[i][j] && map->map[i][j] != '\n'
+				&& !(map->start_r && map->exit_r))
 		{
 			if (map->map[i][j] == 'P')
 			{
@@ -53,7 +54,7 @@ void	initialize_start_exit(t_map *map)
 	}
 }
 
-void 	generate_map(char *map_name, t_map *map)
+void	generate_map(char *map_name, t_map *map)
 {
 	int		fd;
 	int		i;
@@ -65,7 +66,7 @@ void 	generate_map(char *map_name, t_map *map)
 		wrong_generate_map_exit("Error allocating memory for map array", fd);
 	i = 0;
 	buffer = get_next_line(fd);
-	while(buffer)
+	while (buffer)
 	{
 		map->map[i++] = buffer;
 		buffer = get_next_line(fd);

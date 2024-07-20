@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:51:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/17 20:08:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:51:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	wrong_generate_map_exit(char *message, int fd)
 void	wrong_copy_map_exit(char **copy_array, int pos)
 {
 	int	j;
-	
+
 	j = 0;
 	while (j < pos)
 		free(copy_array[j++]);

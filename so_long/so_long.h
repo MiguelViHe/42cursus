@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/18 16:56:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:53:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ typedef struct s_data
 	t_map		*map;
 }	t_data;
 
+//printing.c
+void	print_complete_map(t_map map);
+
 //map_errors.c
 void	wrong_map_exit(char *buffer, char *message, int free);
 void	check_arg_ber(char *name);
@@ -78,10 +81,13 @@ int		secure_open(char *map_name);
 void	secure_close(int fd);
 
 //generate_map.c
-void 	generate_map(char *map_name, t_map *map);
+void	generate_map(char *map_name, t_map *map);
 void	free_map_array(t_map *map);
 
 //copy_map.c
 t_map	copy_map(t_map map);
+
+//check_path.c
+int		check_path(t_map *map);
 
 #endif
