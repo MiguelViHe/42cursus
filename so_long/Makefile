@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/07/20 12:27:31 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/07/21 19:06:39 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,12 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+MLX42_FLAGS = -ldl -lglfw -pthread -lm
 
-MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lbsd -lm -lz
+HEADERS	= -I $(MLX42_DIR)/include
 
-RM = rm -f
+RM = rm -rf
 
 SRCS =	so_long.c \
 		map_errors.c \
@@ -29,39 +30,39 @@ SRCS =	so_long.c \
 		copy_map.c \
 		check_path.c \
 		printing.c \
+		game.c \
 
 OBJS = $(SRCS:.c=.o)
 
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-MINILIBX_DIR = mlx_linux
-MINILIBX = $(MINILIBX_DIR)/libmlx_Linux.a
+MLX42_DIR = mlx42
+MLX42 = $(MLX42_DIR)/build/libmlx42.a
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
+	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX42) $(MLX42_FLAGS) $(HEADERS) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) bonus -C $(LIBFT_DIR)
-
-$(MINILIBX):
-	$(MAKE) -C $(MINILIBX_DIR)
 	
-all: $(NAME)
+all: libmlx42 $(NAME)
+
+libmlx42:
+	cmake $(MLX42_DIR) -B $(MLX42_DIR)/build && make -C $(MLX42_DIR)/build -j4
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(MINILIBX_DIR)
 	$(RM) $(OBJS)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(MINILIBX_DIR)
+	$(RM) $(MLX42_DIR)/build
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus libmlx42

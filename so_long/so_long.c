@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:52:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/21 17:39:25 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	main(int argc, char *argv[])
 	generate_map(argv[1], &map);
 	c_map = copy_map(map);
 	if (check_path(&c_map))
+	{
 		ft_printf("Map is playable.\n");
-	else
-		ft_printf("Map is not playable.\n");
+		initialize_game();
+	}
 	free_map_array(&map);
 	free_map_array(&c_map);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:53:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/22 15:34:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,8 @@ t_map	copy_map(t_map map);
 
 //check_path.c
 int		check_path(t_map *map);
+
+//game.c
+int		initialize_game();
 
 #endif
