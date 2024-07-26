@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/21 17:39:25 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:41:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int	main(int argc, char *argv[])
 	if (check_path(&c_map))
 	{
 		ft_printf("Map is playable.\n");
-		initialize_game();
+		free_map_array(&c_map);
+		initialize_game(&map);
 	}
-	free_map_array(&map);
-	free_map_array(&c_map);
+	//free_map_array(&map);
+	ft_printf("llego aqui11\n");
 	return (0);
 }

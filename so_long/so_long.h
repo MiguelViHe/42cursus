@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/22 15:34:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/26 16:53:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@
 
 //strerror
 # include <string.h>
+
+//mlx_t
+# include <MLX42/MLX42.h>
 
 typedef struct s_map_elems
 {
@@ -50,13 +53,19 @@ typedef struct s_map
 	t_map_elems		elems;
 }				t_map;
 
+typedef struct s_img
+{
+	
+}	t_img;
+
+
 typedef struct s_data
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			screen_width;
-	int			screen_height;
-	//t_img		*img;
+	mlx_t		*mlx;
+	//void		*win_ptr;
+	int32_t		screen_width;
+	int32_t		screen_height;
+	mlx_image_t	*img;
 	t_map		*map;
 }	t_data;
 
