@@ -6,9 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/26 16:53:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/26 19:22:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#define IMAGE_SIZE 32
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -55,17 +57,20 @@ typedef struct s_map
 
 typedef struct s_img
 {
-	
+	mlx_image_t	*empty;
+	mlx_image_t	*wall;
+	mlx_image_t	*collectible;
+	mlx_image_t	*exit;
+	mlx_image_t	*player;
 }	t_img;
 
 
 typedef struct s_data
 {
 	mlx_t		*mlx;
-	//void		*win_ptr;
 	int32_t		screen_width;
 	int32_t		screen_height;
-	mlx_image_t	*img;
+	t_img		img;
 	t_map		*map;
 }	t_data;
 
