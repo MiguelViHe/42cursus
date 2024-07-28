@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/27 19:12:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/28 17:58:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	secure_close(int fd);
 
 //generate_map.c
 void	generate_map(char *map_name, t_map *map);
-void	free_map_array(t_map *map);
 
 //copy_map.c
 t_map	copy_map(t_map map);
@@ -106,5 +105,17 @@ int		check_path(t_map *map);
 
 //game.c
 int		initialize_game();
+
+//freeing.c
+void	free_map_array(t_map *map);
+void	free_mlx42_data(t_data *data);
+
+//game_images.c
+void	load_images(t_data *data);
+void	images_to_map(t_data *d);
+
+//hooks.c
+void	on_destroy(void *param);
+void on_keypress(mlx_key_data_t keydata, void* param);
 
 #endif

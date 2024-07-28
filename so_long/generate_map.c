@@ -6,25 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/13 10:34:03 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:49:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/28 11:32:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	free_map_array(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (map->map[i])
-	{
-		free(map->map[i]);
-		i++;
-	}
-	free(map->map);
-	map->map = NULL;
-}
 
 void	initialize_start_exit(t_map *map)
 {
