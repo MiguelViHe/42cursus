@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 13:01:09 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/28 18:22:36 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/29 14:05:48 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,22 @@ void on_keypress(mlx_key_data_t keydata, void* param)
 	t_data *data;
 
 	data = (t_data *)param;
-	if(data)
-	// If we PRESS the 'UP' or 'W' key.
 	if ((keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_W)
 			&& keydata.action == MLX_PRESS)
-		ft_printf("Arriba\n");
-
-	// If we PRESS the 'DOWN' or 'S' key.
+		move_player(data, keydata.key, "UP");
 	if ((keydata.key == MLX_KEY_DOWN || keydata.key == MLX_KEY_S)
 			&& keydata.action == MLX_PRESS)
-		ft_printf("Abajo\n");
-
-	// If we PRESS the 'RIGHT' or 'D' key.
+		move_player(data, keydata.key, "DOWN");
 	if ((keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_D)
 			&& keydata.action == MLX_PRESS)
-		ft_printf("Derecha\n");
-
-	// If we PRESS the 'LEFT' or 'S' key.
+		move_player(data, keydata.key, "RIGHT");
 	if ((keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_A)
 			&& keydata.action == MLX_PRESS)
-		ft_printf("Izquierda\n");
+		move_player(data, keydata.key, "LEFT");
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		ft_printf("Bye!\n");
+		free_mlx42_data(data);
+	}
+
 }
