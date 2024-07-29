@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/29 14:31:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:02:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_img
 	mlx_image_t	*empty;
 	mlx_image_t	*wall;
 	mlx_image_t	*collect;
-	mlx_image_t	*exit;
+	mlx_image_t	*exit_o;
+	mlx_image_t *exit_c;
 	mlx_image_t	*player;
 }	t_img;
 

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/29 18:34:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:31:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ mlx_instance_t*	find_instance(mlx_image_t *img, mlx_instance_t player)
 		i++;
 	}
 	return (NULL);
+}
+
+void	open_door(t_data *d)
+{
+	d->img.exit_c->instances[0].enabled = false;
+	d->img.exit_o->instances[0].enabled = true;
 }
 
 static void	new_pos_player(t_data *d, int r, int c, char *mov)
@@ -46,6 +52,8 @@ static void	new_pos_player(t_data *d, int r, int c, char *mov)
 			inst = find_instance(d->img.collect, d->img.player->instances[0]);
 			inst->enabled = false;
 			d->map->elems.collectible--;
+			if (d->map->elems.collectible == 0)
+				open_door(d);
 		}
 		ft_printf("%s, movs = %d, collect = %d\n", mov, d->map->moves, d->map->elems.collectible);
 	}

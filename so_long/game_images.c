@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/28 12:15:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/29 19:31:39 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	load_images(t_data *data)
 	data->img.empty = generate_image(data, "textures/xpm42/empty.xpm42");
 	data->img.wall = generate_image(data, "textures/xpm42/wall.xpm42");
 	data->img.collect = generate_image(data, "textures/xpm42/collect.xpm42");
-	data->img.exit = generate_image(data, "textures/xpm42/exit_open.xpm42");
+	data->img.exit_o = generate_image(data, "textures/xpm42/exit_open.xpm42");
+	data->img.exit_c = generate_image(data, "textures/xpm42/exit_close.xpm42");
 	data->img.player = generate_image(data, "textures/xpm42/kid_front.xpm42");
 }
 
@@ -74,8 +75,11 @@ void	put_first_layer(t_data *d, char elem, int i, int j)
 	}
 	else if (elem == 'E')
 	{
-		mlx_image_to_window(d->mlx, d->img.exit, j * IMG_SIZE, i * IMG_SIZE);
-		d->img.exit->instances[(d->img.exit->count - 1)].z = 1;
+		mlx_image_to_window(d->mlx, d->img.exit_o, j * IMG_SIZE, i * IMG_SIZE);
+		d->img.exit_o->instances[(d->img.exit_o->count - 1)].z = 1;
+		d->img.exit_o->instances[(d->img.exit_o->count - 1)].enabled = false;
+		mlx_image_to_window(d->mlx, d->img.exit_c, j * IMG_SIZE, i * IMG_SIZE);
+		d->img.exit_c->instances[(d->img.exit_c->count - 1)].z = 1;
 	}
 	else if (elem == 'P')
 	{
