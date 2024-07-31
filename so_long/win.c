@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 13:22:50 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 19:09:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 19:25:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ static int32_t	center_img_y(t_data *d, mlx_image_t* img)
 
 void	you_win(t_data *d)
 {
-	mlx_image_t*	winner;
-
 	ft_printf("YOU WIN! - movements = %d\n", d->map->moves);
-	winner = mlx_put_string(d->mlx, "YOU WIN!", 0, 0);
-	mlx_set_instance_depth((&winner->instances[0]), 3);
-	winner->instances[0].x += center_img_x(d, winner);
-	winner->instances[0].y += center_img_y(d, winner);
+	d->img.winner = mlx_put_string(d->mlx, "YOU WIN!", 0, 0);
+	mlx_set_instance_depth(&(d->img.winner->instances[0]), 3);
+	d->img.winner->instances[0].x += center_img_x(d, d->img.winner);
+	d->img.winner->instances[0].y += center_img_y(d, d->img.winner);
 }
 
 void	check_win(t_data *d)

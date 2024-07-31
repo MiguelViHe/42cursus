@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 17:47:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 19:16:45 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_img
 	mlx_image_t	*exit_o;
 	mlx_image_t *exit_c;
 	mlx_image_t	*player;
+	mlx_image_t	*winner;
+	mlx_image_t	*score;
+
 }	t_img;
 
 
