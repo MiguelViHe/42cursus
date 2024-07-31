@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/07/29 11:58:22 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/07/31 13:28:50 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS =	so_long.c \
 		game_images.c \
 		hooks.c \
 		movements.c \
+		win.c \
 
 OBJS = $(SRCS:.c=.o)
 

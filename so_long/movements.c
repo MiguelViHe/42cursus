@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 13:02:04 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:42:00 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,13 @@ mlx_instance_t*	find_instance(mlx_image_t *img, mlx_instance_t player)
 	return (NULL);
 }
 
-void	open_door(t_data *d)
+static void	open_door(t_data *d)
 {
 	d->img.exit_c->instances[0].enabled = false;
 	d->img.exit_o->instances[0].enabled = true;
 }
 
-void	check_win(t_data *d)
-{
-	if (d->img.exit_c->instances[0].enabled)
-	{
-		ft_printf("Exit is closed. Take all the collectibles first!\n");
-	}
-	else if (d->img.exit_o->instances[0].enabled)
-	{
-		d->map->is_win = 1;
-	}
-}
-
-void	change_pos_player(t_data *d, int r, int c)
+static void	change_pos_player(t_data *d, int r, int c)
 {
 	if (d->map->start_r == d->map->exit_r && d->map->start_c == d->map->exit_c)
 		d->map->map[d->map->start_r][d->map->start_c] = 'E';
@@ -79,7 +67,7 @@ static void	new_pos_player(t_data *d, int r, int c, char *mov)
 			check_win(d);
 		ft_printf("%s, movs = %d, collect = %d\n", mov, d->map->moves, d->map->elems.collectible);
 		if (d->map->is_win)
-			ft_printf("YOU WIN! - movements = %d\n", d->map->moves);
+			you_win(d);
 	}
 	
 }

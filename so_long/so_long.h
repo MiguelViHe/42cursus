@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 12:36:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:47:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,13 @@ void	images_to_map(t_data *d);
 
 //hooks.c
 void	on_destroy(void *param);
-void on_keypress(mlx_key_data_t keydata, void* param);
+void	on_keypress(mlx_key_data_t keydata, void* param);
 
 //movements.c
 void	move_player(t_data *d, int dir, char *mov);
 
+//win.c
+void	check_win(t_data *d);
+void	you_win(t_data *d);
 
 #endif
