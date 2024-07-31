@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 12:19:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:46:09 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:44:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	initialize_copy_map(t_map map, t_map *copy_map)
 	copy_map->start_c = map.start_c;
 	copy_map->exit_r = map.exit_r;
 	copy_map->exit_c = map.exit_c;
+	copy_map->is_win = map.is_win;
 	copy_map->moves = map.moves;
 }
 

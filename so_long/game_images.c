@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/29 19:31:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:55:53 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	put_first_layer(t_data *d, char elem, int i, int j)
 	else if (elem == 'P')
 	{
 		mlx_image_to_window(d->mlx, d->img.player, j * IMG_SIZE, i * IMG_SIZE);
-		d->img.player->instances[(d->img.player->count) - 1].z = 1;
+		d->img.player->instances[(d->img.player->count) - 1].z = 2;
 	}
 }
 

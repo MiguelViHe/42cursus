@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/28 11:13:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:44:25 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ int	main(int argc, char *argv[])
 		free_map_array(&c_map);
 		initialize_game(&map);
 	}
-	free_map_array(&map);
-	free_map_array(&c_map);
-	ft_printf("llego aqui11\n");
+	else
+	{
+		ft_printf("Errror\nMap is not playable.\n");
+		free_map_array(&map);
+		free_map_array(&c_map);
+	}
 	return (0);
 }

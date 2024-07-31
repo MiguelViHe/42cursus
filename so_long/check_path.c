@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:07:19 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:41:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:32:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ void	fill_path(t_map *map, int r, int c)
 
 int	check_path(t_map *map)
 {
-	ft_printf("COPIA antes de fill\n");
-	print_complete_map(*map);
 	fill_path(map, map->start_r, map->start_c);
-	ft_printf("COPIA despues de fill\n");
-	print_complete_map(*map);
 	if (map->elems.collectible == 0 && map->elems.exit == 0)
 		return (1);
 	else

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/29 19:02:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:36:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_map
 	int				start_c;
 	int				exit_r;
 	int				exit_c;
+	int				is_win;
 	unsigned int	moves;
 	char			**map;
 	t_map_elems		elems;
