@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 17:42:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:11:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	new_pos_player(t_data *d, int r, int c, char *mov)
 		}
 		else if (elem == 'E')
 			check_win(d);
-		ft_printf("%s, movs = %d, collect = %d\n", mov, d->map->moves, d->map->elems.collectible);
+		ft_printf("%s, collect = %d\n", mov, d->map->elems.collectible);
+		put_score(d);
 		if (d->map->is_win)
 			you_win(d);
 	}

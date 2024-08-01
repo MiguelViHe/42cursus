@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 19:16:45 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:58:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,8 @@ void	move_player(t_data *d, int dir, char *mov);
 //win.c
 void	check_win(t_data *d);
 void	you_win(t_data *d);
+
+//score.c
+void	put_score(t_data *d);
 
 #endif

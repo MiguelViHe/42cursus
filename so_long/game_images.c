@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/31 17:11:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/01 12:03:39 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	images_to_map(t_data *d)
 		}
 		i++;
 	}
+	d->img.score = mlx_put_string(d->mlx, "Score: 0", 0, 0);
 }
