@@ -1,211 +1,75 @@
 !XPM42
-32 32 177 2 c
-   #0C1719FF
-.  #0E1819FF
-X  #111A1AFF
-o  #191E1DFF
-O  #1F221EFF
-+  #3F281FFF
-@  #191E23FF
-#  #1C2024FF
-$  #252327FF
-%  #2D2623FF
-&  #2B2825FF
-*  #302722FF
-=  #332924FF
--  #3E2B22FF
-;  #3C2E2FFF
-:  #3C352AFF
->  #292631FF
-,  #3A2D30FF
-<  #342C3AFF
-1  #41291FFF
-2  #422C21FF
-3  #402F2EFF
-4  #47312AFF
-5  #49312BFF
-6  #4A3428FF
-7  #4B3E2AFF
-8  #5B3629FF
-9  #433C32FF
-0  #493935FF
-q  #6C3C27FF
-w  #673F36FF
-e  #4E402CFF
-r  #5E4231FF
-t  #604332FF
-y  #644931FF
-u  #6C423DFF
-i  #744436FF
-p  #784637FF
-a  #7B4739FF
-s  #704E3CFF
-d  #7D4839FF
-f  #785736FF
-g  #3F3045FF
-h  #483547FF
-j  #4B364AFF
-k  #563B46FF
-l  #5C3E4DFF
-z  #4E3750FF
-x  #4F3851FF
-c  #523A52FF
-v  #5A3E51FF
-b  #603E4DFF
-n  #5D424DFF
-m  #5A4054FF
-M  #62414FFF
-N  #6C444CFF
-B  #684C4FFF
-V  #7B4946FF
-C  #71454BFF
-Z  #7C4A49FF
-A  #705945FF
-S  #654451FF
-D  #6E4E5AFF
-F  #784E51FF
-G  #736049FF
-H  #7C5F61FF
-J  #7E6061FF
-K  #834B38FF
-L  #8E4F3EFF
-P  #944E33FF
-I  #944F38FF
-U  #8B523DFF
-Y  #95513FFF
-T  #9A533EFF
-R  #A55334FF
-E  #A5563EFF
-W  #AA573DFF
-Q  #A7583FFF
-!  #AA593FFF
-~  #B25631FF
-^  #BC5B34FF
-/  #B25A3DFF
-(  #BA5D3DFF
-)  #C35C34FF
-_  #C7613BFF
-`  #CD6239FF
-'  #D5653BFF
-]  #DA663AFF
-[  #DD693CFF
-{  #E86837FF
-}  #E56739FF
-|  #E6693AFF
- . #EB6B3AFF
-.. #F06E3BFF
-X. #E9753FFF
-o. #854C44FF
-O. #894E43FF
-+. #814C48FF
-@. #8D5044FF
-#. #8A5248FF
-$. #965340FF
-%. #995441FF
-&. #9D5A43FF
-*. #925749FF
-=. #A15641FF
--. #A15C46FF
-;. #AC5D43FF
-:. #B55C41FF
->. #9A6841FF
-,. #88625DFF
-<. #996052FF
-1. #9C7257FF
-2. #A46247FF
-3. #AC6546FF
-4. #A7654DFF
-5. #AD694EFF
-6. #B57C49FF
-7. #A36B55FF
-8. #AB6B56FF
-9. #AF7053FF
-0. #B37153FF
-q. #BB7657FF
-w. #BA7957FF
-e. #BC7758FF
-r. #BD7959FF
-t. #946C64FF
-y. #9D766AFF
-u. #AE7B6BFF
-i. #D97141FF
-p. #C07B5AFF
-a. #D47654FF
-s. #E96F41FF
-d. #EB7242FF
-f. #EF7B42FF
-g. #F07C43FF
-h. #EA7C52FF
-j. #B98665FF
-k. #BB8A66FF
-l. #BF996DFF
-z. #C68B4DFF
-x. #CB8D4FFF
-c. #D28A4CFF
-v. #D48852FF
-b. #E68A4DFF
-n. #F8934FFF
-m. #E58E51FF
-M. #F18F5CFF
-N. #E19754FF
-B. #FFA156FF
-V. #FFA75EFF
-C. #CB8B64FF
-Z. #CB936CFF
-A. #D19067FF
-S. #D9956AFF
-D. #CF9C71FF
-F. #D89A76FF
-G. #DAA57AFF
-H. #D9AA7EFF
-J. #FFB36FFF
-K. #E9A67AFF
-L. #E6AE7BFF
-P. #F3AB7BFF
-I. #ECB37DFF
-U. #F6B17FFF
-Y. #D49B86FF
-T. #D7AA80FF
-R. #DAAC80FF
-E. #E9A184FF
-W. #E5B483FF
-Q. #F3BA82FF
-!. #FCBA84FF
-~. #F2B48EFF
-^. #F7C189FF
-/. #FEC68BFF
-(. #FFCD8EFF
-). #FFCF90FF
-_. #FFD191FF
-A.C.w.w.C.C.0.9.8.0.9.7.,.,.7.9.9.9.9.9.8.0.0.7.,.t.C.C.A.A.A.A.
-q.8.*.@.4.5.&.Y Y Y T o.b l o.%.$.$.Y $.Y Y Y K l S <.0.q.e.e.e.
-r.7.F N @.-.%.Y T %.%.o.M b o.%.=.=.$.$.%.T %.o.l S #.4.q.r.e.e.
-p.8.F N V o.o.o.d i p u 0 k w d p w K w i a o.+.N N o.&.5.0.e.r.
-r.0.*.V N M S k : * = * $ $ & + = = = = = 3 k C +.O.$.$.&.4.0.r.
-0.5.-.O.C l j < # X X X X .   . . . . .   @ < h w d O.$.$.&.0.p.
--.&.&.$.@.u ; # o . X X O . . .   . . .   X @ $ % 5 a $.$.-.0.p.
-$.$.Y %.%.i *   . X X     O : e 7 7 7 7 7 7 7 6 7 t &.3.&.&.5.0.
-$.$.$.%.$.i %     . .     : >.x.z.z.z.z.z.z.z.z.z.x.N.v.3.%.&.&.
-$.$.Y &.3.>.y 7 7 7 7 7 7 f c.B.B.B.B.B.B.B.B.V.J.J.V.m.3.Y $.$.
-$.$.Y 3.v.N.c.z.z.z.z.z.z.x.f.g.g.g.g.g.g.g.X.M.~.~.M.[ ! $.$.$.
-Y $.$.3.b.V.J.J.V.B.B.B.V.n.d.} | | |  .| } ] a.Y.Y.a.) E $.$.$.
-$.$.$.! i.M.~.~.M.f.f.g.g.f. .|  .|  . . .[ ( ;.8.9.3.Q T $.$.$.
-$.$.Y W ' h.E.E.h.{ {  . .|  .] ) ~ ~ ~ ~ R K i w w i p L $.$.%.
-$.$.$.W ' d.h.h.s.{  . . . . .) q - 2 2 1 1 = & + % $ 4 a %.%.Y 
-$.$.$.T R ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ P 6 & * * & & & = 4 6 e r K $.%.$.
-$.$.%.K 8 2 2 2 2 2 2 2 2 2 + 6 w i i u i i i U z.z.x.6.2.Y Y Y 
-$.%.%.d 4 % % * = & & = - 2 + 8 I / / ! ! ! ! :.m.B.B.N.3.Y Y Y 
-$.$.%.L d i i i p i i K T ~ ~ ^ ` ' ] ' ' ' ' [ X.X.b.[ 2.$.Y %.
-Y %.Y %.%.%.%.%.&.T T ! ] .. .| ' ' ' ' ' ' | d.h.h. .' W $.%.Y 
-$.$.$.Y %.%.%.%.T &.%.! ' .. .] ( =.Q Q Q ( ' h.E.E.h.` W Y Y Y 
-$.%.%.L d i a a i i i I ` .. .[ ( ! ! ;.Q / _ a.Y.Y.a._ E Y Y %.
-$.%.Y d 6 % = = * % O 8 ^ ....| [ ' ' ' ' _ / ;.7.7.3.E T T $.$.
-%.%.@.u , @ X o * : 9 t P ~ ~ ~ ~ ~ ~ ) ] [ ( ! W ! ;.T @.O.@.%.
-T @.C n j < # * s 7.j.1.r + 1 1 1 1 1 q )  .[ ] ] ] ] :.+.C O.%.
-o.V n x c h > 0 7.S.P.Z.A 9 9 9 9 9 9 r P ~ ~ ~ ~ ~ ^ T b b Z O.
-M n m m m x g B C.K.P.L.Z.k.k.k.k.k.k.1.w + 1 2 1 2 2 5 j v b M 
-x x c x x m D t.F.U.U.U.U.U.Q.!.!.!.!.D.G 9 9 9 9 : $ > h c c c 
-z c c z z D u.F.K.U./././././././././.Q.H.l.k.k.k.1.n g j c c z 
-H J H J J y.G.Q.U.^./.(.(.(._.(.(.(.(._.).(.^.!.!.G.y.H H H J H 
-T.T.T.R.T.R.^./././.(._._.(.(.(._.(.(._._.).(./.(.^.W.T.T.T.T.T.
-Q.Q.I.I.Q.Q.I.I.L.L.L.L.H.H.L.L.L.L.L.L.L.L.L.L.R.R.Q.Q.Q.Q.Q.Q.
+64 64 9 1 c
+  #141B1BFF
+. #543C52FF
+X #E66A3AFF
+o #965340FF
+O #BD7959FF
++ #FFAD5DFF
+@ #F2AD7DFF
+# #FFCB8DFF
+$ #E7C4B4FF
+OOOOooooOOOOoooooooooooo....oooooooooooooooooooo....OOOOOOOOOOOO
+OOOOooooOOOOoooooooooooo....oooooooooooooooooooo....OOOOOOOOOOOO
+OOOOooooOOOOoooooooooooo....oooooooooooooooooooo....OOOOOOOOOOOO
+OOOOooooOOOOoooooooooooo....oooooooooooooooooooo....OOOOOOOOOOOO
+OOOO....oooooooooooooooo....oooooooooooooooooooo....ooooOOOOOOOO
+OOOO....oooooooooooooooo....oooooooooooooooooooo....ooooOOOOOOOO
+OOOO....oooooooooooooooo....oooooooooooooooooooo....ooooOOOOOOOO
+OOOO....oooooooooooooooo....oooooooooooooooooooo....ooooOOOOOOOO
+OOOOoooo........                            ....ooooooooooooOOOO
+OOOOoooo........                            ....ooooooooooooOOOO
+OOOOoooo........                            ....ooooooooooooOOOO
+OOOOoooo........                            ....ooooooooooooOOOO
+oooooooooooo                                        ooooooooOOOO
+oooooooooooo                                        ooooooooOOOO
+oooooooooooo                                        ooooooooOOOO
+oooooooooooo                                        ooooooooOOOO
+oooooooooooo                ++++++++++++++++++++++++++++oooooooo
+oooooooooooo                ++++++++++++++++++++++++++++oooooooo
+oooooooooooo                ++++++++++++++++++++++++++++oooooooo
+oooooooooooo                ++++++++++++++++++++++++++++oooooooo
+oooooooo++++++++++++++++++++XXXXXXXXXXXXXXXXXXXX$$$$XXXXoooooooo
+oooooooo++++++++++++++++++++XXXXXXXXXXXXXXXXXXXX$$$$XXXXoooooooo
+oooooooo++++++++++++++++++++XXXXXXXXXXXXXXXXXXXX$$$$XXXXoooooooo
+oooooooo++++++++++++++++++++XXXXXXXXXXXXXXXXXXXX$$$$XXXXoooooooo
+ooooooooXXXX$$$$XXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+ooooooooXXXX$$$$XXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+ooooooooXXXX$$$$XXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+ooooooooXXXX$$$$XXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+ooooooooXXXXXXXXXXXXXXXXXXXXXXXX                        oooooooo
+ooooooooXXXXXXXXXXXXXXXXXXXXXXXX                        oooooooo
+ooooooooXXXXXXXXXXXXXXXXXXXXXXXX                        oooooooo
+ooooooooXXXXXXXXXXXXXXXXXXXXXXXX                        oooooooo
+oooooooo                        oooooooooooooooo++++++++oooooooo
+oooooooo                        oooooooooooooooo++++++++oooooooo
+oooooooo                        oooooooooooooooo++++++++oooooooo
+oooooooo                        oooooooooooooooo++++++++oooooooo
+ooooooooooooooooooooooooXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXooooooooooooXXXX$$$$XXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXooooooooooooXXXX$$$$XXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXooooooooooooXXXX$$$$XXXXoooooooo
+ooooooooooooooooooooooooXXXXXXXXooooooooooooXXXX$$$$XXXXoooooooo
+oooooooo                XXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+oooooooo                XXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+oooooooo                XXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+oooooooo                XXXXXXXXXXXXXXXXXXXXoooooooooooooooooooo
+oooo........    OOOO@@@@                XXXXXXXXXXXXXXXX....oooo
+oooo........    OOOO@@@@                XXXXXXXXXXXXXXXX....oooo
+oooo........    OOOO@@@@                XXXXXXXXXXXXXXXX....oooo
+oooo........    OOOO@@@@                XXXXXXXXXXXXXXXX....oooo
+................@@@@@@@@@@@@@@@@@@@@@@@@                ........
+................@@@@@@@@@@@@@@@@@@@@@@@@                ........
+................@@@@@@@@@@@@@@@@@@@@@@@@                ........
+................@@@@@@@@@@@@@@@@@@@@@@@@                ........
+............@@@@@@@@########################@@@@@@@@............
+............@@@@@@@@########################@@@@@@@@............
+............@@@@@@@@########################@@@@@@@@............
+............@@@@@@@@########################@@@@@@@@............
+################################################################
+################################################################
+################################################################
+################################################################

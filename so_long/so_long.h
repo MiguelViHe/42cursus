@@ -6,11 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/01 10:58:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/02 09:46:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define IMG_SIZE 32
+#define IMG_SIZE 64
 
 #ifndef SO_LONG_H
 # define SO_LONG_H

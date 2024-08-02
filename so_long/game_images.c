@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/01 12:03:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/02 09:51:20 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ mlx_image_t	*generate_image(t_data *data, char *path)
 
 void	load_images(t_data *data)
 {
-	data->img.empty = generate_image(data, "textures/xpm42/empty.xpm42");
+	data->img.empty = generate_image(data, "textures/xpm42/floor1.xpm42");
 	data->img.wall = generate_image(data, "textures/xpm42/wall.xpm42");
 	data->img.collect = generate_image(data, "textures/xpm42/collect.xpm42");
 	data->img.exit_o = generate_image(data, "textures/xpm42/exit_open.xpm42");
 	data->img.exit_c = generate_image(data, "textures/xpm42/exit_close.xpm42");
-	data->img.player = generate_image(data, "textures/xpm42/kid_front.xpm42");
+	data->img.player = generate_image(data, "textures/xpm42/player_f.xpm42");
 }
 
 void	put_base_layer(t_data *d)
