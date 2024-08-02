@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_images.c                                      :+:      :+:    :+:   */
+/*   put_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 09:51:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:44:57 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-mlx_image_t	*generate_image(t_data *data, char *path)
-{
-	xpm_t		*xpm;
-	mlx_image_t	*img;
-	
-	if (!(xpm = mlx_load_xpm42(path)))
-	{
-		ft_fdprintf(2, mlx_strerror(mlx_errno));
-		free_mlx42_data(data);
-	}
-	if (!(img = mlx_texture_to_image(data->mlx, &xpm->texture)))
-	{
-		ft_fdprintf(2, mlx_strerror(mlx_errno));
-		mlx_delete_xpm42(xpm);
-		free_mlx42_data(data);
-	}
-	mlx_delete_xpm42(xpm);
-	return (img);
-}	
-
-void	load_images(t_data *data)
-{
-	data->img.empty = generate_image(data, "textures/xpm42/floor1.xpm42");
-	data->img.wall = generate_image(data, "textures/xpm42/wall.xpm42");
-	data->img.collect = generate_image(data, "textures/xpm42/collect.xpm42");
-	data->img.exit_o = generate_image(data, "textures/xpm42/exit_open.xpm42");
-	data->img.exit_c = generate_image(data, "textures/xpm42/exit_close.xpm42");
-	data->img.player = generate_image(data, "textures/xpm42/player_f.xpm42");
-}
 
 void	put_base_layer(t_data *d)
 {
@@ -83,8 +53,8 @@ void	put_first_layer(t_data *d, char elem, int i, int j)
 	}
 	else if (elem == 'P')
 	{
-		mlx_image_to_window(d->mlx, d->img.player, j * IMG_SIZE, i * IMG_SIZE);
-		d->img.player->instances[(d->img.player->count) - 1].z = 2;
+		mlx_image_to_window(d->mlx, d->img.player[0], j * IMG_SIZE, i * IMG_SIZE);
+		d->img.player[0]->instances[(d->img.player[0]->count) - 1].z = 2;
 	}
 }
 

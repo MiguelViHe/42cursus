@@ -6,7 +6,7 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/08/01 11:00:06 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/08/02 15:47:52 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRCS =	so_long.c \
 		printing.c \
 		game.c \
 		freeing.c \
-		game_images.c \
+		load_images.c \
+		put_images.c \
+		instances_image.c \
 		hooks.c \
 		movements.c \
 		win.c \

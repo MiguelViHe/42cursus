@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/01 11:03:29 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/02 18:00:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ void	free_map_array(t_map *map)
 	map->map = NULL;
 }
 
+void	free_mlx42_images_array(t_data *d, mlx_image_t	**img)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		if (img[i])
+		{
+			mlx_delete_image(d->mlx, img[i]);
+			img[i] = NULL;
+		}
+		i++;
+	}
+}
+
 void	free_mlx42_images(t_data *data)
 {
 	if (data->img.empty)
@@ -38,8 +54,8 @@ void	free_mlx42_images(t_data *data)
 		mlx_delete_image(data->mlx, data->img.exit_o);
 	if (data->img.exit_c)
 		mlx_delete_image(data->mlx, data->img.exit_c);
-	if (data->img.player)
-		mlx_delete_image(data->mlx, data->img.player);
+	free_mlx42_images_array(data, data->img.player);
+	free_mlx42_images_array(data, data->img.enemy);
 	if (data->img.winner)
 		mlx_delete_image(data->mlx, data->img.winner);
 	if (data->img.score)

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 09:46:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:53:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,19 @@ typedef struct s_map
 typedef struct s_img
 {
 	mlx_image_t	*empty;
+	char		*empty_path;
 	mlx_image_t	*wall;
+	char		*wall_path;
 	mlx_image_t	*collect;
+	char		*collect_path;
 	mlx_image_t	*exit_o;
+	char		*exit_o_path;
 	mlx_image_t *exit_c;
-	mlx_image_t	*player;
+	char		*exit_c_path;
+	mlx_image_t	*player[4];
+	char		*player_path[4];
+	mlx_image_t	*enemy[4];
+	char		*enemy_path[4];
 	mlx_image_t	*winner;
 	mlx_image_t	*score;
 
@@ -114,10 +122,17 @@ int		initialize_game();
 //freeing.c
 void	free_map_array(t_map *map);
 void	free_mlx42_data(t_data *data);
+void	free_mlx42_images_array(t_data *d, mlx_image_t	**img);
 
-//game_images.c
-void	load_images(t_data *data);
+//put_images.c
 void	images_to_map(t_data *d);
+
+//load_images.c
+mlx_image_t	*generate_image(t_data *data, char *path);
+void	load_images(t_data *data);
+
+//instances_image.c
+mlx_instance_t*	find_instance(mlx_image_t *img, mlx_instance_t player);
 
 //hooks.c
 void	on_destroy(void *param);
