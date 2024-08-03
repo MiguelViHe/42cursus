@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 13:22:50 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 17:54:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 12:08:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	you_win(t_data *d)
 	free_mlx42_images_array(d, d->img.player);
 	ft_printf("YOU WIN! - movements = %d\n", d->map->moves);
 	d->img.winner = mlx_put_string(d->mlx, "YOU WIN!", 0, 0);
-	mlx_set_instance_depth(&(d->img.winner->instances[0]), 3);
+	mlx_set_instance_depth(&(d->img.winner->instances[0]), 4);
 	d->img.winner->instances[0].x += center_img_x(d, d->img.winner);
 	d->img.winner->instances[0].y += center_img_y(d, d->img.winner);
 }

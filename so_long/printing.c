@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:25:31 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/20 12:52:06 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 11:44:09 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	print_pos_map(t_map map)
 	ft_printf("start_c = %i\n", map.start_c);
 	ft_printf("exit_r = %i\n", map.exit_r);
 	ft_printf("exit_c = %i\n", map.exit_c);
+	ft_printf("is_win = %i\n", map.is_win);
 	ft_printf("moves = %i\n", map.moves);
 }
 
@@ -56,6 +57,7 @@ void	print_map_elems(t_map_elems map_elems)
 	ft_printf("Player = %i\n", map_elems.player);
 	ft_printf("collectible = %i\n", map_elems.collectible);
 	ft_printf("exit = %i\n", map_elems.exit);
+	ft_printf("enemy = %i\n", map_elems.enemy);
 }
 
 void	print_complete_map(t_map map)

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 10:07:19 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/30 18:32:57 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 11:09:26 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	fill_path(t_map *map, int r, int c)
 		map->elems.collectible--;
 	else if (map->map[r][c] == 'E')
 		map->elems.exit--;
+	else if (map->map[r][c] == 'X')
+		map->elems.enemy--;
 	map->map[r][c] = 'V';
 	fill_path(map, r, c - 1);
 	fill_path(map, r - 1, c);

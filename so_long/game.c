@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:38:19 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/07/28 18:17:59 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 11:56:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ void	verify_map_size(t_data *data)
 int	initialize_game(t_map *map)
 {
 	t_data	data;
+	int		width;
+	int		height;
 	
 	ft_memset(&data, 0, sizeof(t_data));
-	if (!(data.mlx = mlx_init(map->width * IMG_SIZE, map->height * IMG_SIZE, "mvidal-h", false)))
+	width = map->width * IMG_SIZE;
+	height = map->height * IMG_SIZE;
+	if (!(data.mlx = mlx_init(width, height, "mvidal-h", false)))
 	{
 		ft_fdprintf(2, mlx_strerror(mlx_errno));
 		free_map_array(data.map);

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 16:53:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 12:23:12 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_map_elems
 	int	collectible;
 	int	exit;
 	int	player;
+	int enemy;
 }				t_map_elems;
 
 typedef struct s_map
@@ -126,6 +127,13 @@ void	free_mlx42_images_array(t_data *d, mlx_image_t	**img);
 
 //put_images.c
 void	images_to_map(t_data *d);
+
+//put_images_elem.c
+void	put_inst_empty(t_data *d, int i, int j);
+void	put_inst_collectible(t_data *d, int i, int j);
+void	put_inst_exit(t_data *d, int i, int j);
+void	put_inst_player(t_data *d, int i, int j);
+void	put_inst_enemies(t_data *d, int i, int j);
 
 //load_images.c
 mlx_image_t	*generate_image(t_data *data, char *path);
