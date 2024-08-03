@@ -6,17 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 17:38:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 16:39:25 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	open_door(t_data *d)
-{
-	d->img.exit_c->instances[0].enabled = false;
-	d->img.exit_o->instances[0].enabled = true;
-}
 
 static int	facing_player(t_data *d, mlx_image_t **img, int r, int c, int img_n)
 {
@@ -63,30 +57,26 @@ static int	change_pos_player(t_data *d, int r, int c)
 
 static void	new_pos_player(t_data *d, int r, int c, char *mov)
 {
-	mlx_instance_t	*in;
 	char			elem;
 	int				p;
 
 	elem = d->map->map[d->map->start_r + r][d->map->start_c + c];
-	if ((elem == '0' || elem == 'C' || elem == 'E') && !(d->map->is_win))
+	if ((elem == '0' || elem == 'C' || elem == 'E' || elem == 'X')
+			&& !(d->map->is_win_loose))
 	{
 		p = change_pos_player(d, r, c);
 		if (elem == 'C')
-		{
-			in = find_instance(d->img.collect, d->img.player[p]->instances[0]);
-			in->enabled = false;
-			d->map->elems.collectible--;
-			if (d->map->elems.collectible == 0)
-				open_door(d);
-		}
+			take_collectible(d, p);
 		else if (elem == 'E')
 			check_win(d);
-		ft_printf("%s, collect = %d\n", mov, d->map->elems.collectible);
-		put_score(d);
-		if (d->map->is_win)
-			you_win(d);
+		else if (elem == 'X')
+			d->map->is_win_loose = -1;
+		put_score(d, mov);
+		if (d->map->is_win_loose != 0)
+			you_win_loose(d, d->map->is_win_loose);
+		else
+			move_enemies();
 	}
-	
 }
 
 void	move_player(t_data *d, int dir, char *mov)

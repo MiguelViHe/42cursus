@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 12:23:12 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 16:38:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_map
 	int				start_c;
 	int				exit_r;
 	int				exit_c;
-	int				is_win;
+	int				is_win_loose;
 	unsigned int	moves;
 	char			**map;
 	t_map_elems		elems;
@@ -73,7 +73,7 @@ typedef struct s_img
 	char		*player_path[4];
 	mlx_image_t	*enemy[4];
 	char		*enemy_path[4];
-	mlx_image_t	*winner;
+	mlx_image_t	*win_loose;
 	mlx_image_t	*score;
 
 }	t_img;
@@ -149,11 +149,18 @@ void	on_keypress(mlx_key_data_t keydata, void* param);
 //movements.c
 void	move_player(t_data *d, int dir, char *mov);
 
+//actions_in_game.c
+void	open_door(t_data *d);
+void	take_collectible(t_data *d, int p);
+
 //win.c
 void	check_win(t_data *d);
-void	you_win(t_data *d);
+void	you_win_loose(t_data *d, int end_game);
 
 //score.c
-void	put_score(t_data *d);
+void	put_score(t_data *d, char *mov);
+
+//enemies.c
+void	move_enemies(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 18:00:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:46:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ void	free_mlx42_images(t_data *data)
 		mlx_delete_image(data->mlx, data->img.exit_c);
 	free_mlx42_images_array(data, data->img.player);
 	free_mlx42_images_array(data, data->img.enemy);
-	if (data->img.winner)
-		mlx_delete_image(data->mlx, data->img.winner);
+	if (data->img.win_loose)
+		mlx_delete_image(data->mlx, data->img.win_loose);
 	if (data->img.score)
 		mlx_delete_image(data->mlx, data->img.score);
 }

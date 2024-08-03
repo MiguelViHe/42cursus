@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 19:32:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 12:08:30 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:21:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_score(t_data *d)
+void	put_score(t_data *d, char *mov)
 {
 	char *moves;
 	char *cat_score;
@@ -25,6 +25,7 @@ void	put_score(t_data *d)
 		mlx_delete_image(d->mlx, d->img.score);
 	d->img.score = mlx_put_string(d->mlx, cat_score, 0, 0);
 	mlx_set_instance_depth(&(d->img.score->instances[0]), 4);
+	ft_printf("%s, collect = %d\n", mov, d->map->elems.collectible);
 	free(moves);
 	free(cat_score);
 }
