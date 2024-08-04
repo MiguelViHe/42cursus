@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 16:38:46 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/04 11:35:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,6 @@ void	you_win_loose(t_data *d, int end_game);
 void	put_score(t_data *d, char *mov);
 
 //enemies.c
-void	move_enemies(void);
+void	move_enemies(t_data *d, mlx_image_t **enemies);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:38:19 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 11:56:43 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/04 16:45:48 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,6 @@ void	verify_map_size(t_data *data)
 		free_mlx42_data(data);
 	}
 }
-
-/*void	hook(void* param)
-{
-	t_data* data;
-
-	data = param;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		free_mlx42_data(data);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_P))
-		mlx_delete_image(data->mlx, data->img);
-	for (unsigned int x = 0; x < data->img->width; x++)
-		for(unsigned int y = 0; y < data->img->height; y++)
-			mlx_put_pixel(data->img, x, y, rand() % RAND_MAX);
-}*/
 
 int	initialize_game(t_map *map)
 {

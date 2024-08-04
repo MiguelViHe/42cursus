@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 16:39:25 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/04 12:03:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	new_pos_player(t_data *d, int r, int c, char *mov)
 		put_score(d, mov);
 		if (d->map->is_win_loose != 0)
 			you_win_loose(d, d->map->is_win_loose);
-		else
-			move_enemies();
+		if (d->map->elems.enemy != 0)
+			move_enemies(d, d->img.enemy);
 	}
 }
 
