@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_images.c                                      :+:      :+:    :+:   */
+/*   load_images_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:42:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 10:29:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:19:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 mlx_image_t	*generate_image(t_data *data, char *path)
 {

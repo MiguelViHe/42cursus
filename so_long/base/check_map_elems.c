@@ -6,23 +6,16 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:26:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 11:03:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:37:36 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ok_num_of_elems(t_map *map, t_map_elems *m_elem)
+int	ok_num_of_elems(t_map_elems *m_elem)
 {
 	if (m_elem->player == 1 && m_elem->collectible >= 1 && m_elem->exit == 1)
-	{
-		if (m_elem->enemy > 0 && (map->width < 4 || map->height < 4))
-		{
-			ft_fdprintf(2, "Error\n Size map with enemies (4 rows or lines)\n");
-			exit (EXIT_FAILURE);
-		}
 		return (1);
-	}
 	else
 		return (0);
 }
@@ -39,8 +32,6 @@ static int	is_char_in_elems(char c, t_map_elems *map_elems)
 		map_elems->collectible++;
 	else if (c == 'E')
 		map_elems->exit++;
-	else if (c == 'X')
-		map_elems->enemy++;
 	else
 		return (0);
 	return (1);
@@ -102,6 +93,6 @@ void	check_map_elems(char *map_name, t_map *map)
 		buffer = get_next_line(fd);
 	}
 	secure_close(fd);
-	if (!ok_num_of_elems(map, &map->elems))
+	if (!ok_num_of_elems(&map->elems))
 		wrong_map_exit(buffer, "Error\nwith necessary elements in map.", 0);
 }

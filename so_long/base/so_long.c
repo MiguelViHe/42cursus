@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 11:03:15 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 10:16:24 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:09:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		ft_printf("Error\nMap is not playable.\n");
+		ft_printf("Errror\nMap is not playable.\n");
 		free_map_array(&map);
 		free_map_array(&c_map);
 	}

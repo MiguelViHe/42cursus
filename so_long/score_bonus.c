@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   score.c                                            :+:      :+:    :+:   */
+/*   score_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 19:32:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 10:46:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:20:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	put_score(t_data *d, char *mov)
 {
@@ -25,7 +25,7 @@ void	put_score(t_data *d, char *mov)
 		mlx_delete_image(d->mlx, d->img.score);
 	d->img.score = mlx_put_string(d->mlx, cat_score, 0, 0);
 	mlx_set_instance_depth(&(d->img.score->instances[0]), 4);
-	ft_printf("%s, collect = %d\n", mov, d->map->elems.collectible);
+	ft_printf("%s, movements = %d\n", mov, d->map->moves);
 	free(moves);
 	free(cat_score);
 }

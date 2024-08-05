@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemies.c                                          :+:      :+:    :+:   */
+/*   enemies_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:31:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 17:11:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 20:19:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 /*return a int number between 0 and 3 both included.
 int	ft_random(void)
