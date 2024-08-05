@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 10:07:40 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 11:16:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:09:46 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 //close, read
 # include <unistd.h>
 
-//malloc, free, exit
+//malloc, free, exit, rand
 # include <stdlib.h>
 
 //perror

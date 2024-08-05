@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:31:35 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/05 11:39:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:11:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-//return a int number between 0 and 3 both included.
+/*return a int number between 0 and 3 both included.
 int	ft_random(void)
 {
 	double	number;
@@ -21,7 +21,7 @@ int	ft_random(void)
 	number = mlx_get_time();
 	random = (int)(number * 10000);
 	return (random % 5);
-}
+}*/
 
 void	facing_enemy(mlx_image_t **en, int r, int c, size_t num_e)
 {
@@ -94,7 +94,7 @@ void	move_enemies(t_data *d, mlx_image_t **enemies)
 		move = false;
 		while (!move)
 		{
-			dir = ft_random();
+			dir = rand() % 5;
 			if (dir == 0)
 				move = new_pos_enemy(d, 1, 0, num_enemy);
 			else if (dir == 1)
