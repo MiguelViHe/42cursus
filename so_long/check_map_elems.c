@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 17:26:57 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 10:41:39 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:03:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ok_num_of_elems(t_map *map, t_map_elems *m_elem)
 			exit (EXIT_FAILURE);
 		}
 		return (1);
-	}	
+	}
 	else
 		return (0);
 }

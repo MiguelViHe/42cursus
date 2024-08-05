@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:04:01 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 12:25:14 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:41:31 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	put_base_layer(t_data *d)
 		j = 0;
 		while (d->map->map[i][j] && d->map->map[i][j] != '\n')
 		{
-			mlx_image_to_window(d->mlx, d->img.empty, j * IMG_SIZE, i * IMG_SIZE);
+			mlx_image_to_window(d->mlx, d->img.empty, j * IMG_SIZ, i * IMG_SIZ);
 			d->img.empty->instances[(d->img.empty->count) - 1].z = 0;
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:52:23 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 16:00:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:03:14 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	take_collectible(t_data *d, int p)
 	mlx_instance_t	*inst;
 
 	inst = find_instance(d->img.collect, d->img.player[p]->instances[0]);
-			inst->enabled = false;
-			d->map->elems.collectible--;
-			if (d->map->elems.collectible == 0)
-				open_door(d);
+	inst->enabled = false;
+	d->map->elems.collectible--;
+	if (d->map->elems.collectible == 0)
+		open_door(d);
 }

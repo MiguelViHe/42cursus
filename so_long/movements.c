@@ -6,29 +6,31 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:19:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/04 12:03:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 11:21:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	facing_player(t_data *d, mlx_image_t **img, int r, int c, int img_n)
+static int	facing_player(t_data *d, int r, int c, int img_n)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	mlx_image_t	**img;
 
 	i = d->map->start_r;
 	j = d->map->start_c;
+	img = d->img.player;
 	if (img[img_n])
 	{
-		img[img_n]->instances[0].y += IMG_SIZE * r;
-		img[img_n]->instances[0].x += IMG_SIZE * c;
+		img[img_n]->instances[0].y += IMG_SIZ * r;
+		img[img_n]->instances[0].x += IMG_SIZ * c;
 	}
 	else
 	{
 		free_mlx42_images_array(d, img);
 		img[img_n] = generate_image(d, d->img.player_path[img_n]);
-		mlx_image_to_window(d->mlx, img[img_n], j * IMG_SIZE, i * IMG_SIZE);
+		mlx_image_to_window(d->mlx, img[img_n], j * IMG_SIZ, i * IMG_SIZ);
 		img[img_n]->instances[(img[img_n]->count) - 1].z = 2;
 	}
 	return (img_n);
@@ -45,13 +47,13 @@ static int	change_pos_player(t_data *d, int r, int c)
 	d->map->map[d->map->start_r][d->map->start_c] = 'P';
 	d->map->moves++;
 	if (r == 1)
-		return (facing_player(d, d->img.player, r, c, 0));
+		return (facing_player(d, r, c, 0));
 	else if (r == -1)
-		return (facing_player(d, d->img.player, r, c, 1));
+		return (facing_player(d, r, c, 1));
 	else if (c == 1)
-		return (facing_player(d, d->img.player, r, c, 2));
+		return (facing_player(d, r, c, 2));
 	else if (c == -1)
-		return (facing_player(d, d->img.player, r, c, 3));
+		return (facing_player(d, r, c, 3));
 	return (-1);
 }
 
@@ -62,7 +64,7 @@ static void	new_pos_player(t_data *d, int r, int c, char *mov)
 
 	elem = d->map->map[d->map->start_r + r][d->map->start_c + c];
 	if ((elem == '0' || elem == 'C' || elem == 'E' || elem == 'X')
-			&& !(d->map->is_win_loose))
+		&& !(d->map->is_win_loose))
 	{
 		p = change_pos_player(d, r, c);
 		if (elem == 'C')

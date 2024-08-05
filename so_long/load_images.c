@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:42:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 15:31:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:29:28 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ mlx_image_t	*generate_image(t_data *data, char *path)
 {
 	xpm_t		*xpm;
 	mlx_image_t	*img;
-	
-	if (!(xpm = mlx_load_xpm42(path)))
+
+	xpm = mlx_load_xpm42(path);
+	if (!xpm)
 	{
 		ft_fdprintf(2, mlx_strerror(mlx_errno));
 		free_mlx42_data(data);
 	}
-	if (!(img = mlx_texture_to_image(data->mlx, &xpm->texture)))
+	img = mlx_texture_to_image(data->mlx, &xpm->texture);
+	if (!img)
 	{
 		ft_fdprintf(2, mlx_strerror(mlx_errno));
 		mlx_delete_xpm42(xpm);
@@ -30,7 +32,7 @@ mlx_image_t	*generate_image(t_data *data, char *path)
 	}
 	mlx_delete_xpm42(xpm);
 	return (img);
-}	
+}
 
 void	load_paths(t_data *d)
 {

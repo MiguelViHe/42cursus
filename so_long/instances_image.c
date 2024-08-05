@@ -6,16 +6,16 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 15:46:51 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/02 15:47:26 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:16:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-mlx_instance_t*	find_instance(mlx_image_t *img, mlx_instance_t player)
+mlx_instance_t	*find_instance(mlx_image_t *img, mlx_instance_t player)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (i < img->count)
 	{

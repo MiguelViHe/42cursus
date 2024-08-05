@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 19:32:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/03 15:21:38 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/05 10:46:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	put_score(t_data *d, char *mov)
 {
-	char *moves;
-	char *cat_score;
+	char	*moves;
+	char	*cat_score;
 
 	moves = ft_itoa(d->map->moves);
 	cat_score = (char *)ft_calloc(8 + ft_strlen(moves), sizeof(char));
