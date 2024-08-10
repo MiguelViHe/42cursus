@@ -6,16 +6,16 @@
 #    By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/01 17:22:41 by mvidal-h          #+#    #+#              #
-#    Updated: 2024/08/05 20:17:46 by mvidal-h         ###   ########.fr        #
+#    Updated: 2024/08/10 10:13:28 by mvidal-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 NAME_BONUS = so_long_bonus
 
-CC = gcc
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 MLX42_FLAGS = -ldl -lglfw -pthread -lm
 
 HEADERS	= -I $(MLX42_DIR)/include
@@ -82,9 +82,9 @@ $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT)
 $(LIBFT):
 	$(MAKE) bonus -C $(LIBFT_DIR)
 	
-all: libmlx42 $(NAME)
+all: libmlx42 $(NAME) $(NAME_BONUS)
 
-bonus: libmlx42 $(NAME_BONUS)
+bonus: $(NAME_BONUS)
 
 libmlx42:
 	cmake $(MLX42_DIR) -B $(MLX42_DIR)/build && make -C $(MLX42_DIR)/build -j4

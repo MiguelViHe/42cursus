@@ -26,6 +26,7 @@ void	you_win_loose(t_data *d, int end_game)
 {
 	char	*str;
 
+	str = NULL;
 	if (end_game == 1)
 	{
 		str = "YOU WIN!";

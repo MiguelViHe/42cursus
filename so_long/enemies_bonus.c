@@ -89,6 +89,7 @@ void	move_enemies(t_data *d, mlx_image_t **enemies)
 	bool	move;
 
 	num_enemy = 0;
+	srand(time(NULL));
 	while (num_enemy < enemies[0]->count && d->map->is_win_loose == 0)
 	{
 		move = false;
