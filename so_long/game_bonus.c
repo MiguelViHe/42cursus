@@ -40,8 +40,6 @@ int	initialize_game(t_map *map)
 	}
 	data.map = map;
 	mlx_get_monitor_size(0, &data.screen_width, &data.screen_height);
-	ft_printf("width screen = %d\n", data.screen_width);
-	ft_printf("height screen = %d\n", data.screen_height);
 	verify_map_size(&data);
 	load_images(&data);
 	images_to_map(&data);

@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		ft_printf("Errror\nMap is not playable.\n");
+		ft_printf("Error\nMap is not playable.\n");
 		free_map_array(&map);
 		free_map_array(&c_map);
 	}
