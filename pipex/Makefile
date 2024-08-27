@@ -7,7 +7,7 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 RM = rm -rf
 
 SRCS =	pipex.c \
-
+		pipex_utils.c \
 
 OBJS = $(SRCS:.c=.o)
 
