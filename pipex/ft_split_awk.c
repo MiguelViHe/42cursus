@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_awk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 10:06:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/28 16:17:28 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/08/28 13:35:41 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/08/28 17:02:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
-#include "libft.h"
-
-char	**free_array_split(char **words, size_t word)
-{
-	while (word > 0)
-	{
-		word--;
-		free(words[word]);
-	}
-	free(words);
-	return (NULL);
-}
+# include "libft/libft.h"
 
 static size_t	count_words(char const *s, char c)
 {
 	int	i;
 	int	counter;
+	int	flag;
 
 	i = 0;
 	counter = 0;
+	flag = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		while (s[i] == c)
 			i++;
-		else
+		if (s[i])
 		{
 			counter++;
-			while (s[i] && s[i] != c)
+			if (s[i] == '\'')
+				flag = 1;
+			while ((s[i] && s[i] != c) || flag == 1)
+			{
 				i++;
+				if (s[i] == '\'')
+					flag = 0;
+			}
 		}
 	}
 	return (counter);
@@ -60,6 +57,25 @@ static char	*copy_word(char const *s, int i, char *word, size_t word_len)
 	return (word);
 }
 
+static size_t calc_word_len(char const *s, char c, int *i)
+{
+	size_t	word_len;
+	int		spc_allowed;
+
+	while (s[*i] && s[*i] == c)
+		(*i)++;
+	if (s[*i] == '\'')
+		spc_allowed = 1;
+	while ((s[*i] && s[*i] != c) || spc_allowed)
+	{
+		word_len++;
+		if (s[*i] == '\'')
+		spc_allowed = 0;
+		(*i)++;
+	}
+	return (word_len);
+}
+
 static char	**fill_words(char const *s, char c, char **words, size_t num_words)
 {
 	size_t	word_len;
@@ -71,13 +87,7 @@ static char	**fill_words(char const *s, char c, char **words, size_t num_words)
 	word_len = 0;
 	while (word < num_words)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		while (s[i] && s[i] != c)
-		{
-			word_len++;
-			i++;
-		}
+		word_len = calc_word_len(s, c, &i);
 		words[word] = (char *)malloc((word_len + 1) * sizeof(char));
 		if (!words[word])
 			return (free_array_split(words, word));
@@ -90,38 +100,20 @@ static char	**fill_words(char const *s, char c, char **words, size_t num_words)
 
 /*Allocate (with malloc) and returns an array of strings obtained
 by splitting s with the character c, used as delimiter.*/
-char	**ft_split(char const *s, char c)
+char	**ft_split_awk(char const *s, char c)
 {
 	char	**words;
 	size_t	num_words;
 
 	if (!s)
 		return (NULL);
+	ft_printf("llego?1 %s\n", s);
 	num_words = count_words(s, c);
+	ft_printf("num words = %d\n", num_words);
 	words = (char **)ft_calloc((num_words + 1), sizeof(char *));
+	ft_printf("llego?3\n");
 	if (!words)
 		return (NULL);
-	words = fill_words(s, c, words, num_words);
+	words = fill_words(s, c, words, num_words); //SEGUIR POR AQUIIIII FALLO DE MEMORIA.
 	return (words);
 }
-
-/*int	main(void)
-{
-	char	*cadena = "      split       this for   me  !       ";
-	char	de = ' ';
-	char	**result;
-	int		i;
-
-	i = 0;
-	result = ft_split(cadena, de);
-	if (result)
-	{
-		while (result && result[i])
-		{
-			printf("palabra %d = %s\n", i + 1, result[i]);
-			i++;
-		}
-		free_array(result, count_words(cadena, de));
-	}
-	return (0);
-}*/

@@ -8,6 +8,7 @@ RM = rm -rf
 
 SRCS =	pipex.c \
 		pipex_utils.c \
+		ft_split_awk.c \
 
 OBJS = $(SRCS:.c=.o)
 

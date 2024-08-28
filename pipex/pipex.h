@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/27 16:59:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/28 16:00:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@
 # include <sys/wait.h>
 
 //pipex_utils.c
-char    **get_path_env(char *env[]);
+char	**get_path_env(char *env[]);
+void	free_path(char **path_array);
+
+//ft_split_awk.c
+char	**ft_split_awk(char const *s, char c);
 
 #endif
