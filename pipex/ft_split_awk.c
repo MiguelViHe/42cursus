@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:35:41 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/28 17:02:52 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:08:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static size_t calc_word_len(char const *s, char c, int *i)
 	size_t	word_len;
 	int		spc_allowed;
 
+	word_len = 0;
+	spc_allowed = 0;
 	while (s[*i] && s[*i] == c)
 		(*i)++;
 	if (s[*i] == '\'')
@@ -69,9 +71,9 @@ static size_t calc_word_len(char const *s, char c, int *i)
 	while ((s[*i] && s[*i] != c) || spc_allowed)
 	{
 		word_len++;
-		if (s[*i] == '\'')
-		spc_allowed = 0;
 		(*i)++;
+		if (s[*i] == '\'')
+			spc_allowed = 0;
 	}
 	return (word_len);
 }
@@ -107,13 +109,10 @@ char	**ft_split_awk(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	ft_printf("llego?1 %s\n", s);
 	num_words = count_words(s, c);
-	ft_printf("num words = %d\n", num_words);
 	words = (char **)ft_calloc((num_words + 1), sizeof(char *));
-	ft_printf("llego?3\n");
 	if (!words)
 		return (NULL);
-	words = fill_words(s, c, words, num_words); //SEGUIR POR AQUIIIII FALLO DE MEMORIA.
+	words = fill_words(s, c, words, num_words);
 	return (words);
 }

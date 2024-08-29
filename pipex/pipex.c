@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:53:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/28 16:23:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/29 11:06:34 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,9 @@ int main(int argc, char *argv[], char *env[])
 
 	path_array = get_path_env(env);
 	free_path(path_array);
-	ft_printf("AWK----------------\n");
-	awk = ft_split_awk("    awk '{print $4}'    ", ' ');
+	awk = ft_split_awk("    awk -F',' '{print $1, $2, $3}'   ", ' ');
 	print_array(awk);
 	free_path(awk);
-	ft_printf("AWK----------------\n");
 	if (argc != 5)
 	{
 		ft_fdprintf(2, "Bad num args. Try './pipex infile cmd1 cmd2 outfile'");
