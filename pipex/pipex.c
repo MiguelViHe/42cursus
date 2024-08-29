@@ -6,15 +6,14 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:53:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/29 11:06:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:50:38 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-#define READ_END	0
-#define WRITE_END	1
-#define FILE_NAME	"infile"
+#define READ_END		0
+#define WRITE_END		1
 
 void	print_array(char *array[])
 {
@@ -46,27 +45,32 @@ void	print_args(int argc, char *argv[], char *env[])
 	}
 }
 
-void	second_child(int fdp[])
+void	second_child(int fdp[], char *argv[], char **split_path)
 {
 	int fd;
 
-	fd = open(FILE_NAME, O_WRONLY);
+	fd = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	dup2(fdp[READ_END], STDIN_FILENO);
 	close(fdp[READ_END]);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
+	execlp("/usr/bin/awk", "awk", "{print $3}", NULL);
+}
+
+void	first_child(int fdp[], char *argv[], char **split_path)
+{
+	int	fd;
+	
+	close(fdp[READ_END]);
+	fd = open(argv[1], O_RDONLY);
+	dup2(fd, STDIN_FILENO);
+	close(fd);
+	dup2(fdp[WRITE_END], STDOUT_FILENO);
+	close(fdp[WRITE_END]);
 	execlp("/usr/bin/cat", "cat", NULL);
 }
 
-void	first_child(int fdp[])
-{
-	close(fdp[READ_END]);
-	dup2(fdp[WRITE_END], STDOUT_FILENO);
-	close(fdp[WRITE_END]);
-	execlp("/bin/ls", "ls", "-l", NULL);
-}
-
-void	second_fork(int fdp[])
+void	second_fork(int fdp[], char *argv[], char **split_path)
 {
 	pid_t	pid;
 
@@ -75,7 +79,7 @@ void	second_fork(int fdp[])
 	if (pid == -1)
 		exit(-1);
 	if (pid == 0)
-		second_child(fdp);
+		second_child(fdp, argv, split_path);
 	else if (pid > 0)
 		close(fdp[READ_END]);
 }
@@ -85,29 +89,24 @@ int main(int argc, char *argv[], char *env[])
 	int 	fdp[2];
 	int		status;
 	pid_t	pid;
-	char	**path_array;
-	char	**awk;
+	char	**split_path;
 
-	path_array = get_path_env(env);
-	free_path(path_array);
-	awk = ft_split_awk("    awk -F',' '{print $1, $2, $3}'   ", ' ');
-	print_array(awk);
-	free_path(awk);
 	if (argc != 5)
 	{
 		ft_fdprintf(2, "Bad num args. Try './pipex infile cmd1 cmd2 outfile'");
 		exit (-1);
 	}
-	print_args(argc, argv, env); //Luego quitar
+	split_path = get_path_env(env);
 	if (pipe(fdp) == -1)
 		exit(-1);
 	pid = fork();
 	if (pid == -1)
 		exit(-1);
 	if (pid == 0) //hijo
-		first_child(fdp);
+		first_child(fdp, argv, split_path);
 	else if (pid > 0) //Padre
-		second_fork(fdp);
+		second_fork(fdp, argv, split_path);
+	free_path(split_path);
 	pid = wait(&status);
 	pid = wait(&status);
 	return (0);

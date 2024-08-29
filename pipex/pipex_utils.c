@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/28 10:58:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/29 16:39:16 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ char    **get_path_env(char *env[])
 	path += 5;
 	path_array = ft_split(path, ':');
 	i = 0;
-	while (path_array[i])
-	{
-		ft_printf("path = %s\n", path_array[i]);
-		i++;
-	}
 	return (path_array);
 }
 
