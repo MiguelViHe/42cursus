@@ -6,12 +6,15 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/28 16:00:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/30 09:36:47 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+# define READ_END		0
+# define WRITE_END		1
 
 //libft
 # include "libft/libft.h"
@@ -34,8 +37,13 @@
 //pipex_utils.c
 char	**get_path_env(char *env[]);
 void	free_path(char **path_array);
+int		secure_open(char *file_name, int in_out);
 
 //ft_split_awk.c
 char	**ft_split_awk(char const *s, char c);
+
+//printing.c
+void	print_array(char *array[]);
+void	print_args(int argc, char *argv[], char *env[]);
 
 #endif
