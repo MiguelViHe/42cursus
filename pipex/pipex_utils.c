@@ -6,11 +6,40 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/30 09:43:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:02:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+char	*find_cmd_in_path(char **split_path, const char *cmd)
+{
+	int		i;
+	char	*path;
+	size_t	len;
+
+	i = 0;
+	path = NULL;
+	if (access(cmd, F_OK) == 0)
+		return (ft_strdup(cmd));
+	if (split_path)
+	{
+		while (split_path[i])
+		{
+			len = (ft_strlen(split_path[i]) + ft_strlen(cmd) + 2);
+			path = (char *)ft_calloc(len , sizeof(char));
+			if (path == NULL)
+				exit(1);
+			ft_strlcat(path, split_path[i++], len);
+			ft_strlcat(path, "/", len);
+			ft_strlcat(path, cmd, len);
+			if (access(path, F_OK) == 0)
+				return (path);
+			free(path);
+		}
+	}
+	return (NULL);
+}
 
 char	**get_path_env(char *env[])
 {

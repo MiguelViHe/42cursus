@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/30 09:36:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/08/30 14:59:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 char	**get_path_env(char *env[]);
 void	free_path(char **path_array);
 int		secure_open(char *file_name, int in_out);
+char	*find_cmd_in_path(char **split_path, const char *cmd);
 
 //ft_split_awk.c
 char	**ft_split_awk(char const *s, char c);
