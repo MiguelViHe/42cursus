@@ -6,26 +6,38 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 RM = rm -rf
 
-SRCS =	pipex.c \
-		pipex_utils.c \
-		ft_split_awk.c \
-		printing.c \
+SRCS =			pipex.c \
+				pipex_utils.c \
+				ft_split_awk.c \
+				printing.c \
+
+SRCS_BONUS =	bonus/pipex_bonus.c \
+				bonus/pipex_utils_bonus.c \
+				ft_split_awk.c \
+				printing.c \
 
 OBJS = $(SRCS:.c=.o)
-
-LIBFT_DIR = libft
-LIBFT = $(LIBFT_DIR)/libft.a
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+
 $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
+$(NAME)_bonus: $(OBJS_BONUS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) -o $(NAME)
+	
 $(LIBFT):
 	$(MAKE) bonus -C $(LIBFT_DIR)
 	
 all: $(NAME)
+
+bonus: $(NAME)_bonus
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
