@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_awk.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:35:41 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/29 11:08:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/02 17:07:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-# include "libft/libft.h"
+#include "libft/libft.h"
 
 static size_t	count_words(char const *s, char c)
 {
@@ -47,6 +46,8 @@ static char	*copy_word(char const *s, int i, char *word, size_t word_len)
 	int	j;
 
 	j = 0;
+	if (s[i - 1] == '\'')
+		i -= 1;
 	while (word_len > 0)
 	{
 		word[j] = s[i - word_len];
@@ -57,7 +58,7 @@ static char	*copy_word(char const *s, int i, char *word, size_t word_len)
 	return (word);
 }
 
-static size_t calc_word_len(char const *s, char c, int *i)
+static size_t	calc_word_len(char const *s, char c, int *i)
 {
 	size_t	word_len;
 	int		spc_allowed;
@@ -70,7 +71,8 @@ static size_t calc_word_len(char const *s, char c, int *i)
 		spc_allowed = 1;
 	while ((s[*i] && s[*i] != c) || spc_allowed)
 	{
-		word_len++;
+		if (s[*i] != '\'')
+			word_len++;
 		(*i)++;
 		if (s[*i] == '\'')
 			spc_allowed = 0;

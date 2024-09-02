@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/08/30 14:59:19 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:42:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //libft
 # include "libft/libft.h"
 
-//close, read, fork, pipe, dup2                                                                                                  
+//close, read, fork, pipe, dup2
 # include <unistd.h>
 
 //malloc, free, exit, rand
