@@ -3,36 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:53:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/02 16:44:36 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/03 09:09:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	exec_command(char **split_argv, char *env[], char *path)
+void	exec_command(char **split_arg, char *env[], char *path)
 {
 	if (path)
 	{
 		if (access(path, X_OK) == 0)
 		{
-			execve(path, split_argv, env);
-			perror("Pipex - execve failed");
-			exit (-1);
+			execve(path, split_arg, env);
+			perror("Pipex - execve failed.");
 		}
 		else
-		{
-			perror("Pipex - Command not accessible");
-			exit (-2);
-		}
+			perror("Pipex - Command not accessible.");
 	}
 	else
-	{
-		perror("Pipex - Command not found");
-		exit (-3);
-	}
+		perror("Pipex - Command not found.");
+	free(path);
+	free_path(split_arg);
+	exit (-1);
 }
 
 void	second_child(char *argv[], char *env[], int fdp[], char **split_env)

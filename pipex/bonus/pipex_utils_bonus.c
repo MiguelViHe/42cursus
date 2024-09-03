@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/02 18:03:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/03 16:19:17 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 char	*find_cmd_in_path(char **split_path, const char *cmd)
 {
@@ -56,10 +56,26 @@ char	**get_path_env(char *env[])
 		path = ft_strnstr(env[i], "PATH=", 5);
 		i++;
 	}
-	path += 5;
-	path_array = ft_split(path, ':');
-	i = 0;
+	if (path)
+	{
+		path += 5;
+		path_array = ft_split(path, ':');
+		i = 0;
+	}
 	return (path_array);
+}
+
+t_px_args	args_init(int argc, char *argv[], char *env[])
+{
+	t_px_args 	args;
+
+	args.argc = argc;
+	args.num_cmd = 2;
+	args.split_env = get_path_env(env);
+	args.argv = argv;
+	args.env = env;
+
+	return (args);
 }
 
 void	free_path(char **path_array)

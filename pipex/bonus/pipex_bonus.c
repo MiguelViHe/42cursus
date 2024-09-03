@@ -3,44 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/02 18:42:20 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/03 17:59:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void	exec_command(char **split_argv, char *env[], char *path)
+void	exec_command(char **split_arg, char *env[], char *path)
 {
 	if (path)
 	{
 		if (access(path, X_OK) == 0)
 		{
-			execve(path, split_argv, env);
-			perror("Pipex - execve failed");
-			exit (-1);
+			execve(path, split_arg, env);
+			perror("Pipex - execve failed.");
 		}
 		else
-		{
-			perror("Pipex - Command not accessible");
-			exit (-2);
-		}
+			perror("Pipex - Command not accessible.");
 	}
 	else
-	{
-		perror("Pipex - Command not found");
-		exit (-3);
-	}
+		perror("Pipex - Command not found.");
+	free(path);
+	free_path(split_arg);
+	exit (-1);
 }
 
-void	middle_child(char *argv[], char *env[], int fdp[], char **split_env)
+void	middle_child(t_px_args *args, int fdp[][])
 {
 	
 }
 
-void	last_child(char *argv[], char *env[], int fdp[], char **split_env)
+void	last_child(t_px_args *args, int fdp[])
 {
 	int		fd;
 	char	**split_argv;
@@ -60,7 +56,7 @@ void	last_child(char *argv[], char *env[], int fdp[], char **split_env)
 	exec_command(split_argv, env, final_path);
 }
 
-void	first_child(char *argv[], char *env[], int fdp[], char **split_env)
+void	first_child(t_px_args *args, int fdp[])
 {
 	int		fd;
 	char	**split_argv;
@@ -81,51 +77,52 @@ void	first_child(char *argv[], char *env[], int fdp[], char **split_env)
 	exec_command(split_argv, env, final_path);
 }
 
-void	second_fork(char *argv[], char *env[], int fdp[], char **split_env)
+void childs_management(t_px_args *args, int fdp[2][2], int pid)
 {
-	pid_t	pid;
-
-	close(fdp[WRITE_END]);
-	pid = fork();
 	if (pid == -1)
 		exit(-1);
-	if (pid == 0)
-		second_child(argv, env, fdp, split_env);
+	else if (pid == 0)
+		if (args->num_cmd == 2)
+			first_child(args, fdp[0]);
+		else if (args->num_cmd == args->argc - 2)
+			last_child(args , fdp[((args->num_cmd) + 1) % 2]);
+		else
+			middle_child(args, fdp);
 	else if (pid > 0)
-		close(fdp[READ_END]);
-}
-
-void childs_management(int argc, char *argv[], char *env[])
-{
-
+	{
+		if (args->num_cmd == 2)
+			close(fdp[(args->num_cmd) % 2][WRITE_END]);
+		else if (args->num_cmd == args->argc - 2)
+			close(fdp[((args->num_cmd) + 1) % 2][READ_END]);
+		else
+			close(fdp[(args->num_cmd) % 2][WRITE_END]);
+			close(fdp[((args->num_cmd) + 1) % 2][READ_END]);
+	}
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	int		fdp1[2];
-	int		fdp2[2];
-	int		status;
-	pid_t	pid;
-	char	**split_env;
-
+	t_px_args	*args;
+	int			fdp[2][2];
+	int			status;
+	pid_t		pid;
+	
 	if (argc < 5)
 	{
 		ft_fdprintf(2, "Try './pipex infile cmd_1 ... cmd_n outfile'");
 		exit (-1);
 	}
-	split_env = get_path_env(env);
-	childs_management(/*cosas*/);
-	
-	if (pipe(fdp1) == -1)
-		exit(-1);
-	pid = fork();
-	if (pid == -1)
-		exit(-1);
-	if (pid == 0)
-		first_child(argv, env, fdp1, split_env);
-	else if (pid > 0)
-		second_fork(argv, env, fdp1, split_env);
-	free_path(split_env);
+	*args = args_init(argc, argv, env);
+	while (args->num_cmd < argc - 1)
+	{
+		if (args->num_cmd < argc - 2)
+			if (pipe(fdp[args->num_cmd % 2]) == -1)
+				exit(-1);
+		pid = fork();
+		childs_management(args, fdp, pid);
+		args->num_cmd++;
+	}
+	free_path(args->split_env);
 	pid = wait(&status);
 	pid = wait(&status);
 	return (0);
