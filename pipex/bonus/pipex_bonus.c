@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/03 17:59:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:45:35 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,50 +31,52 @@ void	exec_command(char **split_arg, char *env[], char *path)
 	exit (-1);
 }
 
-void	middle_child(t_px_args *args, int fdp[][])
-{
+// void	middle_child(t_px_args *args, int fdp[][])
+// {
 	
-}
+// }
 
-void	last_child(t_px_args *args, int fdp[])
+void	last_child(t_px_args *args, int fdp[2])
 {
 	int		fd;
 	char	**split_argv;
 	char	*final_path;
+	char	*last_cmd;
 
-	fd = secure_open(argv[4], 1);
-	if (!ft_strnstr(argv[3], "awk", ft_strlen(argv[3])))
-		split_argv = ft_split(argv[3], ' ');
+	last_cmd = args->argv[(args->argc) - 2];
+	fd = secure_open(args->argv[(args->argc) - 1], 1);
+	if (!ft_strnstr(last_cmd, "awk", ft_strlen(last_cmd)))
+		split_argv = ft_split(last_cmd, ' ');
 	else
-		split_argv = ft_split_awk(argv[3], ' ');
-	final_path = find_cmd_in_path(split_env, split_argv[0]);
-	free_path(split_env);
+		split_argv = ft_split_awk(last_cmd, ' ');
+	final_path = find_cmd_in_path(args->split_env, split_argv[0]);
+	free_path(args->split_env);
 	dup2(fdp[READ_END], STDIN_FILENO);
 	close(fdp[READ_END]);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
-	exec_command(split_argv, env, final_path);
+	exec_command(split_argv, args->env, final_path);
 }
 
-void	first_child(t_px_args *args, int fdp[])
+void	first_child(t_px_args *args, int fdp[2])
 {
 	int		fd;
 	char	**split_argv;
 	char	*final_path;
 
 	close(fdp[READ_END]);
-	fd = secure_open(argv[1], 0);
-	if (!ft_strnstr(argv[2], "awk", ft_strlen(argv[2])))
-		split_argv = ft_split(argv[2], ' ');
+	fd = secure_open(args->argv[1], 0);
+	if (!ft_strnstr(args->argv[2], "awk", ft_strlen(args->argv[2])))
+		split_argv = ft_split(args->argv[2], ' ');
 	else
-		split_argv = ft_split_awk(argv[2], ' ');
-	final_path = find_cmd_in_path(split_env, split_argv[0]);
-	free_path(split_env);
+		split_argv = ft_split_awk(args->argv[2], ' ');
+	final_path = find_cmd_in_path(args->split_env, split_argv[0]);
+	free_path(args->split_env);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 	dup2(fdp[WRITE_END], STDOUT_FILENO);
 	close(fdp[WRITE_END]);
-	exec_command(split_argv, env, final_path);
+	exec_command(split_argv, args->env, final_path);
 }
 
 void childs_management(t_px_args *args, int fdp[2][2], int pid)
@@ -82,12 +84,20 @@ void childs_management(t_px_args *args, int fdp[2][2], int pid)
 	if (pid == -1)
 		exit(-1);
 	else if (pid == 0)
+	{
 		if (args->num_cmd == 2)
+		{
+			ft_printf("first\n");
 			first_child(args, fdp[0]);
+		}
 		else if (args->num_cmd == args->argc - 2)
+		{
+			ft_printf("last\n");
 			last_child(args , fdp[((args->num_cmd) + 1) % 2]);
-		else
-			middle_child(args, fdp);
+		}
+		// else
+		// 	middle_child(args, fdp);
+	}
 	else if (pid > 0)
 	{
 		if (args->num_cmd == 2)
@@ -95,14 +105,16 @@ void childs_management(t_px_args *args, int fdp[2][2], int pid)
 		else if (args->num_cmd == args->argc - 2)
 			close(fdp[((args->num_cmd) + 1) % 2][READ_END]);
 		else
+		{
 			close(fdp[(args->num_cmd) % 2][WRITE_END]);
 			close(fdp[((args->num_cmd) + 1) % 2][READ_END]);
+		}
 	}
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	t_px_args	*args;
+	t_px_args	args;
 	int			fdp[2][2];
 	int			status;
 	pid_t		pid;
@@ -112,17 +124,20 @@ int	main(int argc, char *argv[], char *env[])
 		ft_fdprintf(2, "Try './pipex infile cmd_1 ... cmd_n outfile'");
 		exit (-1);
 	}
-	*args = args_init(argc, argv, env);
-	while (args->num_cmd < argc - 1)
+	ft_printf("llego aqui1\n");
+	args = (args_init(argc, argv, env));
+	ft_printf("llego aqui2\n");
+	while (args.num_cmd < argc - 1)
 	{
-		if (args->num_cmd < argc - 2)
-			if (pipe(fdp[args->num_cmd % 2]) == -1)
+		if (args.num_cmd < argc - 2)
+			if (pipe(fdp[args.num_cmd % 2]) == -1)
 				exit(-1);
 		pid = fork();
-		childs_management(args, fdp, pid);
-		args->num_cmd++;
+		childs_management(&args, fdp, pid);
+		args.num_cmd++;
 	}
-	free_path(args->split_env);
+	ft_printf("HOLAAA\n");
+	free_path(args.split_env);
 	pid = wait(&status);
 	pid = wait(&status);
 	return (0);

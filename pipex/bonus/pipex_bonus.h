@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/03 16:19:41 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 11:48:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define WRITE_END		1
 
 //libft
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 //close, read, fork, pipe, dup2
 # include <unistd.h>
@@ -34,16 +34,19 @@
 //wait
 # include <sys/wait.h>
 
+//O_WRONLY, O_CREAT, O_TRUNC
+//# include <fcntl.h>
+
 typedef struct s_px_args
 {
 	int		argc;
+	int		num_cmd;
 	char	**argv;
 	char	**env;
 	char	**split_env;
-	int		num_cmd;
 }				t_px_args;
 
-//pipex_utils.c
+//pipex_utils_bonus.c
 char	*find_cmd_in_path(char **split_path, const char *cmd);
 char	**get_path_env(char *env[]);
 t_px_args	args_init(int argc, char *argv[], char *env[]);
