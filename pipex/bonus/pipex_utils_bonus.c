@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 12:58:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:47:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,11 @@ t_px_args	args_init(int argc, char *argv[], char *env[])
 {
 	t_px_args 	args;
 
-	ft_printf("llego aqui1.1\n");
 	args.argc = argc;
-	ft_printf("llego aqui1.2 args.argc = %d\n", args.argc);
 	args.num_cmd = 2;
-	ft_printf("llego aqui1.3 args.num_cmd = %d\n", args.num_cmd);
 	args.argv = argv;
-	ft_printf("llego aqui1.4\n");
 	args.env = env;
-	ft_printf("llego aqui1.5\n");
 	args.split_env = get_path_env(env);
-	ft_printf("llego aqui1.6\n");
-
 	return (args);
 }
 
@@ -97,7 +90,7 @@ void	free_path(char **path_array)
 	free(path_array);
 }
 
-int	secure_open(char *file_name, int in_out)
+int	secure_open(char *file_name, int in_out, t_px_args *args)
 {
 	int	fd;
 
@@ -108,6 +101,7 @@ int	secure_open(char *file_name, int in_out)
 	if (fd == -1)
 	{
 		perror("Pipex - Error opening file");
+		free_path(args->split_env);
 		exit (-1);
 	}
 	return (fd);

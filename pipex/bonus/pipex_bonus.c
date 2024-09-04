@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 14:45:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:47:08 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	last_child(t_px_args *args, int fdp[2])
 	char	*last_cmd;
 
 	last_cmd = args->argv[(args->argc) - 2];
-	fd = secure_open(args->argv[(args->argc) - 1], 1);
+	fd = secure_open(args->argv[(args->argc) - 1], 1, args);
 	if (!ft_strnstr(last_cmd, "awk", ft_strlen(last_cmd)))
 		split_argv = ft_split(last_cmd, ' ');
 	else
@@ -65,7 +65,7 @@ void	first_child(t_px_args *args, int fdp[2])
 	char	*final_path;
 
 	close(fdp[READ_END]);
-	fd = secure_open(args->argv[1], 0);
+	fd = secure_open(args->argv[1], 0, args);
 	if (!ft_strnstr(args->argv[2], "awk", ft_strlen(args->argv[2])))
 		split_argv = ft_split(args->argv[2], ' ');
 	else
@@ -124,9 +124,7 @@ int	main(int argc, char *argv[], char *env[])
 		ft_fdprintf(2, "Try './pipex infile cmd_1 ... cmd_n outfile'");
 		exit (-1);
 	}
-	ft_printf("llego aqui1\n");
 	args = (args_init(argc, argv, env));
-	ft_printf("llego aqui2\n");
 	while (args.num_cmd < argc - 1)
 	{
 		if (args.num_cmd < argc - 2)
