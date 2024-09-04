@@ -8,12 +8,12 @@ RM = rm -rf
 
 SRCS =			pipex.c \
 				pipex_utils.c \
-				ft_split_awk.c \
+				ft_split_squotes.c \
 				printing.c \
 
 SRCS_BONUS =	bonus/pipex_bonus.c \
 				bonus/pipex_utils_bonus.c \
-				ft_split_awk.c \
+				ft_split_squotes.c \
 				printing.c \
 
 OBJS = $(SRCS:.c=.o)

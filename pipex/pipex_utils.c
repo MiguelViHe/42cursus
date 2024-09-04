@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/03 15:09:48 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:34:35 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	free_path(char **path_array)
 	free(path_array);
 }
 
-int	secure_open(char *file_name, int in_out)
+int	secure_open(char *file_name, int in_out, char **split_path)
 {
 	int	fd;
 
@@ -89,6 +89,7 @@ int	secure_open(char *file_name, int in_out)
 	if (fd == -1)
 	{
 		perror("Pipex - Error opening file");
+		free_path(split_path);
 		exit (-1);
 	}
 	return (fd);

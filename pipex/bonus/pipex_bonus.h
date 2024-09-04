@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 15:46:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:20:30 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_px_args
 	int		num_cmd;
 	char	**argv;
 	char	**env;
-	char	**split_env;
+	char	**split_path;
 }				t_px_args;
 
 //pipex_utils_bonus.c
@@ -53,8 +53,8 @@ t_px_args	args_init(int argc, char *argv[], char *env[]);
 void	free_path(char **path_array);
 int	secure_open(char *file_name, int in_out, t_px_args *args);
 
-//ft_split_awk.c
-char	**ft_split_awk(char const *s, char c);
+//ft_split_siquotes.c
+char	**ft_split_squotes(char const *s, char c);
 
 //printing.c
 void	print_array(char *array[]);

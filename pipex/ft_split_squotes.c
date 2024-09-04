@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_awk.c                                     :+:      :+:    :+:   */
+/*   ft_split_squotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 13:35:41 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/02 17:07:55 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:16:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,10 @@ static char	**fill_words(char const *s, char c, char **words, size_t num_words)
 }
 
 /*Allocate (with malloc) and returns an array of strings obtained
-by splitting s with the character c, used as delimiter.*/
-char	**ft_split_awk(char const *s, char c)
+by splitting s with the character c, used as delimiter.
+The difference with ft_split is that f a ' appears it doesn´t
+take into account de delimeter till another ' appears*/
+char	**ft_split_squotes(char const *s, char c)
 {
 	char	**words;
 	size_t	num_words;

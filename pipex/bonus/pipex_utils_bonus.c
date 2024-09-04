@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 15:47:43 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:22:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_px_args	args_init(int argc, char *argv[], char *env[])
 	args.num_cmd = 2;
 	args.argv = argv;
 	args.env = env;
-	args.split_env = get_path_env(env);
+	args.split_path = get_path_env(env);
 	return (args);
 }
 
@@ -101,7 +101,7 @@ int	secure_open(char *file_name, int in_out, t_px_args *args)
 	if (fd == -1)
 	{
 		perror("Pipex - Error opening file");
-		free_path(args->split_env);
+		free_path(args->split_path);
 		exit (-1);
 	}
 	return (fd);

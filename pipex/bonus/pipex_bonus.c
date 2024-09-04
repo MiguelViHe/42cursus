@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 15:47:08 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:43:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,32 @@ void	exec_command(char **split_arg, char *env[], char *path)
 	exit (-1);
 }
 
-// void	middle_child(t_px_args *args, int fdp[][])
-// {
-	
-// }
+void	middle_child(t_px_args *args, int fdp[2][2])
+{
+	char	**split_argv;
+	char	*final_path;
+	char	*curr_cmd;
+	int		next_pipe;
+	int		prev_pipe;
+
+	curr_cmd = args->argv[args->num_cmd];
+	prev_pipe = ((args->num_cmd) + 1) % 2;
+	next_pipe = (args->num_cmd) % 2;
+	close(fdp[next_pipe][READ_END]);
+	if (!ft_strnstr(curr_cmd, "'", ft_strlen(curr_cmd)))
+		split_argv = ft_split(curr_cmd, ' ');
+	else
+		split_argv = ft_split_squotes(curr_cmd, ' ');
+	ft_printf("middle:\n");
+	print_array(split_argv);
+	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
+	free_path(args->split_path);
+	dup2(fdp[prev_pipe][READ_END], STDIN_FILENO);
+	close(fdp[prev_pipe][READ_END]);
+	dup2(fdp[next_pipe][WRITE_END], STDOUT_FILENO);
+	close(fdp[next_pipe][READ_END]);
+	exec_command(split_argv, args->env, final_path);
+}
 
 void	last_child(t_px_args *args, int fdp[2])
 {
@@ -45,12 +67,14 @@ void	last_child(t_px_args *args, int fdp[2])
 
 	last_cmd = args->argv[(args->argc) - 2];
 	fd = secure_open(args->argv[(args->argc) - 1], 1, args);
-	if (!ft_strnstr(last_cmd, "awk", ft_strlen(last_cmd)))
+	if (!ft_strnstr(last_cmd, "'", ft_strlen(last_cmd)))
 		split_argv = ft_split(last_cmd, ' ');
 	else
-		split_argv = ft_split_awk(last_cmd, ' ');
-	final_path = find_cmd_in_path(args->split_env, split_argv[0]);
-	free_path(args->split_env);
+		split_argv = ft_split_squotes(last_cmd, ' ');
+	ft_printf("last:\n");
+	print_array(split_argv);
+	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
+	free_path(args->split_path);
 	dup2(fdp[READ_END], STDIN_FILENO);
 	close(fdp[READ_END]);
 	dup2(fd, STDOUT_FILENO);
@@ -66,12 +90,14 @@ void	first_child(t_px_args *args, int fdp[2])
 
 	close(fdp[READ_END]);
 	fd = secure_open(args->argv[1], 0, args);
-	if (!ft_strnstr(args->argv[2], "awk", ft_strlen(args->argv[2])))
+	if (!ft_strnstr(args->argv[2], "'", ft_strlen(args->argv[2])))
 		split_argv = ft_split(args->argv[2], ' ');
 	else
-		split_argv = ft_split_awk(args->argv[2], ' ');
-	final_path = find_cmd_in_path(args->split_env, split_argv[0]);
-	free_path(args->split_env);
+		split_argv = ft_split_squotes(args->argv[2], ' ');
+	ft_printf("first:\n");
+	print_array(split_argv);
+	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
+	free_path(args->split_path);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
 	dup2(fdp[WRITE_END], STDOUT_FILENO);
@@ -86,17 +112,12 @@ void childs_management(t_px_args *args, int fdp[2][2], int pid)
 	else if (pid == 0)
 	{
 		if (args->num_cmd == 2)
-		{
-			ft_printf("first\n");
 			first_child(args, fdp[0]);
-		}
 		else if (args->num_cmd == args->argc - 2)
-		{
-			ft_printf("last\n");
+
 			last_child(args , fdp[((args->num_cmd) + 1) % 2]);
-		}
-		// else
-		// 	middle_child(args, fdp);
+		else
+			middle_child(args, fdp);
 	}
 	else if (pid > 0)
 	{
@@ -134,9 +155,11 @@ int	main(int argc, char *argv[], char *env[])
 		childs_management(&args, fdp, pid);
 		args.num_cmd++;
 	}
-	ft_printf("HOLAAA\n");
-	free_path(args.split_env);
+	free_path(args.split_path);
 	pid = wait(&status);
 	pid = wait(&status);
 	return (0);
 }
+
+//./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'" "sort" "uniq" "tr 'a-z' 'A-Z'"  outfile.txt
+//./pipex infile.txt "awk '{print \$2, \$1}'" "grep o" "awk '{print \$1}'" "grep es" outfile.txt
