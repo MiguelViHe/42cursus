@@ -6,11 +6,30 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 18:34:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:37:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	exec_command(char **split_arg, char *env[], char *path)
+{
+	if (path)
+	{
+		if (access(path, X_OK) == 0)
+		{
+			execve(path, split_arg, env);
+			perror("Pipex - execve failed.");
+		}
+		else
+			perror("Pipex - Command not accessible.");
+	}
+	else
+		perror("Pipex - Command not found.");
+	free(path);
+	free_path(split_arg);
+	exit (-1);
+}
 
 char	*find_cmd_in_path(char **split_path, const char *cmd)
 {

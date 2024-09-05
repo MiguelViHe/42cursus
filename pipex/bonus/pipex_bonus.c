@@ -6,30 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 18:43:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:11:51 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../pipex.h"
 #include "pipex_bonus.h"
-
-void	exec_command(char **split_arg, char *env[], char *path)
-{
-	if (path)
-	{
-		if (access(path, X_OK) == 0)
-		{
-			execve(path, split_arg, env);
-			perror("Pipex - execve failed.");
-		}
-		else
-			perror("Pipex - Command not accessible.");
-	}
-	else
-		perror("Pipex - Command not found.");
-	free(path);
-	free_path(split_arg);
-	exit (-1);
-}
 
 void	middle_child(t_px_args *args, int fdp[2][2])
 {
@@ -66,7 +48,7 @@ void	last_child(t_px_args *args, int fdp[2])
 	char	*last_cmd;
 
 	last_cmd = args->argv[(args->argc) - 2];
-	fd = secure_open(args->argv[(args->argc) - 1], 1, args);
+	fd = secure_open_bonus(args->argv[(args->argc) - 1], 1, args);
 	if (!ft_strnstr(last_cmd, "'", ft_strlen(last_cmd)))
 		split_argv = ft_split(last_cmd, ' ');
 	else
@@ -89,7 +71,7 @@ void	first_child(t_px_args *args, int fdp[2])
 	char	*final_path;
 
 	close(fdp[READ_END]);
-	fd = secure_open(args->argv[1], 0, args);
+	fd = secure_open_bonus(args->argv[1], 0, args);
 	if (!ft_strnstr(args->argv[2], "'", ft_strlen(args->argv[2])))
 		split_argv = ft_split(args->argv[2], ' ');
 	else
@@ -105,7 +87,7 @@ void	first_child(t_px_args *args, int fdp[2])
 	exec_command(split_argv, args->env, final_path);
 }
 
-void childs_management(t_px_args *args, int fdp[2][2], int pid)
+void	childs_management(t_px_args *args, int fdp[2][2], int pid)
 {
 	if (pid == -1)
 		exit(-1);
@@ -114,8 +96,7 @@ void childs_management(t_px_args *args, int fdp[2][2], int pid)
 		if (args->num_cmd == 2)
 			first_child(args, fdp[0]);
 		else if (args->num_cmd == args->argc - 2)
-
-			last_child(args , fdp[((args->num_cmd) + 1) % 2]);
+			last_child(args, fdp[((args->num_cmd) + 1) % 2]);
 		else
 			middle_child(args, fdp);
 	}
@@ -139,7 +120,7 @@ int	main(int argc, char *argv[], char *env[])
 	int			fdp[2][2];
 	int			status;
 	pid_t		pid;
-	
+
 	if (argc < 5)
 	{
 		ft_fdprintf(2, "Try './pipex infile cmd_1 ... cmd_n outfile'");
@@ -161,5 +142,19 @@ int	main(int argc, char *argv[], char *env[])
 	return (0);
 }
 
-//./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'" "sort" "uniq" "tr 'a-z' 'A-Z'"  outfile.txt
-//./pipex infile.txt "awk '{print \$2, \$1}'" "grep o" "awk '{print \$1}'" "grep es" outfile.txt
+//./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'"
+// "sort" "uniq" "tr 'a-z' 'A-Z'"  outfile.txt
+//./pipex infile.txt "awk '{print \$2, \$1}'" "grep o" "awk '{print \$1}'"
+// "grep es" outfile.txt
+
+//cut 
+//	-d (delimitador)
+//	-f (field)
+//sed
+//	's/patrón/reemplazo/modificadores'
+//tr -- sustituir o traducir
+//	set1 a cambiar por set2
+//tr -d 'aeiou'
+//	tr con -d tambien sirve para eliminar caracteres de la entrada
+//tr -s ' '
+//	dejar solo un elemento del indicado si aparecen mas de uno seguidos.

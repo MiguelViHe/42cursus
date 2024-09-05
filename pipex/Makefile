@@ -13,6 +13,7 @@ SRCS =			pipex.c \
 
 SRCS_BONUS =	bonus/pipex_bonus.c \
 				bonus/pipex_utils_bonus.c \
+				pipex_utils.c \
 				ft_split_squotes.c \
 				printing.c \
 

@@ -6,36 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 18:20:30 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:06:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-
-# define READ_END		0
-# define WRITE_END		1
-
-//libft
-# include "../libft/libft.h"
-
-//close, read, fork, pipe, dup2
-# include <unistd.h>
-
-//malloc, free, exit, rand
-# include <stdlib.h>
-
-//perror
-# include <stdio.h>
-
-//strerror
-# include <string.h>
-
-//wait
-# include <sys/wait.h>
-
-//O_WRONLY, O_CREAT, O_TRUNC
-//# include <fcntl.h>
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 typedef struct s_px_args
 {
@@ -47,17 +23,7 @@ typedef struct s_px_args
 }				t_px_args;
 
 //pipex_utils_bonus.c
-char	*find_cmd_in_path(char **split_path, const char *cmd);
-char	**get_path_env(char *env[]);
 t_px_args	args_init(int argc, char *argv[], char *env[]);
-void	free_path(char **path_array);
-int	secure_open(char *file_name, int in_out, t_px_args *args);
-
-//ft_split_siquotes.c
-char	**ft_split_squotes(char const *s, char c);
-
-//printing.c
-void	print_array(char *array[]);
-void	print_args(int argc, char *argv[], char *env[]);
+int			secure_open_bonus(char *file_name, int in_out, t_px_args *args);
 
 #endif

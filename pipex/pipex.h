@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:55:27 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/04 18:35:35 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:39:11 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@
 # include <sys/wait.h>
 
 //pipex_utils.c
+void	exec_command(char **split_arg, char *env[], char *path);
+char	*find_cmd_in_path(char **split_path, const char *cmd);
 char	**get_path_env(char *env[]);
 void	free_path(char **path_array);
-int	secure_open(char *file_name, int in_out, char **split_path);
-char	*find_cmd_in_path(char **split_path, const char *cmd);
+int		secure_open(char *file_name, int in_out, char **split_path);
 
-//ft_split_awk.c
+//ft_split_squotes.c
 char	**ft_split_squotes(char const *s, char c);
 
 //printing.c
