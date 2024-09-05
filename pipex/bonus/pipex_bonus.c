@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 12:11:51 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:11:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	middle_child(t_px_args *args, int fdp[2][2])
 		split_argv = ft_split(curr_cmd, ' ');
 	else
 		split_argv = ft_split_squotes(curr_cmd, ' ');
-	ft_printf("middle:\n");
-	print_array(split_argv);
 	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
 	free_path(args->split_path);
 	dup2(fdp[prev_pipe][READ_END], STDIN_FILENO);
@@ -53,8 +51,6 @@ void	last_child(t_px_args *args, int fdp[2])
 		split_argv = ft_split(last_cmd, ' ');
 	else
 		split_argv = ft_split_squotes(last_cmd, ' ');
-	ft_printf("last:\n");
-	print_array(split_argv);
 	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
 	free_path(args->split_path);
 	dup2(fdp[READ_END], STDIN_FILENO);
@@ -76,8 +72,6 @@ void	first_child(t_px_args *args, int fdp[2])
 		split_argv = ft_split(args->argv[2], ' ');
 	else
 		split_argv = ft_split_squotes(args->argv[2], ' ');
-	ft_printf("first:\n");
-	print_array(split_argv);
 	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
 	free_path(args->split_path);
 	dup2(fd, STDIN_FILENO);
@@ -118,7 +112,6 @@ int	main(int argc, char *argv[], char *env[])
 {
 	t_px_args	args;
 	int			fdp[2][2];
-	int			status;
 	pid_t		pid;
 
 	if (argc < 5)
@@ -137,9 +130,7 @@ int	main(int argc, char *argv[], char *env[])
 		args.num_cmd++;
 	}
 	free_path(args.split_path);
-	pid = wait(&status);
-	pid = wait(&status);
-	return (0);
+	return (wait_for_children((args.num_cmd) - 2));
 }
 
 //./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'"

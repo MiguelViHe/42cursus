@@ -6,11 +6,28 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:53:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 11:36:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 12:54:47 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	secure_open(char *file_name, int in_out, char **split_path)
+{
+	int	fd;
+
+	if (in_out == 0)
+		fd = open(file_name, O_RDONLY);
+	else if (in_out == 1)
+		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd == -1)
+	{
+		perror("Pipex - Error opening file");
+		free_path(split_path);
+		exit (-1);
+	}
+	return (fd);
+}
 
 void	second_child(char *argv[], char *env[], int fdp[], char **split_path)
 {
@@ -70,7 +87,6 @@ void	second_fork(char *argv[], char *env[], int fdp[], char **split_path)
 int	main(int argc, char *argv[], char *env[])
 {
 	int		fdp[2];
-	int		status;
 	pid_t	pid;
 	char	**split_path;
 
@@ -90,9 +106,7 @@ int	main(int argc, char *argv[], char *env[])
 	else if (pid > 0)
 		second_fork(argv, env, fdp, split_path);
 	free_path(split_path);
-	pid = wait(&status);
-	pid = wait(&status);
-	return (0);
+	return (wait_for_children(2));
 }
 //./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'"  outfile.txt
 //./pipex infisle.txt "awk '{print \$2, \$1}'" "awk '{print \$1}'" outfile.txt

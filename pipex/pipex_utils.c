@@ -6,11 +6,30 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 11:37:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 15:10:48 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+int	wait_for_children(int num_children)
+{
+		int	i;
+		int	status;
+
+		i = 0;
+		while (i < num_children)
+		{
+			if (wait(&status) == -1)
+			{
+				perror("wait");
+				return(-1);
+			}
+			//ft_printf("hijo %d\n", i + 1);
+			i++;
+		}
+		return (0);
+}
 
 void	exec_command(char **split_arg, char *env[], char *path)
 {
@@ -97,19 +116,3 @@ void	free_path(char **path_array)
 	free(path_array);
 }
 
-int	secure_open(char *file_name, int in_out, char **split_path)
-{
-	int	fd;
-
-	if (in_out == 0)
-		fd = open(file_name, O_RDONLY);
-	else if (in_out == 1)
-		fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (fd == -1)
-	{
-		perror("Pipex - Error opening file");
-		free_path(split_path);
-		exit (-1);
-	}
-	return (fd);
-}
