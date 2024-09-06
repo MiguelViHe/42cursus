@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 15:11:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/05 18:41:10 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,19 @@ void	first_child(t_px_args *args, int fdp[2])
 	int		fd;
 	char	**split_argv;
 	char	*final_path;
+	char	*str_first_cmd;
 
+	
+	str_first_cmd = args->argv[args->first_cmd];
 	close(fdp[READ_END]);
-	fd = secure_open_bonus(args->argv[1], 0, args);
-	if (!ft_strnstr(args->argv[2], "'", ft_strlen(args->argv[2])))
-		split_argv = ft_split(args->argv[2], ' ');
+	if (args->first_cmd == 2)
+		fd = secure_open_bonus(args->argv[1], 0, args);
+	else if (args->first_cmd == 3)
+		fd = here_doc(args);
+	if (!ft_strnstr(str_first_cmd, "'", ft_strlen(str_first_cmd)))
+		split_argv = ft_split(str_first_cmd, ' ');
 	else
-		split_argv = ft_split_squotes(args->argv[2], ' ');
+		split_argv = ft_split_squotes(str_first_cmd, ' ');
 	final_path = find_cmd_in_path(args->split_path, split_argv[0]);
 	free_path(args->split_path);
 	dup2(fd, STDIN_FILENO);
@@ -87,8 +93,8 @@ void	childs_management(t_px_args *args, int fdp[2][2], int pid)
 		exit(-1);
 	else if (pid == 0)
 	{
-		if (args->num_cmd == 2)
-			first_child(args, fdp[0]);
+		if (args->num_cmd == args->first_cmd)
+			first_child(args, fdp[(args->num_cmd) % 2]);
 		else if (args->num_cmd == args->argc - 2)
 			last_child(args, fdp[((args->num_cmd) + 1) % 2]);
 		else
@@ -96,7 +102,7 @@ void	childs_management(t_px_args *args, int fdp[2][2], int pid)
 	}
 	else if (pid > 0)
 	{
-		if (args->num_cmd == 2)
+		if (args->num_cmd == args->first_cmd)
 			close(fdp[(args->num_cmd) % 2][WRITE_END]);
 		else if (args->num_cmd == args->argc - 2)
 			close(fdp[((args->num_cmd) + 1) % 2][READ_END]);
@@ -130,7 +136,7 @@ int	main(int argc, char *argv[], char *env[])
 		args.num_cmd++;
 	}
 	free_path(args.split_path);
-	return (wait_for_children((args.num_cmd) - 2));
+	return (wait_for_children((args.num_cmd) - (args.first_cmd)));
 }
 
 //./pipex infile.txt "cut -d ' ' -f 2,1" "sed 's/[aeiou]/_/g'"
