@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/10 09:52:58 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:15:11 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,19 @@ void	last_child(t_px_args *args, int fdp[2])
 	exec_command(split_argv, args->env, final_path);
 }
 
-void	first_child(t_px_args *args, int fdp[2])
+void	first_child(t_px_args *args, int fdp[2], int fd_ph)
 {
 	int		fd;
 	char	**split_argv;
 	char	*final_path;
 	char	*str_first_cmd;
 
-	
 	str_first_cmd = args->argv[args->first_cmd];
 	close(fdp[READ_END]);
 	if (args->first_cmd == 2)
 		fd = secure_open_bonus(args->argv[1], 0, args);
 	else if (args->first_cmd == 3)
-		fd = here_doc(args);
+		fd = fd_ph;
 	if (!ft_strnstr(str_first_cmd, "'", ft_strlen(str_first_cmd)))
 		split_argv = ft_split(str_first_cmd, ' ');
 	else
@@ -90,14 +89,14 @@ void	first_child(t_px_args *args, int fdp[2])
 	exec_command(split_argv, args->env, final_path);
 }
 
-void	childs_management(t_px_args *args, int fdp[2][2], int pid)
+void	childs_management(t_px_args *args, int fdp[2][2], pid_t pid, int fd_ph)
 {
 	if (pid == -1)
 		exit(-1);
 	else if (pid == 0)
 	{
 		if (args->num_cmd == args->first_cmd)
-			first_child(args, fdp[(args->num_cmd) % 2]);
+			first_child(args, fdp[(args->num_cmd) % 2], fd_ph);
 		else if (args->num_cmd == args->argc - 2)
 			last_child(args, fdp[((args->num_cmd) + 1) % 2]);
 		else
@@ -122,6 +121,7 @@ int	main(int argc, char *argv[], char *env[])
 	t_px_args	args;
 	int			fdp[2][2];
 	pid_t		pid;
+	int			fd_ph;
 
 	if (argc < 5)
 	{
@@ -129,13 +129,16 @@ int	main(int argc, char *argv[], char *env[])
 		exit (-1);
 	}
 	args = (args_init(argc, argv, env));
+	fd_ph = -42;
+	if (args.first_cmd == 3)
+		fd_ph = here_doc(args);
 	while (args.num_cmd < argc - 1)
 	{
 		if (args.num_cmd < argc - 2)
 			if (pipe(fdp[args.num_cmd % 2]) == -1)
 				exit(-1);
 		pid = fork();
-		childs_management(&args, fdp, pid);
+		childs_management(&args, fdp, pid, fd_ph);
 		args.num_cmd++;
 	}
 	free_path(args.split_path);

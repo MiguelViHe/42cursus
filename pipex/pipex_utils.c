@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 15:10:48 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:18:43 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 int	wait_for_children(int num_children)
 {
-		int	i;
-		int	status;
+	int	i;
+	int	status;
 
-		i = 0;
-		while (i < num_children)
+	i = 0;
+	while (i < num_children)
+	{
+		if (wait(&status) == -1)
 		{
-			if (wait(&status) == -1)
-			{
-				perror("wait");
-				return(-1);
-			}
-			//ft_printf("hijo %d\n", i + 1);
-			i++;
+			perror("wait");
+			return (-1);
 		}
-		return (0);
+		i++;
+	}
+	return (0);
 }
 
 void	exec_command(char **split_arg, char *env[], char *path)
@@ -115,4 +114,3 @@ void	free_path(char **path_array)
 	}
 	free(path_array);
 }
-
