@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/05 18:41:10 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/10 09:52:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	last_child(t_px_args *args, int fdp[2])
 	char	*last_cmd;
 
 	last_cmd = args->argv[(args->argc) - 2];
-	fd = secure_open_bonus(args->argv[(args->argc) - 1], 1, args);
+	if (ft_strnstr(args->argv[1], "here_doc", ft_strlen(args->argv[1])))
+		fd = secure_open_bonus(args->argv[(args->argc) - 1], 2, args);
+	else
+		fd = secure_open_bonus(args->argv[(args->argc) - 1], 1, args);
 	if (!ft_strnstr(last_cmd, "'", ft_strlen(last_cmd)))
 		split_argv = ft_split(last_cmd, ' ');
 	else
