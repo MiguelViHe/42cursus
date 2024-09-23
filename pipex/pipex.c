@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 09:53:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/10 16:36:25 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/23 10:12:53 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+// Open file_name in mode input or output depending of the value of in_out.
+// If error it free the array of path (split_path) to avoid leaks of memory.
 int	secure_open(char *file_name, int in_out, char **split_path)
 {
 	int	fd;
