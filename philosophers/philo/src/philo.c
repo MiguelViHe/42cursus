@@ -6,21 +6,37 @@
 /*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/24 18:08:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:08:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 #include "../includes/functions.h"
 
-t_philo_data *init_philo(pthread_mutex_t *mtx_forks, int philo, int num_philos)
+t_table_data init_table(int argc, char *argv[])
+{
+	t_table_data	table;
+
+	table.num_philos = ft_atoi(argv[1]);
+	table.t_die = ft_atoi(argv[2]);
+	table.t_eat = ft_atoi(argv[3]);
+	table.t_sleep = ft_atoi(argv[4]);
+	if (argc == 6)
+		table.n_t_eat = ft_atoi(argv[5]);
+	else
+		table.n_t_eat = -1;
+	return (table);
+}
+
+t_philo_data *init_philo(pthread_mutex_t *mtx_forks, int philo, t_table_data *t)
 {
 	t_philo_data	*philo_data;
 
 	philo_data = malloc(sizeof(t_philo_data));
-	philo_data->philo_id = philo;
+	philo_data->philo_id = philo + 1;
+	philo_data->table = t;
 	philo_data->fork_l = &mtx_forks[philo];
-	philo_data->fork_r = &mtx_forks[(philo + 1) % num_philos];
+	philo_data->fork_r = &mtx_forks[(philo + 1) % t->num_philos];
 	return (philo_data);
 }
 
@@ -32,7 +48,10 @@ pthread_mutex_t	*initialize_mutex_forks(int num_forks)
 	i = 0;
 	mutex_forks = malloc(num_forks * sizeof(pthread_mutex_t));
 	while (i < num_forks)
+	{
 		pthread_mutex_init(&mutex_forks[i], NULL);
+		i++;
+	}
 	return (mutex_forks);
 }
 
@@ -60,18 +79,31 @@ void	join_philos(pthread_t *philos, int num_philos)
 	free(philos);
 }
 
-void	*thread_routine2(void *arg)
+void	*thread_routine(void *arg)
 {
-	t_philo_data	*thread_data;
+	t_philo_data	*philo_data;
 
-	thread_data = (t_thread_data *)arg;
-	printf("puerta esperando: %d\n", thread_data->thread_id);
-	pthread_mutex_lock(thread_data->mutex);
-	printf("puerta dentro: %d\n", thread_data->thread_id);
-	sleep(5);
-	printf("puerta salgo: %d\n", thread_data->thread_id);
-	pthread_mutex_unlock(thread_data->mutex);
-	free(thread_data);
+	philo_data = (t_philo_data *)arg;
+	while (1)
+	{
+		printf("Soy %d, esperando a coger mi tenedor left(%d)\n", philo_data->philo_id, philo_data->philo_id);
+		pthread_mutex_lock(philo_data->fork_l);
+		printf("Soy %d, mi tenedor left(%d) cogido\n", philo_data->philo_id, philo_data->philo_id);
+		printf("Soy %d, esperando a coger tenedor right(%d)\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
+		pthread_mutex_lock(philo_data->fork_r);
+		printf("Soy %d, tenedor right(%d) cogido\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
+		printf("%d: empiezo a comer(%d seg)\n", philo_data->philo_id, philo_data->table->t_eat);
+		sleep(philo_data->table->t_eat);
+		printf("%d: termino comer (%d seg)\n", philo_data->philo_id, philo_data->table->t_eat);
+		printf("Soy %d, suelto tenedor right(%d)\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
+		pthread_mutex_unlock(philo_data->fork_r);
+		printf("Soy %d, suelto mi tenedor left(%d)\n", philo_data->philo_id, philo_data->philo_id);
+		pthread_mutex_unlock(philo_data->fork_l);
+		printf("%d, empiezo a dormir (%d seg)\n", philo_data->philo_id, philo_data->table->t_sleep);
+		sleep(philo_data->table->t_sleep);
+		printf("%d, me despierto (%d seg)\n", philo_data->philo_id, philo_data->table->t_sleep);
+		//free(thread_data);
+	}
 	return (NULL);
 }
 
@@ -79,7 +111,7 @@ int	main(int argc, char *argv[])
 {
 	pthread_t		*philos; //liberado!
 	pthread_mutex_t	*mutex_forks; //liberado!
-	int				num_philos;
+	t_table_data	table;
 	t_philo_data	*philo_data; // liberarlo en cada thread
 	int				i;
 	
@@ -88,18 +120,18 @@ int	main(int argc, char *argv[])
 	else
 	{
 		i = 0;
-		num_philos = ft_atoi(argv[1]);
-		philos = malloc(num_philos * sizeof(pthread_t));
-		mutex_forks = initialize_mutex_forks(num_philos);
-		while (i < num_philos)
+		table = init_table(argc, argv);
+		philos = malloc(table.num_philos * sizeof(pthread_t));
+		mutex_forks = initialize_mutex_forks(table.num_philos);
+		while (i < table.num_philos)
 		{
-			philo_data = initialize_philo(mutex_forks, i + 1);
-			if (pthread_create(&philos[i], NULL, thread_routine2, philo_data) != 0)
+			philo_data = init_philo(mutex_forks, i, &table);
+			if (pthread_create(&philos[i], NULL, thread_routine, philo_data) != 0)
 				return (-1);
 			i++;
 		}
-		join_philos(philos, num_philos); //aqui se libera philos
-		destroy_mutex_forks(mutex_forks, num_philos); //aqui se libera mutex_forks
+		join_philos(philos, table.num_philos); //aqui se libera philos
+		destroy_mutex_forks(mutex_forks, table.num_philos); //aqui se libera mutex_forks
 	}
 	return (0);
 }
