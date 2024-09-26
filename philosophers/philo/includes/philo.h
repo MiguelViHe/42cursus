@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/25 17:48:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:29:00 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@
 	typedef struct s_table_data
 	{
 		int	num_philos;
-		int	t_die;
-		int	t_eat;
-		int	t_sleep;
-		int	n_t_eat;
+		int	tm_die;
+		int	tm_eat;
+		int	tm_sleep;
+		int	n_tms_eat;
 	} t_table_data;
 
 	typedef struct s_philo_data
 	{
 		int				philo_id;
+		int				tms_ph_ate;
 		t_table_data	*table;
 		pthread_mutex_t	*fork_l;
 		pthread_mutex_t	*fork_r;

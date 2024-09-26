@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/25 18:08:54 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/26 15:52:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ t_table_data init_table(int argc, char *argv[])
 	t_table_data	table;
 
 	table.num_philos = ft_atoi(argv[1]);
-	table.t_die = ft_atoi(argv[2]);
-	table.t_eat = ft_atoi(argv[3]);
-	table.t_sleep = ft_atoi(argv[4]);
+	table.tm_die = ft_atoi(argv[2]);
+	table.tm_eat = ft_atoi(argv[3]);
+	table.tm_sleep = ft_atoi(argv[4]);
 	if (argc == 6)
-		table.n_t_eat = ft_atoi(argv[5]);
+		table.n_tms_eat = ft_atoi(argv[5]);
 	else
-		table.n_t_eat = -1;
+		table.n_tms_eat = -1;
 	return (table);
 }
 
@@ -34,6 +34,7 @@ t_philo_data *init_philo(pthread_mutex_t *mtx_forks, int philo, t_table_data *t)
 
 	philo_data = malloc(sizeof(t_philo_data));
 	philo_data->philo_id = philo + 1;
+	philo_data->tms_ph_ate = 0;
 	philo_data->table = t;
 	philo_data->fork_l = &mtx_forks[philo];
 	philo_data->fork_r = &mtx_forks[(philo + 1) % t->num_philos];
@@ -61,7 +62,10 @@ void	destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int num_forks)
 	
 	i = 0;
 	while (i < num_forks)
+	{
 		pthread_mutex_destroy(&mutex_forks[i]);
+		i++;
+	}
 	free(mutex_forks);
 }
 
@@ -84,7 +88,7 @@ void	*thread_routine(void *arg)
 	t_philo_data	*philo_data;
 
 	philo_data = (t_philo_data *)arg;
-	while (1)
+	while (philo_data->tms_ph_ate != philo_data->table->n_tms_eat)
 	{
 		printf("Soy %d, esperando a coger mi tenedor left(%d)\n", philo_data->philo_id, philo_data->philo_id);
 		pthread_mutex_lock(philo_data->fork_l);
@@ -92,18 +96,23 @@ void	*thread_routine(void *arg)
 		printf("Soy %d, esperando a coger tenedor right(%d)\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
 		pthread_mutex_lock(philo_data->fork_r);
 		printf("Soy %d, tenedor right(%d) cogido\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
-		printf("%d: empiezo a comer(%d seg)\n", philo_data->philo_id, philo_data->table->t_eat);
-		sleep(philo_data->table->t_eat);
-		printf("%d: termino comer (%d seg)\n", philo_data->philo_id, philo_data->table->t_eat);
+		printf("%d: empiezo a comer(%d seg)\n", philo_data->philo_id, philo_data->table->tm_eat);
+		sleep(philo_data->table->tm_eat);
+		 if (philo_data->table->n_tms_eat >= 0)
+		 	philo_data->tms_ph_ate++;
+		printf("%d: termino comer (%d seg) (comi %d veces)\n", philo_data->philo_id, philo_data->table->tm_eat, philo_data->tms_ph_ate);
 		printf("Soy %d, suelto tenedor right(%d)\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
 		pthread_mutex_unlock(philo_data->fork_r);
 		printf("Soy %d, suelto mi tenedor left(%d)\n", philo_data->philo_id, philo_data->philo_id);
 		pthread_mutex_unlock(philo_data->fork_l);
-		printf("%d, empiezo a dormir (%d seg)\n", philo_data->philo_id, philo_data->table->t_sleep);
-		sleep(philo_data->table->t_sleep);
-		printf("%d, me despierto (%d seg)\n", philo_data->philo_id, philo_data->table->t_sleep);
-		//free(thread_data);
+		if (philo_data->tms_ph_ate != philo_data->table->n_tms_eat)
+		{
+			printf("%d, empiezo a dormir (%d seg)\n", philo_data->philo_id, philo_data->table->tm_sleep);
+			sleep(philo_data->table->tm_sleep);
+			printf("%d, me despierto (%d seg)\n", philo_data->philo_id, philo_data->table->tm_sleep);
+		}
 	}
+	free(philo_data);
 	return (NULL);
 }
 
