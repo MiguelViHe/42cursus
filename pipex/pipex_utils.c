@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/23 15:57:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/26 11:51:23 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	**get_path_env(char *env[])
 
 	i = 0;
 	path = NULL;
+	path_array = NULL;
 	if (!env)
 		return (NULL);
 	while (!path && env[i])
