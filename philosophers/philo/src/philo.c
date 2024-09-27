@@ -6,68 +6,11 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/26 15:52:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/27 15:12:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-#include "../includes/functions.h"
-
-t_table_data init_table(int argc, char *argv[])
-{
-	t_table_data	table;
-
-	table.num_philos = ft_atoi(argv[1]);
-	table.tm_die = ft_atoi(argv[2]);
-	table.tm_eat = ft_atoi(argv[3]);
-	table.tm_sleep = ft_atoi(argv[4]);
-	if (argc == 6)
-		table.n_tms_eat = ft_atoi(argv[5]);
-	else
-		table.n_tms_eat = -1;
-	return (table);
-}
-
-t_philo_data *init_philo(pthread_mutex_t *mtx_forks, int philo, t_table_data *t)
-{
-	t_philo_data	*philo_data;
-
-	philo_data = malloc(sizeof(t_philo_data));
-	philo_data->philo_id = philo + 1;
-	philo_data->tms_ph_ate = 0;
-	philo_data->table = t;
-	philo_data->fork_l = &mtx_forks[philo];
-	philo_data->fork_r = &mtx_forks[(philo + 1) % t->num_philos];
-	return (philo_data);
-}
-
-pthread_mutex_t	*initialize_mutex_forks(int num_forks)
-{
-	int	i;
-	pthread_mutex_t	*mutex_forks;
-	
-	i = 0;
-	mutex_forks = malloc(num_forks * sizeof(pthread_mutex_t));
-	while (i < num_forks)
-	{
-		pthread_mutex_init(&mutex_forks[i], NULL);
-		i++;
-	}
-	return (mutex_forks);
-}
-
-void	destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int num_forks)
-{
-	int	i;
-	
-	i = 0;
-	while (i < num_forks)
-	{
-		pthread_mutex_destroy(&mutex_forks[i]);
-		i++;
-	}
-	free(mutex_forks);
-}
 
 void	join_philos(pthread_t *philos, int num_philos)
 {
@@ -85,9 +28,11 @@ void	join_philos(pthread_t *philos, int num_philos)
 
 void	*thread_routine(void *arg)
 {
-	t_philo_data	*philo_data;
+	t_philo_dt	*philo_data;
 
-	philo_data = (t_philo_data *)arg;
+	philo_data = (t_philo_dt *)arg;
+	if (philo_data->philo_id % 2 == 0)
+		usleep(10);
 	while (philo_data->tms_ph_ate != philo_data->table->n_tms_eat)
 	{
 		printf("Soy %d, esperando a coger mi tenedor left(%d)\n", philo_data->philo_id, philo_data->philo_id);
@@ -98,8 +43,8 @@ void	*thread_routine(void *arg)
 		printf("Soy %d, tenedor right(%d) cogido\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
 		printf("%d: empiezo a comer(%d seg)\n", philo_data->philo_id, philo_data->table->tm_eat);
 		sleep(philo_data->table->tm_eat);
-		 if (philo_data->table->n_tms_eat >= 0)
-		 	philo_data->tms_ph_ate++;
+		if (philo_data->table->n_tms_eat >= 0)
+			philo_data->tms_ph_ate++;
 		printf("%d: termino comer (%d seg) (comi %d veces)\n", philo_data->philo_id, philo_data->table->tm_eat, philo_data->tms_ph_ate);
 		printf("Soy %d, suelto tenedor right(%d)\n", philo_data->philo_id, ((philo_data->philo_id) % philo_data->table->num_philos) + 1);
 		pthread_mutex_unlock(philo_data->fork_r);
@@ -118,12 +63,12 @@ void	*thread_routine(void *arg)
 
 int	main(int argc, char *argv[])
 {
+	int				i;
 	pthread_t		*philos; //liberado!
 	pthread_mutex_t	*mutex_forks; //liberado!
-	t_table_data	table;
-	t_philo_data	*philo_data; // liberarlo en cada thread
-	int				i;
-	
+	t_table_dt		table;
+	t_philo_dt		*philo_data; // liberarlo en cada thread
+
 	if (argc != 5 && argc != 6)
 		printf("Bad num of arguments. Try again\n");
 	else
