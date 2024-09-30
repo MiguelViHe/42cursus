@@ -6,11 +6,16 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/27 15:12:05 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/09/30 17:25:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+// int	is_philo_died(t_philo_dt *philo_data)
+// {
+	
+// }
 
 void	join_philos(pthread_t *philos, int num_philos)
 {
