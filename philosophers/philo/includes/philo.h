@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/30 16:41:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/01 12:19:41 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
 
 typedef struct s_table_dt
 {
-	int	num_philos;
-	int	tm_die;
-	int	tm_eat;
-	int	tm_sleep;
-	int	n_tms_eat;
-	int	tm_sim_start;
+	int		num_philos;
+	int		tm_die;
+	int		tm_eat;
+	int		tm_sleep;
+	int		n_tms_eat;
+	long	tm_sim_start;
 }	t_table_dt;
 
 typedef struct s_philo_data
@@ -45,6 +45,7 @@ typedef struct s_philo_data
 	int				philo_id;
 	int				tms_ph_ate;
 	long			tm_last_eat;
+	int				is_alive;
 	t_table_dt		*table;
 	pthread_mutex_t	*fork_l;
 	pthread_mutex_t	*fork_r;
@@ -58,6 +59,7 @@ void			destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int n_forks);
 //initialization.c
 
 t_table_dt		init_table(int argc, char *argv[]);
-t_philo_dt		*init_philo(pthread_mutex_t *mtx_forks, int phi, t_table_dt *t);
+t_philo_dt	**initialize_philos_dt(pthread_mutex_t *mtx_forks, t_table_dt *t);
+void	init_time_start(t_table_dt *table);
 
 #endif
