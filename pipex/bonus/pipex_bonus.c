@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvidal-h <mvidal-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 18:02:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/23 16:04:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:11:29 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,3 +161,10 @@ int	main(int argc, char *argv[], char *env[])
 //	tr con -d tambien sirve para eliminar caracteres de la entrada
 //tr -s ' '
 //	dejar solo un elemento del indicado si aparecen mas de uno seguidos.
+
+//Para probar el comando en local hay que sacar el "ls" de la carpeta "extra"
+//abrir una terminal nueva y escribir "unset PATH" (sin comillas)
+// y en esa nueva terminal probar el comando: 
+// ./pipex here_doc FIN  ./ls ./ls outfile deberia mostrar todo en mayusculas
+// despues probar em la terminal sin unset:
+//./pipex here_doc FIN  ./ls cat outfile y deberia hacer lo que hacen los originales.

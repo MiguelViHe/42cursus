@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/26 11:51:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:43:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ void	exec_command(char **split_arg, char *env[], char *path)
 	exit (-1);
 }
 
-//Checks if command exists. First checks if command exixts in current directory
-//If not it checks if command exists in every path of splith_path. It builds
-//the path adding "/" and "cmd" to every path of split_path and check if it
+//Checks if command exists. First checks if command exists in every
+// path of splith_path. If not, it checks if command exists as 
+//global path passed as parameter. It builds the path adding "/" 
+//and "cmd" to every path of split_path and check if it
 // exists. If exists it returns the path.
 char	*find_cmd_in_path(char **split_path, const char *cmd)
 {
@@ -66,8 +67,6 @@ char	*find_cmd_in_path(char **split_path, const char *cmd)
 
 	i = 0;
 	path = NULL;
-	if (access(cmd, F_OK) == 0)
-		return (ft_strdup(cmd));
 	if (split_path)
 	{
 		while (split_path[i])
@@ -84,6 +83,8 @@ char	*find_cmd_in_path(char **split_path, const char *cmd)
 			free(path);
 		}
 	}
+	if (access(cmd, F_OK) == 0)
+		return (ft_strdup(cmd));
 	return (NULL);
 }
 
@@ -119,11 +120,14 @@ void	free_path(char **path_array)
 {
 	int	i;
 
-	i = 0;
-	while (path_array[i])
+	if (path_array)
 	{
-		free(path_array[i]);
-		i++;
+		i = 0;
+		while (path_array[i])
+		{
+			free(path_array[i]);
+			i++;
+		}
+		free(path_array);
 	}
-	free(path_array);
 }
