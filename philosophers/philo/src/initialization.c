@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:45:49 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/01 12:20:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:55:24 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_time_start(t_table_dt *table)
 
 	gettimeofday(&tv, NULL);
 	table->tm_sim_start = tv.tv_sec;
+	printf("-----INICIO = %ld-----\n", table->tm_sim_start);
 }
 
 t_table_dt	init_table(int argc, char *argv[])
