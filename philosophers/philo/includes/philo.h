@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/01 12:19:41 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:08:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ typedef struct s_philo_data
 
 pthread_mutex_t	*initialize_mutex_forks(int num_forks);
 void			destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int n_forks);
+
+//time.c
+long	abs_time_ms(void);
+long	rel_time_ms(long tm_sim_start);
 
 //initialization.c
 
