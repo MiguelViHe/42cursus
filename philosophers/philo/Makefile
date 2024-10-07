@@ -10,6 +10,8 @@ SRCS =	src/philo.c \
 		src/mutex.c \
 		src/initialization.c \
 		src/time.c \
+		src/checker.c \
+		src/freeing.c \
 		src/functions/ft_atoi.c \
 		src/functions/ft_atol.c \
 		src/functions/ft_isdigit.c \

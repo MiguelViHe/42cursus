@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 11:10:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/07 11:44:37 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/10/07 17:35:49 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/10/07 17:45:58 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long	abs_time_ms(void)
+void	free_array_philos_dt(t_philo_dt	**array_philos_dt, int num_philos)
 {
-	struct timeval	tv;
+	int	i;
 
-	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
-}
-
-long	rel_time_ms(long tm_sim_start)
-{
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * 1000 + tv.tv_usec / 1000) - tm_sim_start);
-}
-
-void	set_tm_last_eat(t_philo_dt *philo_data)
-{
-	philo_data->tm_last_eat = abs_time_ms();
+	i = 0;
+	while (i < num_philos)
+	{
+		pthread_mutex_destroy(array_philos_dt[i]->mtx_tm_last_eat);
+		pthread_mutex_destroy(array_philos_dt[i]->mtx_tms_ph_ate);
+		free(array_philos_dt[i]);
+	}
+	free(array_philos_dt);
 }

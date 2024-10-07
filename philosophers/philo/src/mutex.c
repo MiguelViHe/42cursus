@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:42:53 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/27 15:09:50 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:59:55 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void	destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int n_forks)
 		i++;
 	}
 	free(mutex_forks);
+}
+
+void	destroy_mutex_table(t_table_dt *table)
+{
+	pthread_mutex_destroy(&table->mtx_all_alive);
 }
