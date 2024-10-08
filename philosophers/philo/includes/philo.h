@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/07 18:02:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:46:47 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ typedef struct s_philo_data
 {
 	int				philo_id;
 	int				tms_ph_ate;
-	pthread_mutex_t	*mtx_tms_ph_ate; //destroyed
+	pthread_mutex_t	mtx_tms_ph_ate; //destroyed
 	long			tm_last_eat;
-	pthread_mutex_t	*mtx_tm_last_eat; //destroyed
+	pthread_mutex_t	mtx_tm_last_eat; //destroyed
 	t_table_dt		*table;
 	pthread_mutex_t	*fork_l;
 	pthread_mutex_t	*fork_r;
@@ -73,10 +73,11 @@ void			init_time_start(t_table_dt *table);
 
 //checker.c
 
-void			check_philos_alive(t_philo_dt **phi_dt, int num_philos);
+int				is_philo_alive(t_philo_dt *philo_data);
+void			check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table);
 
 //freeing.c
 
-void	free_array_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
+void			free_array_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
 
 #endif

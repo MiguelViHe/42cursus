@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:45:49 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/07 17:06:57 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:02:12 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ t_philo_dt	*init_philo(pthread_mutex_t *mtx_forks, int phi, t_table_dt *t)
 	philo_data = malloc(sizeof(t_philo_dt));
 	philo_data->philo_id = phi + 1;
 	philo_data->tms_ph_ate = 0;
-	pthread_mutex_init(philo_data->mtx_tms_ph_ate, NULL);
+	pthread_mutex_init(&philo_data->mtx_tms_ph_ate, NULL);
 	philo_data->tm_last_eat = 0;
-	pthread_mutex_init(philo_data->mtx_tm_last_eat, NULL);
+	pthread_mutex_init(&philo_data->mtx_tm_last_eat, NULL);
 	philo_data->table = t;
 	philo_data->fork_l = &mtx_forks[phi];
 	philo_data->fork_r = &mtx_forks[(phi + 1) % t->num_philos];

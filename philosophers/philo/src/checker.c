@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/07 18:05:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/08 17:45:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	is_philo_alive(t_philo_dt *philo_data)
+int	is_philo_alive(t_philo_dt *philo_data)
 {
 	long	curr_time_ms;
 	long	tm_sim_start;
@@ -22,9 +22,9 @@ static int	is_philo_alive(t_philo_dt *philo_data)
 	tm_sim_start = philo_data->table->tm_sim_start;
 	tm_die = philo_data->table->tm_die;
 	curr_time_ms = abs_time_ms();
-	pthread_mutex_lock(philo_data->mtx_tm_last_eat);
+	pthread_mutex_lock(&philo_data->mtx_tm_last_eat);
 	tm_last_eat = philo_data->tm_last_eat;
-	pthread_mutex_unlock(philo_data->mtx_tm_last_eat);
+	pthread_mutex_unlock(&philo_data->mtx_tm_last_eat);
 	if (tm_last_eat == 0)
 		return ((curr_time_ms - tm_sim_start) <= tm_die);
 	else
@@ -33,12 +33,13 @@ static int	is_philo_alive(t_philo_dt *philo_data)
 
 void	check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table)
 {
-	int all_eat;
+	//int all_eat;
 	int	i;
 
+	usleep(1000);
 	while (table->all_alive) //VIGILAR QUE CUANDO NO MUERE NADIE PERO COMEN UN NUMERO DE VECES ESTO TIENE QUE PARAR.
 	{
-		printf("chequeo hijos vivos..\n");
+		printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
 		i = 0;
 		while (table->all_alive && i < table->num_philos)
 		{
@@ -46,11 +47,11 @@ void	check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table)
 			{
 				pthread_mutex_lock(&table->mtx_all_alive);
 				table->all_alive = 0;
-				pthread_mutex_unlock(&table->mtx_all_alive);
 				printf("%ld - %d died\n", rel_time_ms(table->tm_sim_start), phi_dt[i]->philo_id);
+				pthread_mutex_unlock(&table->mtx_all_alive);
 			}
 			i++;
 		}
-		usleep(9000);
+		usleep(1000);
 	}
 }
