@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/08 17:45:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:33:07 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ int	is_philo_alive(t_philo_dt *philo_data)
 
 void	check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table)
 {
-	//int all_eat;
 	int	i;
 
 	usleep(1000);
-	while (table->all_alive) //VIGILAR QUE CUANDO NO MUERE NADIE PERO COMEN UN NUMERO DE VECES ESTO TIENE QUE PARAR.
+	while (table->all_alive)
 	{
 		printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
 		i = 0;

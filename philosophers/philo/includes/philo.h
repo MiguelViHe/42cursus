@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/08 17:46:47 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:28:44 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <pthread.h>
 
 //gettimeofday
-#include <sys/time.h>
+# include <sys/time.h>
 
 typedef struct s_table_dt
 {
@@ -68,7 +68,7 @@ void			set_tm_last_eat(t_philo_dt *philo_data);
 //initialization.c
 
 t_table_dt		init_table(int argc, char *argv[]);
-t_philo_dt		**initialize_philos_dt(pthread_mutex_t *mtx_forks, t_table_dt *t);
+t_philo_dt		**init_philos_dt(pthread_mutex_t *mtx_forks, t_table_dt *t);
 void			init_time_start(t_table_dt *table);
 
 //checker.c
@@ -78,6 +78,14 @@ void			check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table);
 
 //freeing.c
 
-void			free_array_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
+void			free_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
+
+//actions.c
+
+void			print_action(t_philo_dt *ph_dt, char opc);
+int				check_all_alive(t_table_dt *table);
+int				n_tms_eat_reached(t_philo_dt *philo_data);
+void			action_eat(t_philo_dt *philo_data);
+void			action_sleep_think(t_philo_dt *philo_data);
 
 #endif

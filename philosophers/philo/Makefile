@@ -12,6 +12,7 @@ SRCS =	src/philo.c \
 		src/time.c \
 		src/checker.c \
 		src/freeing.c \
+		src/actions.c \
 		src/functions/ft_atoi.c \
 		src/functions/ft_atol.c \
 		src/functions/ft_isdigit.c \

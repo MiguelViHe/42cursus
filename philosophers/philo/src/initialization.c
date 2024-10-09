@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:45:49 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/08 12:02:12 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/09 12:31:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_table_dt	init_table(int argc, char *argv[])
 		table.n_tms_eat = -1;
 	table.tm_sim_start = 0;
 	table.all_alive = 1;
-	pthread_mutex_init(&table.mtx_all_alive, NULL); 
+	pthread_mutex_init(&table.mtx_all_alive, NULL);
 	return (table);
 }
 
