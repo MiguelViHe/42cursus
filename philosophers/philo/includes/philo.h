@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 12:28:44 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:54:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ typedef struct s_table_dt
 	int				n_tms_eat;
 	long			tm_sim_start;
 	int				all_alive;
-	pthread_mutex_t	mtx_all_alive; //destroyed.
+	pthread_mutex_t	mtx_all_alive; //destroyed.	//REVISAR
+	int				all_eat;					//REVISAR
+	pthread_mutex_t	mtx_all_eat; //destroyed.
 }	t_table_dt;
 
 typedef struct s_philo_data
@@ -84,6 +86,7 @@ void			free_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
 
 void			print_action(t_philo_dt *ph_dt, char opc);
 int				check_all_alive(t_table_dt *table);
+int				check_all_eat(t_table_dt *table);
 int				n_tms_eat_reached(t_philo_dt *philo_data);
 void			action_eat(t_philo_dt *philo_data);
 void			action_sleep_think(t_philo_dt *philo_data);

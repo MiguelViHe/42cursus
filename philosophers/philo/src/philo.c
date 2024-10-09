@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 12:34:00 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:54:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ void	*th_routine(void *arg)
 	table = philo_data->table;
 	if (philo_data->philo_id % 2 == 0)
 		usleep((philo_data->table->tm_eat / 2) * 1000);
-	while (check_all_alive(table) && !n_tms_eat_reached(philo_data))
+	while (check_all_alive(table) && !check_all_eat(table))
 	{
 		pthread_mutex_lock(philo_data->fork_l);
 		print_action(philo_data, 'f');
 		pthread_mutex_lock(philo_data->fork_r);
 		print_action(philo_data, 'f');
-		if (check_all_alive(table))
+		if (check_all_alive(table) && !check_all_eat(table))//REVISAR
 			action_eat(philo_data);
 		pthread_mutex_unlock(philo_data->fork_r);
 		pthread_mutex_unlock(philo_data->fork_l);
-		if (check_all_alive(table) && !n_tms_eat_reached(philo_data))
+		if (check_all_alive(table) && !check_all_eat(table))
 			action_sleep_think(philo_data);
 	}
 	return (NULL);
