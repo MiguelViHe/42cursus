@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:11:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 16:57:03 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/10 19:27:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,15 @@ int	check_all_eat(t_table_dt *table) //REVISAR
 int	n_tms_eat_reached(t_philo_dt *philo_data)
 {
 	int	tms_ate;
+	int	tms_eat;
 
+	tms_eat = philo_data->table->n_tms_eat;
+	if (tms_eat < 0)
+		return (0);
 	pthread_mutex_lock(&philo_data->mtx_tms_ph_ate);
 	tms_ate = philo_data->tms_ph_ate;
 	pthread_mutex_unlock(&philo_data->mtx_tms_ph_ate);
-	if (tms_ate >= philo_data->table->n_tms_eat)
+	if (tms_ate >= tms_eat)
 		return (1);
 	return (0);
 }
