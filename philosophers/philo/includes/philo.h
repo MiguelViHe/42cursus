@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 16:54:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:45:07 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //malloc, free, exit, rand
 # include <stdlib.h>
 
-//usleep, sleep
+//usleep, sleep, size_t
 # include <unistd.h>
 
 //O_RDONLY
@@ -33,11 +33,11 @@
 typedef struct s_table_dt
 {
 	int				num_philos;
-	int				tm_die;
-	int				tm_eat;
-	int				tm_sleep;
+	size_t			tm_die;
+	size_t			tm_eat;
+	size_t			tm_sleep;
 	int				n_tms_eat;
-	long			tm_sim_start;
+	size_t			tm_sim_start;
 	int				all_alive;
 	pthread_mutex_t	mtx_all_alive; //destroyed.	//REVISAR
 	int				all_eat;					//REVISAR
@@ -49,7 +49,7 @@ typedef struct s_philo_data
 	int				philo_id;
 	int				tms_ph_ate;
 	pthread_mutex_t	mtx_tms_ph_ate; //destroyed
-	long			tm_last_eat;
+	size_t			tm_last_eat;
 	pthread_mutex_t	mtx_tm_last_eat; //destroyed
 	t_table_dt		*table;
 	pthread_mutex_t	*fork_l;
@@ -63,8 +63,8 @@ void			destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int n_forks);
 void			destroy_mutex_table(t_table_dt *table);
 
 //time.c
-long			abs_time_ms(void);
-long			rel_time_ms(long tm_sim_start);
+size_t			abs_time_ms(void);
+size_t			rel_time_ms(size_t tm_sim_start);
 void			set_tm_last_eat(t_philo_dt *philo_data);
 
 //initialization.c

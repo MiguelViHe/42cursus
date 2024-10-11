@@ -15,6 +15,7 @@ SRCS =	src/philo.c \
 		src/actions.c \
 		src/functions/ft_atoi.c \
 		src/functions/ft_atol.c \
+		src/functions/ft_atost.c \
 		src/functions/ft_isdigit.c \
 		src/functions/ft_isspace.c \
 

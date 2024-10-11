@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
+/*   ft_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 11:16:46 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/11 16:04:29 by mvidal-h         ###   ########.fr       */
+/*   Created: 2024/10/11 11:51:58 by mvidal-h          #+#    #+#             */
+/*   Updated: 2024/10/11 11:52:54 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FUNCTIONS_H
-# define FUNCTIONS_H
+#include "../includes/philo.h"
 
-//functions/ft_atol.c
-long	ft_atol(const char *str);
+// Improved version of sleep function
+int	ft_usleep(size_t milliseconds)
+{
+	size_t	start;
 
-//functions/ft_atoi.c
-int		ft_atoi(const char *str);
-
-//functions/ft_atost.c
-size_t	ft_atost(const char *str);
-
-#endif
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}

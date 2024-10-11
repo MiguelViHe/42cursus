@@ -6,13 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 11:10:43 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 12:30:34 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/11 12:31:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-long	abs_time_ms(void)
+size_t	abs_time_ms(void)
 {
 	struct timeval	tv;
 
@@ -20,7 +20,7 @@ long	abs_time_ms(void)
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
-long	rel_time_ms(long tm_sim_start)
+size_t	rel_time_ms(size_t tm_sim_start)
 {
 	struct timeval	tv;
 

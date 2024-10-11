@@ -6,11 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/10 19:19:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/11 13:29:28 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+#include "../includes/functions.h"
 
 void	join_philos(pthread_t *philos, int num_philos)
 {
@@ -77,7 +78,21 @@ int	launch_simulation(pthread_t *phi, t_philo_dt **phi_dt, t_table_dt *table)
 	return (0);
 }
 
-int	main(int argc, char *argv[]) // PROBAR CON ./philo 3 100 50 10
+int	check_negative_argv(int argc, char *argv[])
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (ft_atol(argv[i]) < 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	main(int argc, char *argv[])
 {
 	pthread_t		*philos; //liberado!
 	pthread_mutex_t	*mutex_forks; //liberado!
@@ -85,7 +100,9 @@ int	main(int argc, char *argv[]) // PROBAR CON ./philo 3 100 50 10
 	t_philo_dt		**array_philos_dt; // liberarlo en free_array_philos_dt
 
 	if (argc != 5 && argc != 6)
-		printf("Bad num of arguments. Try again\n");
+		printf("Bad num of arguments. 5 o 6 are needed. Try again\n");
+	else if (check_negative_argv(argc, argv))
+		printf("Negative arguments are not allowed. Try again\n");
 	else
 	{
 		table = init_table(argc, argv);
