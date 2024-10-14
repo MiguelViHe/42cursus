@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/11 15:45:07 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:41:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ typedef struct s_philo_data
 	pthread_mutex_t	*fork_r;
 }	t_philo_dt;
 
-//mutex.c
+//check_args.c
+int				are_arguments_correct(int argc, char *argv[]);
 
+//mutex.c
 pthread_mutex_t	*initialize_mutex_forks(int num_forks);
 void			destroy_mutex_forks(pthread_mutex_t	*mutex_forks, int n_forks);
 void			destroy_mutex_table(t_table_dt *table);
@@ -68,27 +70,24 @@ size_t			rel_time_ms(size_t tm_sim_start);
 void			set_tm_last_eat(t_philo_dt *philo_data);
 
 //initialization.c
-
 t_table_dt		init_table(int argc, char *argv[]);
 t_philo_dt		**init_philos_dt(pthread_mutex_t *mtx_forks, t_table_dt *t);
 void			init_time_start(t_table_dt *table);
 
-//checker.c
-
+//checker_referee.c
 int				is_philo_alive(t_philo_dt *philo_data);
-void			check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table);
+void			checker_philos(t_philo_dt **phi_dt, t_table_dt *table);
 
 //freeing.c
-
 void			free_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
 
 //actions.c
-
 void			print_action(t_philo_dt *ph_dt, char opc);
-int				check_all_alive(t_table_dt *table);
-int				check_all_eat(t_table_dt *table);
-int				n_tms_eat_reached(t_philo_dt *philo_data);
 void			action_eat(t_philo_dt *philo_data);
 void			action_sleep_think(t_philo_dt *philo_data);
+
+//checker_philos.c
+int				check_all_alive(t_table_dt *table);
+int				check_all_eat(t_table_dt *table);
 
 #endif

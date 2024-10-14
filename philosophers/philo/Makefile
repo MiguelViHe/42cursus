@@ -7,10 +7,12 @@ CFLAGS = -Wall -Wextra -Werror -pthread -g -fsanitize=address
 RM = rm -rf
 
 SRCS =	src/philo.c \
+		src/check_args.c \
 		src/mutex.c \
 		src/initialization.c \
 		src/time.c \
-		src/checker.c \
+		src/checker_referee.c \
+		src/check_philos.c \
 		src/freeing.c \
 		src/actions.c \
 		src/functions/ft_atoi.c \

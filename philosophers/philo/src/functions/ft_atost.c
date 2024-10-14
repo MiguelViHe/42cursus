@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 15:42:29 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/11 16:01:15 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:27:59 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_atost(const char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	while (str[i] == '+')
+	while (str[i] == '+' || str[i] == '-')
 		i++;
 	while (ft_isdigit(str[i]))
 	{

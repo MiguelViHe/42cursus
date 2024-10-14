@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:45:49 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/11 16:07:21 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:33:11 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ t_table_dt	init_table(int argc, char *argv[])
 {
 	t_table_dt	table;
 
-	table.num_philos = ft_atost(argv[1]);
+	table.num_philos = ft_atoi(argv[1]);
 	table.tm_die = ft_atost(argv[2]);
 	table.tm_eat = ft_atost(argv[3]);
 	table.tm_sleep = ft_atost(argv[4]);
 	if (argc == 6)
-		table.n_tms_eat = ft_atost(argv[5]);
+		table.n_tms_eat = ft_atoi(argv[5]);
 	else
 		table.n_tms_eat = -1;
 	table.tm_sim_start = 0;

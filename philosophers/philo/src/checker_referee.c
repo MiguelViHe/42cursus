@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker_referee.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/09 16:53:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:34:13 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	all_finish_eating(t_philo_dt **phi_dt)
+static int	n_tms_eat_reached(t_philo_dt *philo_data)
 {
-	int	i;
-	int	result;
-	t_table_dt *table;
+	int	tms_ate;
+	int	tms_eat;
 
+	tms_eat = philo_data->table->n_tms_eat;
+	if (tms_eat < 0)
+		return (0);
+	pthread_mutex_lock(&philo_data->mtx_tms_ph_ate);
+	tms_ate = philo_data->tms_ph_ate;
+	pthread_mutex_unlock(&philo_data->mtx_tms_ph_ate);
+	if (tms_ate >= tms_eat)
+		return (1);
+	return (0);
+}
+
+static int	all_finish_eating(t_philo_dt **phi_dt)
+{
+	int			i;
+	int			result;
+	t_table_dt	*table;
 
 	i = 0;
 	result = 0;
@@ -57,9 +72,10 @@ int	is_philo_alive(t_philo_dt *philo_data)
 		return ((curr_time_ms - tm_last_eat) <= tm_die);
 }
 
-void	check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table)
+void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 {
-	int	i;
+	int		i;
+	size_t	rel_time;
 
 	usleep(1000);
 	while (table->all_alive && !all_finish_eating(phi_dt)) //REVISAR
@@ -72,7 +88,8 @@ void	check_philos_alive(t_philo_dt **phi_dt, t_table_dt *table)
 			{
 				pthread_mutex_lock(&table->mtx_all_alive);
 				table->all_alive = 0;
-				printf("%ld - %d died\n", rel_time_ms(table->tm_sim_start), phi_dt[i]->philo_id);
+				rel_time = rel_time_ms(table->tm_sim_start);
+				printf("%ld - %d died\n", rel_time, phi_dt[i]->philo_id);
 				pthread_mutex_unlock(&table->mtx_all_alive);
 			}
 			i++;

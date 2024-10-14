@@ -6,12 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/11 13:29:28 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:48:18 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 #include "../includes/functions.h"
+#include "../includes/functions_utils.h"
 
 void	join_philos(pthread_t *philos, int num_philos)
 {
@@ -78,20 +79,6 @@ int	launch_simulation(pthread_t *phi, t_philo_dt **phi_dt, t_table_dt *table)
 	return (0);
 }
 
-int	check_negative_argv(int argc, char *argv[])
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		if (ft_atol(argv[i]) < 0)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	main(int argc, char *argv[])
 {
 	pthread_t		*philos; //liberado!
@@ -99,26 +86,18 @@ int	main(int argc, char *argv[])
 	t_table_dt		table; //mutex de table destroyed!
 	t_philo_dt		**array_philos_dt; // liberarlo en free_array_philos_dt
 
-	if (argc != 5 && argc != 6)
-		printf("Bad num of arguments. 5 o 6 are needed. Try again\n");
-	else if (check_negative_argv(argc, argv))
-		printf("Negative arguments are not allowed. Try again\n");
-	else
+	if (are_arguments_correct(argc, argv))
 	{
 		table = init_table(argc, argv);
 		philos = malloc(table.num_philos * sizeof(pthread_t));
 		mutex_forks = initialize_mutex_forks(table.num_philos);
 		array_philos_dt = init_philos_dt(mutex_forks, &table);
 		launch_simulation(philos, array_philos_dt, &table);
-		check_philos_alive(array_philos_dt, &table);
+		checker_philos(array_philos_dt, &table);
 		join_philos(philos, table.num_philos); //aqui se libera philos
-		printf("llego aqui 1\n");
 		free_philos_dt(array_philos_dt, table.num_philos); //aqui todo lo referente a philos * y ** además de destroy mutex.
-		printf("llego aqui 2\n");
 		destroy_mutex_table(&table);
-		printf("llego aqui 3\n");
 		destroy_mutex_forks(mutex_forks, table.num_philos); //aqui se libera mutex_forks
-		printf("llego aqui 4\n");
 	}
 	return (0);
 }
