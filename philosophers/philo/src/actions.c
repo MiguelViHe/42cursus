@@ -6,11 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:11:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 18:07:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:48:19 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+#include "../includes/functions.h"
 
 void	print_action(t_philo_dt *ph_dt, char opc)
 {
@@ -44,12 +45,12 @@ void	action_eat(t_philo_dt *philo_data)
 	}
 	print_action(philo_data, 'e');
 	set_tm_last_eat(philo_data);
-	usleep(philo_data->table->tm_eat * 1000);
+	ft_usleep(philo_data->table->tm_eat);
 }
 
 void	action_sleep_think(t_philo_dt *philo_data)
 {
 	print_action(philo_data, 's');
-	usleep(philo_data->table->tm_sleep * 1000);
+	ft_usleep(philo_data->table->tm_sleep);
 	print_action(philo_data, 't');
 }

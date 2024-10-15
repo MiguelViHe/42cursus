@@ -6,13 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 16:48:18 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:50:02 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 #include "../includes/functions.h"
-#include "../includes/functions_utils.h"
 
 void	join_philos(pthread_t *philos, int num_philos)
 {
@@ -32,7 +31,7 @@ void	*special_one(t_philo_dt *philo_data)
 {
 	pthread_mutex_lock(philo_data->fork_l);
 	print_action(philo_data, 'f');
-	usleep(philo_data->table->tm_sleep * 1000);
+	ft_usleep(philo_data->table->tm_sleep);
 	pthread_mutex_unlock(philo_data->fork_l);
 	return (NULL);
 }
@@ -47,7 +46,7 @@ void	*th_routine(void *arg)
 	if (table->num_philos == 1)
 		return (special_one(philo_data));
 	if (philo_data->philo_id % 2 == 0)
-		usleep((philo_data->table->tm_eat / 2) * 1000);
+		ft_usleep((philo_data->table->tm_eat / 2));
 	while (check_all_alive(table) && !check_all_eat(table))
 	{
 		pthread_mutex_lock(philo_data->fork_l);

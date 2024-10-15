@@ -6,11 +6,12 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 18:34:13 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:51:27 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+#include "../includes/functions.h"
 
 static int	n_tms_eat_reached(t_philo_dt *philo_data)
 {
@@ -77,10 +78,10 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 	int		i;
 	size_t	rel_time;
 
-	usleep(1000);
+	ft_usleep(1);
 	while (table->all_alive && !all_finish_eating(phi_dt)) //REVISAR
 	{
-		printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
+		//printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
 		i = 0;
 		while (table->all_alive && i < table->num_philos)
 		{
@@ -94,6 +95,6 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 			}
 			i++;
 		}
-		usleep(1000);
+		ft_usleep(1);
 	}
 }
