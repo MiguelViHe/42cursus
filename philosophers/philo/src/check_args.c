@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:47:16 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 17:01:31 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:14:40 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 #include "../includes/functions.h"
 #include "../includes/functions_utils.h"
 
-static int	check_argv_negative(int argc, char *argv[])
-{
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		if (ft_atol(argv[i]) < 0)
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 static int	is_arg_number(const char *str)
 {
@@ -56,6 +43,32 @@ static int	check_argv_numbers(int argc, char *argv[])
 	return (1);
 }
 
+static int	check_argv_negative(int argc, char *argv[])
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (ft_atol(argv[i]) < 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	check_argv_zero_invalid(int argc, char *argv[])
+{
+	if (ft_atol(argv[1]) == 0)
+	{
+		printf("Num of philos can't be zero. Try again\n");
+		return (1);
+	}
+	if (argc == 6 && ft_atol(argv[5]) == 0)
+		return (1);
+	return (0);
+}
+
 int	are_arguments_correct(int argc, char *argv[])
 {
 	if (argc != 5 && argc != 6)
@@ -73,5 +86,7 @@ int	are_arguments_correct(int argc, char *argv[])
 		printf("Negative arguments are not allowed. Try again\n");
 		return (0);
 	}
+	else if (check_argv_zero_invalid(argc, argv))
+		return (0);
 	return (1);
 }
