@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/15 17:50:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:25:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,10 @@ void	*th_routine(void *arg)
 		print_action(philo_data, 'f');
 		pthread_mutex_lock(philo_data->fork_r);
 		print_action(philo_data, 'f');
-		if (check_all_alive(table) && !check_all_eat(table))//REVISAR
-			action_eat(philo_data);
+		action_eat(philo_data);
 		pthread_mutex_unlock(philo_data->fork_r);
 		pthread_mutex_unlock(philo_data->fork_l);
-		if (check_all_alive(table) && !check_all_eat(table))
-			action_sleep_think(philo_data);
+		action_sleep_think(philo_data);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 18:41:02 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:28:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			checker_philos(t_philo_dt **phi_dt, t_table_dt *table);
 void			free_philos_dt(t_philo_dt	**array_philos_dt, int num_philos);
 
 //actions.c
-void			print_action(t_philo_dt *ph_dt, char opc);
+int				print_action(t_philo_dt *ph_dt, char opc);
 void			action_eat(t_philo_dt *philo_data);
 void			action_sleep_think(t_philo_dt *philo_data);
 
