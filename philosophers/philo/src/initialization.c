@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:45:49 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 16:33:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:17:15 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_table_dt	init_table(int argc, char *argv[])
 	table.all_alive = 1;
 	pthread_mutex_init(&table.mtx_all_alive, NULL);
 	table.all_eat = 0;
-	pthread_mutex_init(&table.mtx_all_eat, NULL);//REVISAR
+	pthread_mutex_init(&table.mtx_all_eat, NULL);
 	return (table);
 }
 
@@ -49,8 +49,16 @@ t_philo_dt	*init_philo(pthread_mutex_t *mtx_forks, int phi, t_table_dt *t)
 	philo_data->tm_last_eat = 0;
 	pthread_mutex_init(&philo_data->mtx_tm_last_eat, NULL);
 	philo_data->table = t;
-	philo_data->fork_l = &mtx_forks[phi];
-	philo_data->fork_r = &mtx_forks[(phi + 1) % t->num_philos];
+	if (philo_data->philo_id % 2 == 0)
+	{
+		philo_data->fork_l = &mtx_forks[phi];
+		philo_data->fork_r = &mtx_forks[(phi + 1) % t->num_philos];
+	}
+	else
+	{
+		philo_data->fork_l = &mtx_forks[(phi + 1) % t->num_philos];
+		philo_data->fork_r = &mtx_forks[phi];
+	}
 	return (philo_data);
 }
 

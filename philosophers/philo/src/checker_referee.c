@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/15 17:51:27 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:13:30 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 	int		i;
 	size_t	rel_time;
 
-	ft_usleep(1);
-	while (table->all_alive && !all_finish_eating(phi_dt)) //REVISAR
+	while (table->all_alive && !all_finish_eating(phi_dt))
 	{
 		//printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
 		i = 0;
@@ -95,6 +94,5 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 			}
 			i++;
 		}
-		ft_usleep(1);
 	}
 }

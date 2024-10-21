@@ -6,14 +6,13 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:47:16 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/16 12:14:40 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:21:37 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 #include "../includes/functions.h"
 #include "../includes/functions_utils.h"
-
 
 static int	is_arg_number(const char *str)
 {

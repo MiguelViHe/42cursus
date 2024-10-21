@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:06:33 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/14 18:19:53 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:17:42 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_all_alive(t_table_dt *table)
 	return (aa);
 }
 
-int	check_all_eat(t_table_dt *table) //REVISAR
+int	check_all_eat(t_table_dt *table)
 {
 	int	ae;
 

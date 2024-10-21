@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:11:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/16 15:24:37 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:17:22 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	print_action(t_philo_dt *ph_dt, char opc)
 	long	rel_time;
 
 	all_alive = check_all_alive(ph_dt->table);
-	if (all_alive && is_philo_alive(ph_dt) && !check_all_eat(ph_dt->table))//REVISAR
+	if (all_alive && is_philo_alive(ph_dt) && !check_all_eat(ph_dt->table))
 	{
 		rel_time = rel_time_ms(ph_dt->table->tm_sim_start);
 		if (opc == 'f')

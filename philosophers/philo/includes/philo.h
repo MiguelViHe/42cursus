@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/16 15:28:01 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:18:01 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct s_table_dt
 	int				n_tms_eat;
 	size_t			tm_sim_start;
 	int				all_alive;
-	pthread_mutex_t	mtx_all_alive; //destroyed.	//REVISAR
-	int				all_eat;					//REVISAR
+	pthread_mutex_t	mtx_all_alive; //destroyed.
+	int				all_eat;
 	pthread_mutex_t	mtx_all_eat; //destroyed.
 }	t_table_dt;
 

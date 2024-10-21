@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/16 15:25:42 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:35:56 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	join_philos(pthread_t *philos, int num_philos)
 	while (i < num_philos)
 	{
 		pthread_join(philos[i], NULL);
-		printf("join %d\n", i); //borrar
+		//printf("join %d\n", i); //borrar
 		i++;
 	}
 	free(philos);
@@ -45,8 +45,6 @@ void	*th_routine(void *arg)
 	table = philo_data->table;
 	if (table->num_philos == 1)
 		return (special_one(philo_data));
-	if (philo_data->philo_id % 2 == 0)
-		ft_usleep((philo_data->table->tm_eat / 2));
 	while (check_all_alive(table) && !check_all_eat(table))
 	{
 		pthread_mutex_lock(philo_data->fork_l);
