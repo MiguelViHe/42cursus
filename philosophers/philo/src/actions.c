@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:11:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/17 18:17:22 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:52:04 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	print_action(t_philo_dt *ph_dt, char opc)
 	if (all_alive && is_philo_alive(ph_dt) && !check_all_eat(ph_dt->table))
 	{
 		rel_time = rel_time_ms(ph_dt->table->tm_sim_start);
+		pthread_mutex_lock(&ph_dt->table->mtx_print);
 		if (opc == 'f')
 			printf("%ld - %d has taken a fork\n", rel_time, ph_dt->philo_id);
 		if (opc == 'e')
@@ -30,6 +31,7 @@ int	print_action(t_philo_dt *ph_dt, char opc)
 			printf("%ld - %d  is sleeping\n", rel_time, ph_dt->philo_id);
 		if (opc == 't')
 			printf("%ld - %d  is thinking\n", rel_time, ph_dt->philo_id);
+		pthread_mutex_unlock(&ph_dt->table->mtx_print);
 		return (1);
 	}
 	return (0);

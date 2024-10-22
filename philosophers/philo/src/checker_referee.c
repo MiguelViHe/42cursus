@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 14:50:04 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/17 18:13:30 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/22 10:23:09 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 
 	while (table->all_alive && !all_finish_eating(phi_dt))
 	{
-		//printf("%ld - chequeo hijos vivos..\n", rel_time_ms(table->tm_sim_start));
 		i = 0;
 		while (table->all_alive && i < table->num_philos)
 		{
@@ -89,7 +88,9 @@ void	checker_philos(t_philo_dt **phi_dt, t_table_dt *table)
 				pthread_mutex_lock(&table->mtx_all_alive);
 				table->all_alive = 0;
 				rel_time = rel_time_ms(table->tm_sim_start);
+				pthread_mutex_lock(&table->mtx_print);
 				printf("%ld - %d died\n", rel_time, phi_dt[i]->philo_id);
+				pthread_mutex_unlock(&table->mtx_print);
 				pthread_mutex_unlock(&table->mtx_all_alive);
 			}
 			i++;

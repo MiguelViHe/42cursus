@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:42:53 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/17 18:20:23 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:47:03 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ void	destroy_mutex_table(t_table_dt *table)
 {
 	pthread_mutex_destroy(&table->mtx_all_alive);
 	pthread_mutex_destroy(&table->mtx_all_eat);
+	pthread_mutex_destroy(&table->mtx_print);
 }

@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 11:00:17 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/17 18:18:01 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:47:21 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_table_dt
 	pthread_mutex_t	mtx_all_alive; //destroyed.
 	int				all_eat;
 	pthread_mutex_t	mtx_all_eat; //destroyed.
+	pthread_mutex_t	mtx_print; //destroyed
 }	t_table_dt;
 
 typedef struct s_philo_data
