@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/pipex/pipex",
+            "args": ["infile.txt", "ls", "wc -l", "outfile.txt"],
+            "stopAtEntry": false,               // Detenerse en la entrada (true o false)
+            "cwd": "${workspaceFolder}",        // Directorio de trabajo
+            "environment": [],                  // Variables de entorno
+            "externalConsole": false,           // Abrir consola externa
+            "MIMode": "gdb",                    // Modo MI para GDB
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing", // Mejor presentación en GDB
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "create",           // Tarea que ejecuta antes de lanzar la depuración
+            "miDebuggerPath": "/usr/bin/gdb",   // Ruta del depurador GDB
+            "logging": {
+                "engineLogging": false,         // Activar o desactivar el registro del motor
+                "trace": true,                  // Activar trazado para diagnósticos
+                "traceResponse": true
+            }
+        }
+    ]
+}
