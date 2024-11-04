@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 15:45:44 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/09/10 16:36:11 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2024/11/04 16:23:05 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_px_args	args_init(int argc, char *argv[], char *env[])
 	args.argv = argv;
 	args.env = env;
 	args.split_path = get_path_env(env);
-	if (!ft_strnstr(argv[1], "here_doc", ft_strlen(argv[1])))
-		args.num_cmd = 2;
-	else
+	if (ft_strlen(argv[1]) == 8 && ft_strncmp(argv[1], "here_doc", 8) == 0)
 		args.num_cmd = 3;
+	else
+		args.num_cmd = 2;
 	args.first_cmd = args.num_cmd;
 	return (args);
 }
