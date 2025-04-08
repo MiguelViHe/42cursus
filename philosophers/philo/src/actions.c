@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:11:54 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/21 16:52:04 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:19:50 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	print_action(t_philo_dt *ph_dt, char opc)
 		if (opc == 'f')
 			printf("%ld - %d has taken a fork\n", rel_time, ph_dt->philo_id);
 		if (opc == 'e')
-			printf("%ld - %d is eating(%d)\n", rel_time, ph_dt->philo_id, ph_dt->tms_ph_ate);
+			printf("%ld - %d is eating\n", rel_time, ph_dt->philo_id);
 		if (opc == 's')
 			printf("%ld - %d  is sleeping\n", rel_time, ph_dt->philo_id);
 		if (opc == 't')

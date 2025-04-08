@@ -6,7 +6,7 @@
 /*   By: mvidal-h <mvidal-h@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 17:11:56 by mvidal-h          #+#    #+#             */
-/*   Updated: 2024/10/21 16:35:56 by mvidal-h         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:39:52 by mvidal-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	join_philos(pthread_t *philos, int num_philos)
 	while (i < num_philos)
 	{
 		pthread_join(philos[i], NULL);
-		//printf("join %d\n", i); //borrar
 		i++;
 	}
 	free(philos);
@@ -76,10 +75,10 @@ int	launch_simulation(pthread_t *phi, t_philo_dt **phi_dt, t_table_dt *table)
 
 int	main(int argc, char *argv[])
 {
-	pthread_t		*philos; //liberado!
-	pthread_mutex_t	*mutex_forks; //liberado!
-	t_table_dt		table; //mutex de table destroyed!
-	t_philo_dt		**array_philos_dt; // liberarlo en free_array_philos_dt
+	pthread_t		*philos;
+	pthread_mutex_t	*mutex_forks;
+	t_table_dt		table;
+	t_philo_dt		**array_philos_dt;
 
 	if (are_arguments_correct(argc, argv))
 	{
@@ -89,10 +88,10 @@ int	main(int argc, char *argv[])
 		array_philos_dt = init_philos_dt(mutex_forks, &table);
 		launch_simulation(philos, array_philos_dt, &table);
 		checker_philos(array_philos_dt, &table);
-		join_philos(philos, table.num_philos); //aqui se libera philos
-		free_philos_dt(array_philos_dt, table.num_philos); //aqui todo lo referente a philos * y ** además de destroy mutex.
+		join_philos(philos, table.num_philos);
+		free_philos_dt(array_philos_dt, table.num_philos);
 		destroy_mutex_table(&table);
-		destroy_mutex_forks(mutex_forks, table.num_philos); //aqui se libera mutex_forks
+		destroy_mutex_forks(mutex_forks, table.num_philos);
 	}
 	return (0);
 }
